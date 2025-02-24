@@ -62,7 +62,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-foreground after:transition-all hover:after:w-full"
               >
                 {item.label}
               </Link>
@@ -96,7 +96,7 @@ export default function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors px-2 py-1"
+                      className="text-lg font-medium text-muted-foreground hover:text-foreground transition-colors px-2 py-1 relative after:absolute after:left-2 after:bottom-0 after:h-[2px] after:w-0 after:bg-foreground after:transition-all hover:after:w-[calc(100%-16px)]"
                     >
                       {item.label}
                     </Link>

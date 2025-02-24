@@ -5,24 +5,24 @@ import Image from "next/image"
 
 const testimonials = [
   {
-    name: "Sarah Thompson",
+    name: "Arneabell Bautista",
     pet: "Max the Golden Retriever",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/smilingsog.jpg-0uRYHAW64K5XChiJCiBqKPpa8huJpa.jpeg",
     quote:
-      "The care and attention my dog receives at Big Paws is exceptional. He always comes home happy and well-cared for!",
+      "Sample feedback rani for future real-world use.",
   },
   {
-    name: "John Davis",
+    name: "kenneth Tan",
     pet: "Luna the Persian Cat",
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sleepingcat.jpg-XBZkH31jxxrEenX8zw783gMVMMOV8P.jpeg",
-    quote: "I can travel worry-free knowing my cat is in good hands. The staff truly loves and cares for the animals.",
+    quote: "Sample feedback rani for future real-world use.",
   },
   {
-    name: "Emily Chen",
+    name: "Jhon Andrie Canedo",
     pet: "Charlie the Spaniel",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/saddog.jpg-IzpczZnSuAJK5nWRM8a6SoInZq5rB0.jpeg",
-    quote: "The facilities are clean, modern, and my dog loves the play areas. Couldn't ask for better pet care!",
+    quote: "Sample feedback rani for future real-world use.",
   },
 ]
 

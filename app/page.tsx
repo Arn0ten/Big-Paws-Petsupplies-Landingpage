@@ -4,7 +4,8 @@ import Features from "./components/Features"
 import Marketing from "./components/Marketing"
 import Gallery from "./components/Gallery"
 import Testimonials from "./components/Testimonials"
-import Pricing from "./components/Pricing"
+import ServicesMenu from "./components/ServicesMenu" 
+import VideoSection from "./components/VideoSection"
 import Location from "./components/Location"
 import ContactForm from "./components/ContactForm"
 import Footer from "./components/Footer"
@@ -16,10 +17,11 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
+        <ServicesMenu /> {/* Add this line */}
+        <VideoSection />
         <Marketing />
         <Gallery />
         <Testimonials />
-        <Pricing />
         <Location />
         <ContactForm />
       </main>
