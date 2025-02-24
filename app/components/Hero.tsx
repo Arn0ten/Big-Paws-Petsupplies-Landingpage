@@ -61,13 +61,13 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden"
+            className="relative h-[400px] lg:h-[600px] rounded-2xl overflow-hidden bg-primary/5"
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/saddog.jpg-IzpczZnSuAJK5nWRM8a6SoInZq5rB0.jpeg"
-              alt="Cute dog looking at camera"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png"
+              alt="Big Paws Pet Hotel and Grooming Logo"
               fill
-              className="object-cover rounded-2xl"
+              className="object-contain rounded-2xl p-12"
               priority
             />
           </motion.div>

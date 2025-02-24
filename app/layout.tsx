@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   title: "Big Paws Pet Hotel - Luxury Pet Care Services",
   description:
     "Big Paws Pet Hotel provides luxury accommodation and grooming services for your beloved pets. Professional care in a comfortable environment.",
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: {
+    icon: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png'
+  }
 }
 
 export default function RootLayout({

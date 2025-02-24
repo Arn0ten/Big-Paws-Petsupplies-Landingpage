@@ -1,9 +1,12 @@
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import Features from "./components/Features"
+import Marketing from "./components/Marketing"
+import Gallery from "./components/Gallery"
 import Testimonials from "./components/Testimonials"
 import Pricing from "./components/Pricing"
-import CTA from "./components/CTA"
+import Location from "./components/Location"
+import ContactForm from "./components/ContactForm"
 import Footer from "./components/Footer"
 
 export default function Home() {
@@ -13,9 +16,12 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
+        <Marketing />
+        <Gallery />
         <Testimonials />
         <Pricing />
-        <CTA />
+        <Location />
+        <ContactForm />
       </main>
       <Footer />
     </div>

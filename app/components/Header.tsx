@@ -7,9 +7,11 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import Image from "next/image"
 import { Menu } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useTheme } from "next-themes"
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,10 +23,7 @@ export default function Header() {
     }
 
     window.addEventListener("scroll", handleScroll)
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const menuItems = [
@@ -33,6 +32,11 @@ export default function Header() {
     { href: "#rates", label: "Rates" },
     { href: "#contact", label: "Contact" },
   ]
+
+  const logoSrc =
+    theme === "dark"
+      ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/main-logo-dark-kytTGWlLTF0sp9UhYxhJmTAZ3prDO8.png"
+      : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/main-logo-light-6OFylQsMc1kyo3k8BvpElizUQOLktK.png"
 
   return (
     <header
@@ -43,7 +47,7 @@ export default function Header() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/main-logo-light-6OFylQsMc1kyo3k8BvpElizUQOLktK.png"
+                src={logoSrc || "/placeholder.svg"}
                 alt="Big Paws Pet Hotel"
                 width={200}
                 height={60}
@@ -69,7 +73,9 @@ export default function Header() {
             <ThemeToggle />
             <div className="hidden sm:flex space-x-4">
               <Button variant="outline" asChild>
-                <Link href="/login">Log in</Link>
+                <Link href="https://big-paws-petsupplies-webapp2.vercel.app/" target="_blank">
+                  Log in
+                </Link>
               </Button>
               <Button asChild>
                 <Link href="#contact">Contact Us</Link>
@@ -97,7 +103,9 @@ export default function Header() {
                   ))}
                   <div className="flex flex-col gap-4 mt-4 px-2">
                     <Button variant="outline" asChild className="w-full">
-                      <Link href="/login">Log in</Link>
+                      <Link href="https://big-paws-petsupplies-webapp2.vercel.app/" target="_blank">
+                        Log in
+                      </Link>
                     </Button>
                     <Button asChild className="w-full">
                       <Link href="#contact">Contact Us</Link>
