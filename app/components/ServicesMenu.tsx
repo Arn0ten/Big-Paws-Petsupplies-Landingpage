@@ -80,7 +80,7 @@ const hotelServices = {
   dayCare: {
     price: "250",
     hours: "8:00 AM to 8:00 PM",
-    note: "Additional 50 per hour",
+    note: "50 per hour",
     requirements: "Need Fully Vaccinated & anti-rabies",
   },
   dayHotel: {
@@ -133,18 +133,27 @@ export default function ServicesMenu() {
         </motion.div>
 
         <Tabs defaultValue="hotel" className="max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="hotel" className="text-lg">
-              <Hotel className="mr-2 h-5 w-5" />
-              Hotel Services
-            </TabsTrigger>
-            <TabsTrigger value="grooming" className="text-lg">
-              <Scissors className="mr-2 h-5 w-5" />
-              Grooming Services
-            </TabsTrigger>
-          </TabsList>
+        <TabsList className="h-20 items-center justify-center text-muted-foreground grid w-full grid-cols-2 mb-8 gap-4 bg-primary/5 p-2 rounded-lg">
+        <TabsTrigger
+          value="hotel"
+          className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-100 dark:hover:bg-blue-900/20"
+        >
+          <Hotel className="mr-2 h-5 w-5" />
+          <span className="hidden sm:inline">Hotel Services</span>
+          <span className="sm:hidden">Hotel</span>
+        </TabsTrigger>
+        <TabsTrigger
+          value="grooming"
+          className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-red-100 dark:hover:bg-red-900/20"
+        >
+          <Scissors className="mr-2 h-5 w-5" />
+          <span className="hidden sm:inline">Grooming Services</span>
+          <span className="sm:hidden">Grooming</span>
+        </TabsTrigger>
+      </TabsList>
 
-          <TabsContent value="hotel">
+
+            <TabsContent value="hotel">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -152,93 +161,125 @@ export default function ServicesMenu() {
               className="grid gap-6"
             >
               <Card className="p-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png"
-                    alt="Big Paws Logo"
-                    width={128}
-                    height={128}
-                    className="object-contain"
-                  />
-                </div>
+              <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+          <Image
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png"
+          alt="Big Paws Logo"
+          width={128}
+          height={128}
+          className="object-contain"
+          />
+              </div>
 
-                <div className="space-y-8">
-                  {/* Day Care */}
-                  <div className="border-b pb-6">
-                    <h3 className="text-xl font-semibold mb-4 flex items-center bg-blue-500 text-white p-2 rounded">
-                      <Dog className="mr-2" /> Day Care
-                    </h3>
-                    <div className="bg-primary/5 p-4 rounded-lg">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="flex-1">Standard Room</span>
-                        <span className="text-2xl font-bold text-primary">
-                          ₱{hotelServices.dayCare.price} <span className="text-base text-muted-foreground">/pet</span>
-                        </span>
-                      </div>
-                      <p className="text-muted-foreground">{hotelServices.dayCare.hours}</p>
-                      <p className="text-sm text-muted-foreground mt-2">Additional {hotelServices.dayCare.note}</p>
-                      <div className="mt-4 bg-destructive/20 dark:bg-destructive/30 text-destructive dark:text-red-400 p-2 rounded text-sm font-medium">
-                        Note: {hotelServices.dayCare.requirements}
-                      </div>
-                    </div>
-                  </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Day Care */}
+          <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+          <h3 className="text-xl font-semibold bg-blue-500 text-white p-3 rounded-t-lg flex items-center">
+            <Dog className="mr-2" /> Day Care
+          </h3>
+          <div className="p-4 space-y-4 flex-grow">
+            {/* Price */}
+            <div className="flex justify-between items-center border-b pb-2">
+            <span className="font-medium">Standard Rate:</span>
+            <span className="text-2xl font-bold text-primary">₱{hotelServices.dayCare.price}</span>
+            </div>
+            
+            {/* Hours */}
+            <div className="flex justify-between items-center">
+            <span className="font-medium">Hours:</span>
+            <span>{hotelServices.dayCare.hours}</span>
+            </div>
+            
+            {/* Additional fee */}
+            <div className="flex justify-between items-center border-t pt-2">
+            <span className="font-medium">Additional:</span>
+            <span>{hotelServices.dayCare.note}</span>
+            </div>
+          </div>
+          
+          {/* Requirements note - now at bottom */}
+          <div className="mt-auto p-4">
+            <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+            <span className="font-bold">Note:</span> {hotelServices.dayCare.requirements}
+            </div>
+          </div>
+          </div>
 
-                  {/* Day Hotel */}
-                  <div className="border-b pb-6">
-                    <h3 className="text-xl font-semibold mb-4 flex items-center bg-red-500 text-white p-2 rounded">
-                      <Sun className="mr-2" /> Day Hotel
-                    </h3>
-                    <div className="bg-primary/5 p-4 rounded-lg">
-                      <div className="flex justify-between items-center mb-4">
-                        <span>Standard Room</span>
-                        <span className="text-2xl font-bold text-primary">
-                          ₱{hotelServices.dayHotel.standardRoom}{" "}
-                          <span className="text-base text-muted-foreground">/day</span>
-                        </span>
-                      </div>
-                      <div className="space-y-2">
-                        <p className="text-sm font-medium">Extra Guest:</p>
-                        <div className="flex justify-between text-sm">
-                          <span>Small to Medium</span>
-                          <span className="text-xl font-semibold text-primary">
-                            ₱{hotelServices.dayHotel.extraGuest.smallToMedium}
-                          </span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                          <span>Large Breed</span>
-                          <span className="text-xl font-semibold text-primary">
-                            ₱{hotelServices.dayHotel.extraGuest.largeBread}
-                          </span>
-                        </div>
-                        <div className="mt-4 bg-destructive/20 dark:bg-destructive/30 text-destructive dark:text-red-400 p-2 rounded text-sm font-medium">
-                          Note: {hotelServices.dayCare.requirements}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          {/* Day Hotel */}
+          <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+          <h3 className="text-xl font-semibold bg-red-500 text-white p-3 rounded-t-lg flex items-center">
+            <Sun className="mr-2" /> Day Hotel
+          </h3>
+          <div className="p-4 space-y-4 flex-grow">
+            {/* Main price */}
+            <div className="flex justify-between items-center border-b pb-2">
+            <span className="font-medium">Standard Room:</span>
+            <span className="text-2xl font-bold text-primary">₱{hotelServices.dayHotel.standardRoom}</span>
+            </div>
+            
+            {/* Extra guests section */}
+            <div className="border-b pb-2">
+            <div>
+            <p className="font-medium mb-2">Extra Guest Rates:</p>
+            <div className="grid grid-cols-2 gap-2 pl-2">
+              <span className="text-sm">Small to Medium:</span>
+              <span className="text-sm font-semibold text-right">₱{hotelServices.dayHotel.extraGuest.smallToMedium}</span>
+              
+              <span className="text-sm">Large Breed:</span>
+              <span className="text-sm font-semibold text-right">₱{hotelServices.dayHotel.extraGuest.largeBread}</span>
+            </div>
+            </div>
+            </div>
+            
+            {/* Features */}
+            <div>
+            <p className="font-medium mb-2">Includes:</p>
+            <ul className="list-disc pl-5 text-sm space-y-1">
+              {hotelServices.dayHotel.features.map((feature, index) => (
+              <li key={index}>{feature}</li>
+              ))}
+            </ul>
+            </div>
+          </div>
+          
+          {/* Requirements note - now at bottom */}
+          <div className="mt-auto p-4">
+            <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+            <span className="font-bold">Note:</span> {hotelServices.dayCare.requirements}
+            </div>
+          </div>
+          </div>
 
-                  {/* Cat Hotel */}
-                  <div>
-                    <h3 className="text-xl font-semibold mb-4 flex items-center bg-orange-500 text-white p-2 rounded">
-                      <Cat className="mr-2" /> Cat Hotel
-                    </h3>
-                    <div className="bg-primary/5 p-4 rounded-lg">
-                      <div className="flex justify-between items-center">
-                        <span>Standard Room</span>
-                        <span className="text-2xl font-bold text-primary">
-                          ₱{hotelServices.catHotel.standardRoom}{" "}
-                          <span className="text-base text-muted-foreground">/day</span>
-                        </span>
-                      </div>
-                      <div className="mt-4 bg-destructive/20 dark:bg-destructive/30 text-destructive dark:text-red-400 p-2 rounded text-sm font-medium">
-                        Note: {hotelServices.dayCare.requirements}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          {/* Cat Hotel */}
+          <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+          <h3 className="text-xl font-semibold bg-orange-500 text-white p-3 rounded-t-lg flex items-center">
+            <Cat className="mr-2" /> Cat Hotel
+          </h3>
+          <div className="p-4 space-y-4 flex-grow">
+            {/* Price */}
+            <div className="flex justify-between items-center border-b pb-2">
+            <span className="font-medium">Standard Room:</span>
+            <span className="text-2xl font-bold text-primary">₱{hotelServices.catHotel.standardRoom}</span>
+            </div>
+            
+            <div className="text-sm text-muted-foreground">
+            Peaceful environment specifically designed for cats
+            </div>
+          </div>
+          
+          {/* Requirements note - now at bottom */}
+          <div className="mt-auto p-4">
+            <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+            <span className="font-bold">Note:</span> {hotelServices.dayCare.requirements}
+            </div>
+          </div>
+          </div>
+
+              </div>
               </Card>
             </motion.div>
-          </TabsContent>
+            </TabsContent>
 
           <TabsContent value="grooming">
             <motion.div
