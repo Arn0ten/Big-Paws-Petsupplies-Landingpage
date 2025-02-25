@@ -1,14 +1,14 @@
-import Header from "./components/Header"
-import Hero from "./components/Hero"
-import Features from "./components/Features"
-import Marketing from "./components/Marketing"
-import Gallery from "./components/Gallery"
-import Testimonials from "./components/Testimonials"
-import ServicesMenu from "./components/ServicesMenu" 
-import VideoSection from "./components/VideoSection"
-import Location from "./components/Location"
-import ContactForm from "./components/ContactForm"
-import Footer from "./components/Footer"
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Features from "./components/Features";
+import Marketing from "./components/Marketing";
+import Gallery from "./components/Gallery";
+import Testimonials from "./components/Testimonials";
+import ServicesMenu from "./components/ServicesMenu";
+import VideoSection from "./components/VideoSection";
+import Location from "./components/Location";
+import ContactForm from "./components/ContactForm";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
-        <ServicesMenu /> {/* Add this line */}
+        <ServicesMenu />
         <VideoSection />
         <Marketing />
         <Gallery />
@@ -27,6 +27,5 @@ export default function Home() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
-
