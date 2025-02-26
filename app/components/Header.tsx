@@ -73,7 +73,7 @@ export default function Header() {
             <ThemeToggle />
             <div className="hidden sm:flex space-x-4">
               <Button variant="outline" asChild>
-                <Link href="https://big-paws-petsupplies-webapp2.vercel.app/" target="_blank">
+                <Link href="https://big-paws-petsupplies-webapp.vercel.app/" target="_blank">
                   Log in
                 </Link>
               </Button>
