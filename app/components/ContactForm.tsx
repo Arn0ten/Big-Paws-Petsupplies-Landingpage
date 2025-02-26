@@ -1,35 +1,35 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { motion } from "framer-motion"
-import { Label } from "@/components/ui/label"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { motion } from "framer-motion";
+import { Label } from "@/components/ui/label";
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    setIsSubmitting(false)
-    setSubmitted(true)
+    setIsSubmitting(false);
+    setSubmitted(true);
 
     // Reset form
-    const form = e.target as HTMLFormElement
-    form.reset()
+    const form = e.target as HTMLFormElement;
+    form.reset();
 
     // Reset success message after 3 seconds
-    setTimeout(() => setSubmitted(false), 3000)
-  }
+    setTimeout(() => setSubmitted(false), 3000);
+  };
 
   return (
     <div className="bg-background py-16 sm:py-24" id="contact">
@@ -41,8 +41,12 @@ export default function ContactForm() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">Contact Us</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Have questions about our services? Get in touch with us!</p>
+          <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
+            Contact Us
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Have questions about our services? Get in touch with us!
+          </p>
         </motion.div>
 
         <motion.div
@@ -55,17 +59,37 @@ export default function ContactForm() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" required placeholder="Your full name" className="w-full" />
+              <Input
+                id="name"
+                name="name"
+                required
+                placeholder="Your full name"
+                className="w-full"
+              />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" name="email" type="email" required placeholder="you@example.com" className="w-full" />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                className="w-full"
+              />
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
-              <Input id="phone" name="phone" type="tel" required placeholder="Your phone number" className="w-full" />
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                placeholder="Your phone number"
+                className="w-full"
+              />
             </div>
 
             <div className="space-y-2">
@@ -91,7 +115,12 @@ export default function ContactForm() {
             </div>
 
             <div className="flex justify-center">
-              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full sm:w-auto min-w-[200px]">
+              <Button
+                type="submit"
+                size="lg"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto min-w-[200px]"
+              >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </div>
@@ -109,6 +138,5 @@ export default function ContactForm() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
-

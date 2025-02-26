@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Dog, Cat, Scissors, Hotel, Sun } from "lucide-react"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dog, Cat, Scissors, Hotel, Sun, PawPrint } from "lucide-react";
+import Image from "next/image";
 
 const groomingServices = {
   forDogs: {
@@ -18,7 +18,8 @@ const groomingServices = {
       },
     },
     premiumWash: {
-      description: "Bath, Brush, Shampoo, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
+      description:
+        "Bath, Brush, Shampoo, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
       prices: {
         small: "300.00",
         medium: "450.00",
@@ -27,7 +28,8 @@ const groomingServices = {
       },
     },
     premiumWashAndCut: {
-      description: "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
+      description:
+        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
       prices: {
         small: "450.00",
         medium: "600.00",
@@ -36,7 +38,8 @@ const groomingServices = {
       },
     },
     fullGrooming: {
-      description: "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Full Body Cleaning, Cut with Style & Cologne",
+      description:
+        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Full Body Cleaning, Cut with Style & Cologne",
       prices: {
         small: "500.00",
         medium: "650.00",
@@ -56,7 +59,8 @@ const groomingServices = {
       },
     },
     premiumWash: {
-      description: "Bath with Nail Cut, Ear Clean, Trim around the Face with Cologne",
+      description:
+        "Bath with Nail Cut, Ear Clean, Trim around the Face with Cologne",
       prices: {
         small: "200.00",
         medium: "250.00",
@@ -74,7 +78,7 @@ const groomingServices = {
     analSacCleaning: "100",
     earCleaning: "80",
   },
-}
+};
 
 const hotelServices = {
   dayCare: {
@@ -94,66 +98,201 @@ const hotelServices = {
   catHotel: {
     standardRoom: "300.00",
   },
-}
+};
 
 const serviceColors = {
   basicWash: "bg-blue-500 text-white",
   premiumWash: "bg-red-500 text-white",
   premiumWashAndCut: "bg-green-500 text-white",
   fullGrooming: "bg-purple-500 text-white",
-}
+};
 
 const sizeColors = {
   small: "bg-purple-500 text-white",
   medium: "bg-pink-500 text-white",
   large: "bg-red-500 text-white",
   extraLarge: "bg-pink-400 text-white",
-}
+};
 
 const serviceBackgroundColors = {
   basicWash: "bg-blue-100 dark:bg-blue-900/20",
   premiumWash: "bg-orange-100 dark:bg-orange-900/20",
   premiumWashAndCut: "bg-green-100 dark:bg-green-900/20",
   fullGrooming: "bg-gray-100 dark:bg-gray-800/20",
-}
+};
 
 export default function ServicesMenu() {
   return (
-    <section className="py-16 bg-background" id="services-menu">
+    <section
+      className="py-16 bg-background relative overflow-hidden"
+      id="services"
+    >
+      {/* Floating Decorative Elements */}
+      {[...Array(8)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute"
+          initial={{
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            scale: Math.random() * 0.5 + 0.5,
+            opacity: 0.3,
+          }}
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 360],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: Math.random() * 5 + 5,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+            delay: i * 0.5,
+          }}
+        >
+          {i % 2 === 0 ? (
+            <PawPrint className="w-8 h-8 text-[#8B4513]" />
+          ) : (
+            <Cat className="w-8 h-8 text-[#D2691E]" />
+          )}
+        </motion.div>
+      ))}
+
       <div className="container mx-auto px-4">
+        {/* Promotional Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16 relative"
+        >
+          <div className="bg-[#FFF5E6] rounded-2xl overflow-hidden shadow-xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 md:p-8">
+              <div className="space-y-4 md:space-y-6">
+                {/* Logo and Title */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png"
+                    alt="Big Paws Logo"
+                    width={50}
+                    height={50}
+                    className="rounded-full"
+                  />
+                  <h3 className="text-[#8B4513] text-lg sm:text-xl font-bold">
+                    BIG PAWS PET SUPPLIES
+                  </h3>
+                </div>
+
+                {/* Main Heading */}
+                <h2 className="text-3xl md:text-4xl font-bold text-[#5C3D2E] relative">
+                  WE LOVE YOUR PETS
+                  {/* Discount Badge - Responsive positioning */}
+                  <div className="absolute top-0 right-0 sm:-right-4 sm:-top-4 w-14 h-14 sm:w-16 sm:h-16 bg-[#D2691E] rounded-full flex items-center justify-center text-white font-bold transform rotate-12">
+                    <div className="text-center">
+                      <div className="text-lg sm:text-xl">10%</div>
+                      <div className="text-xs">Discount</div>
+                    </div>
+                  </div>
+                </h2>
+
+                {/* Services Title */}
+                <h3 className="text-2xl md:text-3xl font-bold text-[#8B4513] mt-4 sm:mt-8">
+                  GROOMING SERVICES
+                </h3>
+
+                {/* Description */}
+                <p className="text-[#5C3D2E] text-base md:text-lg">
+                  Give your furry friends the special treatment they deserve
+                  with our premier pet care service.
+                </p>
+
+                {/* Services Grid - Responsive columns */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+                  {[
+                    "Pet Hotel",
+                    "Organic Food",
+                    "Pet Wellness",
+                    "Pet Inspection",
+                    "Pet Stuff And Toy",
+                  ].map((service, index) => (
+                    <div key={index} className="flex items-center gap-2">
+                      <PawPrint className="w-4 h-4 md:w-5 md:h-5 text-[#D2691E]" />
+                      <span className="text-sm md:text-base text-[#5C3D2E]">
+                        {service}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Contact Button - Full width on mobile */}
+                <div className="w-full sm:w-auto">
+                  <div className="bg-[#5C3D2E] text-white px-4 py-2 md:px-6 md:py-3 rounded-full inline-flex items-center gap-2 text-sm md:text-base">
+                    <span>Contact Us:</span>
+                    <span className="font-bold">09501890933</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Images Section - Responsive sizing and positioning */}
+              <div className="relative h-48 sm:h-64 md:h-full">
+                <div className="absolute w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full overflow-hidden top-0 right-0">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/475363983_611168945131262_1105736367780556279_n.jpg-NKVsnoviGbpBU92nFYNpv0nHDDgc1b.jpeg"
+                    alt="White cat being groomed"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="absolute w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden bottom-0 left-0">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/475363983_611168945131262_1105736367780556279_n.jpg-NKVsnoviGbpBU92nFYNpv0nHDDgc1b.jpeg"
+                    alt="Brown dog being groomed"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
           className="text-center mb-12"
+          id="rates"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Services & Rates</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Professional pet care services at competitive prices</p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Our Services & Rates
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Professional pet care services at competitive prices
+          </p>
         </motion.div>
 
         <Tabs defaultValue="hotel" className="max-w-4xl mx-auto">
-        <TabsList className="h-20 items-center justify-center text-muted-foreground grid w-full grid-cols-2 mb-8 gap-4 bg-primary/5 p-2 rounded-lg">
-        <TabsTrigger
-          value="hotel"
-          className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-100 dark:hover:bg-blue-900/20"
-        >
-          <Hotel className="mr-2 h-5 w-5" />
-          <span className="hidden sm:inline">Hotel Services</span>
-          <span className="sm:hidden">Hotel</span>
-        </TabsTrigger>
-        <TabsTrigger
-          value="grooming"
-          className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-red-100 dark:hover:bg-red-900/20"
-        >
-          <Scissors className="mr-2 h-5 w-5" />
-          <span className="hidden sm:inline">Grooming Services</span>
-          <span className="sm:hidden">Grooming</span>
-        </TabsTrigger>
-      </TabsList>
+          <TabsList className="h-20 items-center justify-center text-muted-foreground grid w-full grid-cols-2 mb-8 gap-4 bg-primary/5 p-2 rounded-lg">
+            <TabsTrigger
+              value="hotel"
+              className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-100 dark:hover:bg-blue-900/20"
+            >
+              <Hotel className="mr-2 h-5 w-5" />
+              <span className="hidden sm:inline">Hotel Services</span>
+              <span className="sm:hidden">Hotel</span>
+            </TabsTrigger>
+            <TabsTrigger
+              value="grooming"
+              className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-red-100 dark:hover:bg-red-900/20"
+            >
+              <Scissors className="mr-2 h-5 w-5" />
+              <span className="hidden sm:inline">Grooming Services</span>
+              <span className="sm:hidden">Grooming</span>
+            </TabsTrigger>
+          </TabsList>
 
-
-            <TabsContent value="hotel">
+          <TabsContent value="hotel">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -161,125 +300,138 @@ export default function ServicesMenu() {
               className="grid gap-6"
             >
               <Card className="p-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-          <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png"
-          alt="Big Paws Logo"
-          width={128}
-          height={128}
-          className="object-contain"
-          />
-              </div>
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png"
+                    alt="Big Paws Logo"
+                    width={128}
+                    height={128}
+                    className="object-contain"
+                  />
+                </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
-          {/* Day Care */}
-          <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
-          <h3 className="text-xl font-semibold bg-blue-500 text-white p-3 rounded-t-lg flex items-center">
-            <Dog className="mr-2" /> Day Care
-          </h3>
-          <div className="p-4 space-y-4 flex-grow">
-            {/* Price */}
-            <div className="flex justify-between items-center border-b pb-2">
-            <span className="font-medium">Standard Rate:</span>
-            <span className="text-2xl font-bold text-primary">₱{hotelServices.dayCare.price}</span>
-            </div>
-            
-            {/* Hours */}
-            <div className="flex justify-between items-center">
-            <span className="font-medium">Hours:</span>
-            <span>{hotelServices.dayCare.hours}</span>
-            </div>
-            
-            {/* Additional fee */}
-            <div className="flex justify-between items-center border-t pt-2">
-            <span className="font-medium">Additional:</span>
-            <span>{hotelServices.dayCare.note}</span>
-            </div>
-          </div>
-          
-          {/* Requirements note - now at bottom */}
-          <div className="mt-auto p-4">
-            <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
-            <span className="font-bold">Note:</span> {hotelServices.dayCare.requirements}
-            </div>
-          </div>
-          </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {/* Day Care */}
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+                    <h3 className="text-xl font-semibold bg-blue-500 text-white p-3 rounded-t-lg flex items-center">
+                      <Dog className="mr-2" /> Day Care
+                    </h3>
+                    <div className="p-4 space-y-4 flex-grow">
+                      {/* Price */}
+                      <div className="flex justify-between items-center border-b pb-2">
+                        <span className="font-medium">Standard Rate:</span>
+                        <span className="text-2xl font-bold text-primary">
+                          ₱{hotelServices.dayCare.price}
+                        </span>
+                      </div>
 
-          {/* Day Hotel */}
-          <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
-          <h3 className="text-xl font-semibold bg-red-500 text-white p-3 rounded-t-lg flex items-center">
-            <Sun className="mr-2" /> Day Hotel
-          </h3>
-          <div className="p-4 space-y-4 flex-grow">
-            {/* Main price */}
-            <div className="flex justify-between items-center border-b pb-2">
-            <span className="font-medium">Standard Room:</span>
-            <span className="text-2xl font-bold text-primary">₱{hotelServices.dayHotel.standardRoom}</span>
-            </div>
-            
-            {/* Extra guests section */}
-            <div className="border-b pb-2">
-            <div>
-            <p className="font-medium mb-2">Extra Guest Rates:</p>
-            <div className="grid grid-cols-2 gap-2 pl-2">
-              <span className="text-sm">Small to Medium:</span>
-              <span className="text-sm font-semibold text-right">₱{hotelServices.dayHotel.extraGuest.smallToMedium}</span>
-              
-              <span className="text-sm">Large Breed:</span>
-              <span className="text-sm font-semibold text-right">₱{hotelServices.dayHotel.extraGuest.largeBread}</span>
-            </div>
-            </div>
-            </div>
-            
-            {/* Features */}
-            <div>
-            <p className="font-medium mb-2">Includes:</p>
-            <ul className="list-disc pl-5 text-sm space-y-1">
-              {hotelServices.dayHotel.features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-              ))}
-            </ul>
-            </div>
-          </div>
-          
-          {/* Requirements note - now at bottom */}
-          <div className="mt-auto p-4">
-            <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
-            <span className="font-bold">Note:</span> {hotelServices.dayCare.requirements}
-            </div>
-          </div>
-          </div>
+                      {/* Hours */}
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">Hours:</span>
+                        <span>{hotelServices.dayCare.hours}</span>
+                      </div>
 
-          {/* Cat Hotel */}
-          <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
-          <h3 className="text-xl font-semibold bg-orange-500 text-white p-3 rounded-t-lg flex items-center">
-            <Cat className="mr-2" /> Cat Hotel
-          </h3>
-          <div className="p-4 space-y-4 flex-grow">
-            {/* Price */}
-            <div className="flex justify-between items-center border-b pb-2">
-            <span className="font-medium">Standard Room:</span>
-            <span className="text-2xl font-bold text-primary">₱{hotelServices.catHotel.standardRoom}</span>
-            </div>
-            
-            <div className="text-sm text-muted-foreground">
-            Peaceful environment specifically designed for cats
-            </div>
-          </div>
-          
-          {/* Requirements note - now at bottom */}
-          <div className="mt-auto p-4">
-            <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
-            <span className="font-bold">Note:</span> {hotelServices.dayCare.requirements}
-            </div>
-          </div>
-          </div>
+                      {/* Additional fee */}
+                      <div className="flex justify-between items-center border-t pt-2">
+                        <span className="font-medium">Additional:</span>
+                        <span>{hotelServices.dayCare.note}</span>
+                      </div>
+                    </div>
 
-              </div>
+                    {/* Requirements note - now at bottom */}
+                    <div className="mt-auto p-4">
+                      <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+                        <span className="font-bold">Note:</span>{" "}
+                        {hotelServices.dayCare.requirements}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Day Hotel */}
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+                    <h3 className="text-xl font-semibold bg-red-500 text-white p-3 rounded-t-lg flex items-center">
+                      <Sun className="mr-2" /> Day Hotel
+                    </h3>
+                    <div className="p-4 space-y-4 flex-grow">
+                      {/* Main price */}
+                      <div className="flex justify-between items-center border-b pb-2">
+                        <span className="font-medium">Standard Room:</span>
+                        <span className="text-2xl font-bold text-primary">
+                          ₱{hotelServices.dayHotel.standardRoom}
+                        </span>
+                      </div>
+
+                      {/* Extra guests section */}
+                      <div className="border-b pb-2">
+                        <div>
+                          <p className="font-medium mb-2">Extra Guest Rates:</p>
+                          <div className="grid grid-cols-2 gap-2 pl-2">
+                            <span className="text-sm">Small to Medium:</span>
+                            <span className="text-sm font-semibold text-right">
+                              ₱{hotelServices.dayHotel.extraGuest.smallToMedium}
+                            </span>
+
+                            <span className="text-sm">Large Breed:</span>
+                            <span className="text-sm font-semibold text-right">
+                              ₱{hotelServices.dayHotel.extraGuest.largeBread}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Features */}
+                      <div>
+                        <p className="font-medium mb-2">Includes:</p>
+                        <ul className="list-disc pl-5 text-sm space-y-1">
+                          {hotelServices.dayHotel.features.map(
+                            (feature, index) => (
+                              <li key={index}>{feature}</li>
+                            ),
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Requirements note - now at bottom */}
+                    <div className="mt-auto p-4">
+                      <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+                        <span className="font-bold">Note:</span>{" "}
+                        {hotelServices.dayCare.requirements}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Cat Hotel */}
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+                    <h3 className="text-xl font-semibold bg-orange-500 text-white p-3 rounded-t-lg flex items-center">
+                      <Cat className="mr-2" /> Cat Hotel
+                    </h3>
+                    <div className="p-4 space-y-4 flex-grow">
+                      {/* Price */}
+                      <div className="flex justify-between items-center border-b pb-2">
+                        <span className="font-medium">Standard Room:</span>
+                        <span className="text-2xl font-bold text-primary">
+                          ₱{hotelServices.catHotel.standardRoom}
+                        </span>
+                      </div>
+
+                      <div className="text-sm text-muted-foreground">
+                        Peaceful environment specifically designed for cats
+                      </div>
+                    </div>
+
+                    {/* Requirements note - now at bottom */}
+                    <div className="mt-auto p-4">
+                      <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+                        <span className="font-bold">Note:</span>{" "}
+                        {hotelServices.dayCare.requirements}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </Card>
             </motion.div>
-            </TabsContent>
+          </TabsContent>
 
           <TabsContent value="grooming">
             <motion.div
@@ -299,74 +451,93 @@ export default function ServicesMenu() {
                       {/* Size Badges Row */}
                       <div className="hidden sm:grid grid-cols-5 gap-4 mb-4">
                         <div className="invisible">Service Type</div>
-                        {["small", "medium", "large", "extraLarge"].map((size) => (
-                          <div
-                            key={size}
-                            className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
-                          >
-                            <div className="text-sm font-medium">
-                              {size
-                                .replace(/([A-Z])/g, " $1")
-                                .trim()
-                                .toUpperCase()}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Responsive Services */}
-                      <div className="space-y-4">
-                        {Object.entries(groomingServices.forDogs).map(([service, details]) => (
-                          <div
-                            key={service}
-                            className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
-                          >
-                            {/* Grid Layout for Large Screens */}
-                            <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
-                              <div
-                                className={`text-sm font-medium px-3 py-1 rounded-full text-center ${
-                                  serviceColors[service as keyof typeof serviceColors]
-                                }`}
-                              >
-                                {service
-                                  .replace(/And/g, " &")
+                        {["small", "medium", "large", "extraLarge"].map(
+                          (size) => (
+                            <div
+                              key={size}
+                              className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
+                            >
+                              <div className="text-sm font-medium">
+                                {size
                                   .replace(/([A-Z])/g, " $1")
                                   .trim()
                                   .toUpperCase()}
                               </div>
-                              {Object.values(details.prices).map((price, index) => (
-                                <div key={index} className="text-center font-semibold">
-                                  ₱{price}
-                                </div>
-                              ))}
                             </div>
+                          ),
+                        )}
+                      </div>
 
-                            {/* Stacked Layout for Mobile */}
-                            <div className="sm:hidden space-y-2">
-                              <div className="bg-white/80 dark:bg-slate-950 p-2 rounded-lg mb-2 w-full">
+                      {/* Responsive Services */}
+                      <div className="space-y-4">
+                        {Object.entries(groomingServices.forDogs).map(
+                          ([service, details]) => (
+                            <div
+                              key={service}
+                              className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
+                            >
+                              {/* Grid Layout for Large Screens */}
+                              <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
-                                  className={`text-sm font-medium px-3 py-1 rounded-full w-full text-center ${
-                                    serviceColors[service as keyof typeof serviceColors]
+                                  className={`text-sm font-medium px-3 py-1 rounded-full text-center ${
+                                    serviceColors[
+                                      service as keyof typeof serviceColors
+                                    ]
                                   }`}
                                 >
                                   {service
+                                    .replace(/And/g, " &")
                                     .replace(/([A-Z])/g, " $1")
                                     .trim()
                                     .toUpperCase()}
                                 </div>
+                                {Object.values(details.prices).map(
+                                  (price, index) => (
+                                    <div
+                                      key={index}
+                                      className="text-center font-semibold"
+                                    >
+                                      ₱{price}
+                                    </div>
+                                  ),
+                                )}
                               </div>
-                              {Object.entries(details.prices).map(([size, price]) => (
-                                <div
-                                  key={size}
-                                  className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg"
-                                >
-                                  <span className="text-sm font-medium">{size.toUpperCase()}</span>
-                                  <span className="font-semibold">₱{price}</span>
+
+                              {/* Stacked Layout for Mobile */}
+                              <div className="sm:hidden space-y-2">
+                                <div className="bg-white/80 dark:bg-slate-950 p-2 rounded-lg mb-2 w-full">
+                                  <div
+                                    className={`text-sm font-medium px-3 py-1 rounded-full w-full text-center ${
+                                      serviceColors[
+                                        service as keyof typeof serviceColors
+                                      ]
+                                    }`}
+                                  >
+                                    {service
+                                      .replace(/([A-Z])/g, " $1")
+                                      .trim()
+                                      .toUpperCase()}
+                                  </div>
                                 </div>
-                              ))}
+                                {Object.entries(details.prices).map(
+                                  ([size, price]) => (
+                                    <div
+                                      key={size}
+                                      className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg"
+                                    >
+                                      <span className="text-sm font-medium">
+                                        {size.toUpperCase()}
+                                      </span>
+                                      <span className="font-semibold">
+                                        ₱{price}
+                                      </span>
+                                    </div>
+                                  ),
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          ),
+                        )}
                       </div>
                     </div>
                   </div>
@@ -382,53 +553,38 @@ export default function ServicesMenu() {
                       {/* Size Badges Row */}
                       <div className="hidden sm:grid grid-cols-5 gap-4 mb-4">
                         <div className="invisible">Service Type</div>
-                        {["small", "medium", "large", "extraLarge"].map((size) => (
-                          <div
-                            key={size}
-                            className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
-                          >
-                            <div className="text-sm font-medium">
-                              {size
-                                .replace(/([A-Z])/g, " $1")
-                                .trim()
-                                .toUpperCase()}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Responsive Services */}
-                      <div className="space-y-4">
-                        {Object.entries(groomingServices.forCats).map(([service, details]) => (
-                          <div
-                            key={service}
-                            className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
-                          >
-                            {/* Grid Layout for Large Screens */}
-                            <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
-                              <div
-                                className={`text-sm font-medium px-3 py-1 rounded-full text-center w-full ${
-                                  serviceColors[service as keyof typeof serviceColors]
-                                }`}
-                              >
-                                {service
+                        {["small", "medium", "large", "extraLarge"].map(
+                          (size) => (
+                            <div
+                              key={size}
+                              className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
+                            >
+                              <div className="text-sm font-medium">
+                                {size
                                   .replace(/([A-Z])/g, " $1")
                                   .trim()
                                   .toUpperCase()}
                               </div>
-                              {Object.values(details.prices).map((price, index) => (
-                                <div key={index} className="text-center font-semibold">
-                                  ₱{price}
-                                </div>
-                              ))}
                             </div>
+                          ),
+                        )}
+                      </div>
 
-                            {/* Stacked Layout for Mobile */}
-                            <div className="sm:hidden space-y-2">
-                              <div className="bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg mb-2 w-full">
+                      {/* Responsive Services */}
+                      <div className="space-y-4">
+                        {Object.entries(groomingServices.forCats).map(
+                          ([service, details]) => (
+                            <div
+                              key={service}
+                              className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
+                            >
+                              {/* Grid Layout for Large Screens */}
+                              <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
-                                  className={`text-sm font-medium px-3 py-1 rounded-full w-full text-center ${
-                                    serviceColors[service as keyof typeof serviceColors]
+                                  className={`text-sm font-medium px-3 py-1 rounded-full text-center w-full ${
+                                    serviceColors[
+                                      service as keyof typeof serviceColors
+                                    ]
                                   }`}
                                 >
                                   {service
@@ -436,19 +592,53 @@ export default function ServicesMenu() {
                                     .trim()
                                     .toUpperCase()}
                                 </div>
+                                {Object.values(details.prices).map(
+                                  (price, index) => (
+                                    <div
+                                      key={index}
+                                      className="text-center font-semibold"
+                                    >
+                                      ₱{price}
+                                    </div>
+                                  ),
+                                )}
                               </div>
-                              {Object.entries(details.prices).map(([size, price]) => (
-                                <div
-                                  key={size}
-                                  className="flex justify-between bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg"
-                                >
-                                  <span className="text-sm font-medium">{size.toUpperCase()}</span>
-                                  <span className="font-semibold">₱{price}</span>
+
+                              {/* Stacked Layout for Mobile */}
+                              <div className="sm:hidden space-y-2">
+                                <div className="bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg mb-2 w-full">
+                                  <div
+                                    className={`text-sm font-medium px-3 py-1 rounded-full w-full text-center ${
+                                      serviceColors[
+                                        service as keyof typeof serviceColors
+                                      ]
+                                    }`}
+                                  >
+                                    {service
+                                      .replace(/([A-Z])/g, " $1")
+                                      .trim()
+                                      .toUpperCase()}
+                                  </div>
                                 </div>
-                              ))}
+                                {Object.entries(details.prices).map(
+                                  ([size, price]) => (
+                                    <div
+                                      key={size}
+                                      className="flex justify-between bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg"
+                                    >
+                                      <span className="text-sm font-medium">
+                                        {size.toUpperCase()}
+                                      </span>
+                                      <span className="font-semibold">
+                                        ₱{price}
+                                      </span>
+                                    </div>
+                                  ),
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        ))}
+                          ),
+                        )}
                       </div>
                     </div>
                   </div>
@@ -456,20 +646,24 @@ export default function ServicesMenu() {
 
                 {/* Additional Services */}
                 <div>
-                  <h3 className="text-xl font-semibold text-primary mb-4 ">Additional Services</h3>
+                  <h3 className="text-xl font-semibold text-primary mb-4 ">
+                    Additional Services
+                  </h3>
                   <div className="bg-primary/5 p-4 rounded-lg border border-red-500">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {Object.entries(groomingServices.additionalServices).map(([service, price]) => (
-                        <div
-                          key={service}
-                          className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-                        >
-                          <span className="text-sm font-medium uppercase">
-                            {service.replace(/([A-Z])/g, " $1").trim()}
-                          </span>
-                          <span className="font-semibold">₱{price}</span>
-                        </div>
-                      ))}
+                      {Object.entries(groomingServices.additionalServices).map(
+                        ([service, price]) => (
+                          <div
+                            key={service}
+                            className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-800 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                          >
+                            <span className="text-sm font-medium uppercase">
+                              {service.replace(/([A-Z])/g, " $1").trim()}
+                            </span>
+                            <span className="font-semibold">₱{price}</span>
+                          </div>
+                        ),
+                      )}
                     </div>
                   </div>
                 </div>
@@ -479,6 +673,5 @@ export default function ServicesMenu() {
         </Tabs>
       </div>
     </section>
-  )
+  );
 }
-

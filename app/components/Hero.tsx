@@ -1,13 +1,16 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import AnimatedBackground from "./AnimatedBackground";
+import FlipCards from "./FlipCards";
 
 export default function Hero() {
   return (
     <div className="bg-background py-20 md:py-32 overflow-hidden relative">
+      <AnimatedBackground />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -40,8 +43,8 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              Providing professional pet care services for daycare and long-stay accommodations. Walk-in services
-              available.
+              Providing professional pet care services for daycare and long-stay
+              accommodations. Walk-in services available.
             </motion.p>
             <motion.div
               className="mt-10 flex flex-col sm:flex-row gap-4"
@@ -52,7 +55,12 @@ export default function Hero() {
               <Button size="lg" className="w-full sm:w-auto" asChild>
                 <Link href="#contact">Contact Us</Link>
               </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto"
+                asChild
+              >
                 <Link href="#services">Learn More</Link>
               </Button>
             </motion.div>
@@ -72,6 +80,16 @@ export default function Hero() {
             />
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="mt-24"
+        >
+          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          <FlipCards />
+        </motion.div>
       </div>
 
       {/* Background elements */}
@@ -102,6 +120,5 @@ export default function Hero() {
         />
       </div>
     </div>
-  )
+  );
 }
-

@@ -6,60 +6,43 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 232 31% 26%;
-
     --card: 0 0% 100%;
     --card-foreground: 232 31% 26%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 232 31% 26%;
-
     --primary: 232 31% 26%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 232 31% 26%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 232 31% 26%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 232 31% 26%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 232 31% 26%;
     --input: 232 31% 26%;
     --ring: 232 31% 26%;
-
     --radius: 0.5rem;
   }
 
   .dark {
     --background: 232 31% 26%;
     --foreground: 0 0% 100%;
-
     --card: 232 31% 26%;
     --card-foreground: 0 0% 100%;
-
     --popover: 232 31% 26%;
     --popover-foreground: 0 0% 100%;
-
     --primary: 0 0% 100%;
     --primary-foreground: 232 31% 26%;
-
     --secondary: 232 31% 16%;
     --secondary-foreground: 0 0% 100%;
-
     --muted: 232 31% 16%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 232 31% 16%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
-
     --border: 232 31% 16%;
     --input: 232 31% 16%;
     --ring: 232 31% 26%;
@@ -75,6 +58,19 @@
   }
 }
 
+/* 3D Transform Styles */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
 .bg-primary-light {
   @apply bg-primary/20 dark:bg-primary/30;
 }
@@ -83,3 +79,145 @@
   @apply bg-secondary/20 dark:bg-secondary/30;
 }
 
+/* Smooth transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  transition-duration: 600ms;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+  transition-duration: 300ms;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.floating-paw {
+  animation: float 3s ease-in-out infinite;
+}
+
+.floating-claw {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Brown color palette */
+.text-brown-100 {
+  color: #f5e6d3;
+}
+.text-brown-200 {
+  color: #e6c9a8;
+}
+.text-brown-300 {
+  color: #d2b48c;
+}
+.text-brown-400 {
+  color: #c19a6b;
+}
+.text-brown-500 {
+  color: #8b4513;
+}
+.text-brown-600 {
+  color: #5c3d2e;
+}
+
+.bg-brown-100 {
+  background-color: #f5e6d3;
+}
+.bg-brown-200 {
+  background-color: #e6c9a8;
+}
+.bg-brown-300 {
+  background-color: #d2b48c;
+}
+.bg-brown-400 {
+  background-color: #c19a6b;
+}
+.bg-brown-500 {
+  background-color: #8b4513;
+}
+.bg-brown-600 {
+  background-color: #5c3d2e;
+}
+
+/* Add these animations to your existing globals.css */
+
+@keyframes float-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes float-horizontal {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.float-v {
+  animation: float-vertical 3s ease-in-out infinite;
+}
+
+.float-h {
+  animation: float-horizontal 4s ease-in-out infinite;
+}
+
+.rotate {
+  animation: rotate 10s linear infinite;
+}
+
+/* Add more brown tones */
+.text-brown-700 {
+  color: #5d4037;
+}
+.text-brown-800 {
+  color: #4e342e;
+}
+.text-brown-900 {
+  color: #3e2723;
+}
+
+.bg-brown-700 {
+  background-color: #5d4037;
+}
+.bg-brown-800 {
+  background-color: #4e342e;
+}
+.bg-brown-900 {
+  background-color: #3e2723;
+}
+
+/* Gradient overlays */
+.gradient-overlay-brown {
+  background: linear-gradient(45deg, #8b4513, #d2691e);
+}
+
+.gradient-overlay-beige {
+  background: linear-gradient(45deg, #f5e6d3, #deb887);
+}

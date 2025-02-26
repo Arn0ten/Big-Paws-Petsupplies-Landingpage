@@ -1,6 +1,9 @@
+"use client";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
+import AboutUs from "./components/AboutUs";
+import WhyUs from "./components/WhyUs";
 import Marketing from "./components/Marketing";
 import Gallery from "./components/Gallery";
 import Testimonials from "./components/Testimonials";
@@ -17,6 +20,8 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
+        <AboutUs />
+        <WhyUs />
         <ServicesMenu />
         <VideoSection />
         <Marketing />
