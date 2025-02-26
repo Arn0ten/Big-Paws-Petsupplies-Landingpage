@@ -26,6 +26,8 @@ export default function FloatingElements() {
   const [elements, setElements] = useState<FloatingElement[]>([]);
 
   const createElements = useCallback(() => {
+    if (typeof window === "undefined") return; // Prevent SSR errors
+
     const newElements: FloatingElement[] = [];
     const count = Math.floor(window.innerWidth / 200);
 
@@ -44,9 +46,11 @@ export default function FloatingElements() {
   }, []);
 
   useEffect(() => {
-    createElements();
-    window.addEventListener("resize", createElements);
-    return () => window.removeEventListener("resize", createElements);
+    if (typeof window !== "undefined") {
+      createElements();
+      window.addEventListener("resize", createElements);
+      return () => window.removeEventListener("resize", createElements);
+    }
   }, [createElements]);
 
   return (

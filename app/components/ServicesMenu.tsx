@@ -127,37 +127,6 @@ export default function ServicesMenu() {
       className="py-16 bg-background relative overflow-hidden"
       id="services"
     >
-      {/* Floating Decorative Elements */}
-      {[...Array(8)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            scale: Math.random() * 0.5 + 0.5,
-            opacity: 0.3,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 360],
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{
-            duration: Math.random() * 5 + 5,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
-            delay: i * 0.5,
-          }}
-        >
-          {i % 2 === 0 ? (
-            <PawPrint className="w-8 h-8 text-[#8B4513]" />
-          ) : (
-            <Cat className="w-8 h-8 text-[#D2691E]" />
-          )}
-        </motion.div>
-      ))}
-
       <div className="container mx-auto px-4">
         {/* Promotional Banner */}
         <motion.div
