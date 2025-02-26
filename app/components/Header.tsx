@@ -16,6 +16,8 @@ export default function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
     };

@@ -10,7 +10,7 @@ interface FloatingElement {
   y: number;
   scale: number;
   rotation: number;
-  type: "paw" | "cat" | "claw";
+  type: "paw" | "cat";
   color: string;
 }
 
@@ -24,6 +24,7 @@ const colors = [
 
 export default function FloatingElements() {
   const [elements, setElements] = useState<FloatingElement[]>([]);
+  const [windowHeight, setWindowHeight] = useState(0);
 
   const createElements = useCallback(() => {
     if (typeof window === "undefined") return; // Prevent SSR errors
@@ -43,13 +44,18 @@ export default function FloatingElements() {
       });
     }
     setElements(newElements);
+    setWindowHeight(window.innerHeight); // Store window height
   }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       createElements();
-      window.addEventListener("resize", createElements);
-      return () => window.removeEventListener("resize", createElements);
+      const handleResize = () => {
+        createElements();
+        setWindowHeight(window.innerHeight); // Update window height on resize
+      };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, [createElements]);
 
@@ -67,7 +73,7 @@ export default function FloatingElements() {
             opacity: 0,
           }}
           animate={{
-            y: window.innerHeight + 100,
+            y: windowHeight + 100, // Use state instead of window.innerHeight
             opacity: [0, 0.2, 0.2, 0],
             rotate: element.rotation + 360,
           }}
