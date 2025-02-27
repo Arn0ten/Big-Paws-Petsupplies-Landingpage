@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bigpawspethotel.com",
+    url: "https://big-paws-petsupplies.tech",
     title: "Big Paws Pet Hotel - Premium Pet Care Services in Tagum City",
     description:
       "Professional pet grooming, boarding, and home services in Tagum City. Luxury accommodation for your beloved pets.",
@@ -100,7 +100,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon" />
         <link
           rel="canonical"
-          href="https://bigpawspethotel.com" // Replace with actual domain
+          href="https://big-paws-petsupplies.tech" // Replace with actual domain
         />
         {/* Schema.org markup for Google */}
         <script
@@ -112,8 +112,8 @@ export default function RootLayout({
               name: "Big Paws Pet Hotel",
               image:
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png",
-              "@id": "https://bigpawspethotel.com",
-              url: "https://bigpawspethotel.com",
+              "@id": "https://big-paws-petsupplies.tech",
+              url: "https://big-paws-petsupplies.tech",
               telephone: "+639501890933",
               address: {
                 "@type": "PostalAddress",

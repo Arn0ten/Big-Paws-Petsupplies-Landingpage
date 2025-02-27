@@ -493,10 +493,6 @@ export default function ServicesMenu() {
                               key={service}
                               className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
                             >
-                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
-                                {details.description}
-                              </p>
-
                               {/* Grid Layout for Large Screens */}
                               <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
@@ -524,6 +520,9 @@ export default function ServicesMenu() {
                                   ),
                                 )}
                               </div>
+                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
+                                {details.description}
+                              </p>
 
                               {/* Stacked Layout for Mobile */}
                               <div className="sm:hidden space-y-2">
@@ -600,9 +599,6 @@ export default function ServicesMenu() {
                               key={service}
                               className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
                             >
-                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
-                                {details.description}
-                              </p>
                               {/* Grid Layout for Large Screens */}
                               <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
@@ -629,6 +625,9 @@ export default function ServicesMenu() {
                                   ),
                                 )}
                               </div>
+                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
+                                {details.description}
+                              </p>
 
                               {/* Stacked Layout for Mobile */}
                               <div className="sm:hidden space-y-2">
@@ -717,7 +716,7 @@ export default function ServicesMenu() {
                         (size) => (
                           <div
                             key={size}
-                            className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors] || "bg-gray-500 text-white"}`}
+                            className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors] || "bg-blue-500 text-white"}`}
                           >
                             <div className="text-sm font-medium">
                               {size

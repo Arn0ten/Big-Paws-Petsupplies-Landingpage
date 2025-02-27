@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 import { Label } from "@/components/ui/label";
 
 // TODO: Replace with your Mailgun domain and API key
-const MAILGUN_DOMAIN = "your-domain.mailgun.org";
-const MAILGUN_API_KEY = "your-mailgun-api-key";
+const MAILGUN_DOMAIN = "big-paws-petsupplies.tech";
+const MAILGUN_API_KEY = "7cd3aff21d3a3ed5d60e63f37b80f243-3af52e3b-be9fa8d9";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,14 +31,36 @@ export default function ContactForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          to: "bombelatz@gmail.com",
-          subject: "New Contact Form Submission",
-          text: `
-            Name: ${data.name}
-            Email: ${data.email}
-            Phone: ${data.phone}
-            Pet Info: ${data["pet-info"]}
-            Message: ${data.message}
+          to: "a.bautista.129340.tc@umindanao.edu.ph",
+          subject: "New Customer Inquiry",
+          html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <div style="background-color: #2E3357; padding: 15px; color: #fff; text-align: center;">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogo-tgQYrArFSfOX9irwlrG1D93gEjB9yr.png" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%;" />
+            <h1>Big Paws Pet Supplies</h1>
+          </div>
+          <div style="padding: 20px;">
+            <h2 style="color: #2E3357;">New Contact Inquiry</h2>
+            <hr style="border: 1px solid #ccc;" />
+            <h3 style="color: #555;">📋 Contact Details:</h3>
+            <p><strong> Name:</strong> ${data.name}</p>
+            <p><strong> Email:</strong> ${data.email}</p>
+            <p><strong> Phone:</strong> ${data.phone}</p>
+            <h3 style="color: #555;">🐾 Pet Information:</h3>
+            <p>${data["pet-info"]}</p>
+            <h3 style="color: #555;">💬 Customer Message:</h3>
+            <p>${data.message}</p>
+            <hr style="border: 1px solid #ccc;" />
+            <p style="color: #777;">This is an automated message from your contact form. Please respond to the customer as soon as possible.</p>
+          </div>
+          <div style="background-color: #2E3357; padding: 10px; color: #fff; text-align: center;">
+            <p>Big Paws Pet Supplies</p>
+            <p>Lapu-lapu St., Pet Tagum City, Davao del Norte, 8100 PH</p>
+            <p>Phone: +639501890933</p>
+            <p>Email: info@big-paws-petsupplies.tech</p>
+            <p>&copy; 2025 Big Paws Pet Supplies. All rights reserved.</p>
+          </div>
+        </div>
           `,
         }),
       });
