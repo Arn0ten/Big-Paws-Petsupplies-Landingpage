@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -25,7 +25,8 @@ export default function CTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          Visit our facility or contact us for inquiries about our daycare and long-stay services.
+          Visit our facility or contact us for inquiries about our daycare and
+          long-stay services.
         </motion.p>
         <motion.div
           className="mt-8 flex justify-center gap-4 flex-col sm:flex-row"
@@ -48,6 +49,5 @@ export default function CTA() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
-

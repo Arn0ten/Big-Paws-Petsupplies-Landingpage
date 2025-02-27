@@ -12,6 +12,8 @@ import VideoSection from "./components/VideoSection";
 import Location from "./components/Location";
 import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
+import HomeService from "./components/HomeService";
+import PetSupplies from "./components/PetSupplies";
 
 export default function Home() {
   return (
@@ -23,6 +25,8 @@ export default function Home() {
         <AboutUs />
         <WhyUs />
         <ServicesMenu />
+        <HomeService />
+        <PetSupplies />
         <VideoSection />
         <Marketing />
         <Gallery />

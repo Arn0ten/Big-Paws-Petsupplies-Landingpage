@@ -11,7 +11,7 @@ export default function VideoSection() {
   const [hasClosedFloating, setHasClosedFloating] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return; // Prevent SSR errors
+    if (typeof window === "undefined") return;
 
     const handleScroll = () => {
       if (ref.current && !hasClosedFloating) {
@@ -41,7 +41,7 @@ export default function VideoSection() {
             className="text-center mb-8"
           >
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Experience Big Paws Pet Hotel
+              Experience Big Paws Pet Hotel & Grooming Services
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               Take a virtual tour of our facilities and see why pets love
@@ -58,8 +58,8 @@ export default function VideoSection() {
             <video
               className="w-full h-full object-cover"
               autoPlay
-              muted
               loop
+              muted
               playsInline
             >
               <source src="/videos/video-montage.mp4" type="video/mp4" />
@@ -81,8 +81,8 @@ export default function VideoSection() {
           <video
             className="w-full h-full object-cover"
             autoPlay
-            muted
             loop
+            muted
             playsInline
           >
             <source src="/videos/video-montage.mp4" type="video/mp4" />

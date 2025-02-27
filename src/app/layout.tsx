@@ -1,30 +1,37 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import type React from "react" // Added import for React
+import "./globals.css";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import type React from "react";
+import { Analytics } from "@vercel/analytics/next";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "StreamLine - Simplify Your Workflow",
+  title: "Big Paws Pet Hotel - Luxury Pet Care Services",
   description:
-    "StreamLine is a powerful SaaS platform designed to streamline your business processes and boost productivity.",
-}
+    "Big Paws Pet Hotel provides luxury accommodation and grooming services for your beloved pets. Professional care in a comfortable environment.",
+  generator: "v0.dev",
+  icons: {
+    icon: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png",
+  },
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
 
+import "./globals.css";

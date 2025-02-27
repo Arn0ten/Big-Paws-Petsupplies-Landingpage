@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Marketing() {
   return (
@@ -14,8 +14,12 @@ export default function Marketing() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Services</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Professional pet care services at affordable rates</p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Our Services
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Professional pet care services at affordable rates
+          </p>
         </motion.div>
 
         <motion.div
@@ -35,6 +39,5 @@ export default function Marketing() {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
-

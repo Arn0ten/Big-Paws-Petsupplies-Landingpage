@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dog, Cat, Scissors, Hotel, Sun, PawPrint } from "lucide-react";
+import { Dog, Cat, Scissors, Hotel, Sun, PawPrint, Home } from "lucide-react";
 import Image from "next/image";
 
 const groomingServices = {
@@ -97,6 +97,49 @@ const hotelServices = {
   },
   catHotel: {
     standardRoom: "300.00",
+  },
+};
+
+const homeServices = {
+  basicWash: {
+    description: "Bath & Blow Dry with Cologne",
+    prices: {
+      small: "430",
+      medium: "470",
+      large: "530",
+      extraLarge: "570",
+    },
+  },
+  premiumWash: {
+    description:
+      "Bath, Brush, Shampoo, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
+    prices: {
+      small: "550",
+      medium: "700",
+      large: "800",
+      extraLarge: "900",
+    },
+  },
+  premiumWashAndCut: {
+    description:
+      "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
+    prices: {
+      small: "700",
+      medium: "850",
+      large: "900",
+      extraLarge: "950",
+    },
+  },
+  fullGrooming: {
+    description:
+      "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Full Body Cleaning, Cut with Style & Cologne",
+    prices: {
+      small: "750",
+      medium: "900",
+      large: "950",
+      extraLarge: "1000",
+      xxl: "1100",
+    },
   },
 };
 
@@ -242,22 +285,27 @@ export default function ServicesMenu() {
         </motion.div>
 
         <Tabs defaultValue="hotel" className="max-w-4xl mx-auto">
-          <TabsList className="h-20 items-center justify-center text-muted-foreground grid w-full grid-cols-2 mb-8 gap-4 bg-primary/5 p-2 rounded-lg">
+          <TabsList className="h-auto items-center justify-center text-muted-foreground grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mb-8 gap-4 bg-primary/5 p-2 rounded-lg">
             <TabsTrigger
               value="hotel"
               className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-100 dark:hover:bg-blue-900/20"
             >
               <Hotel className="mr-2 h-5 w-5" />
-              <span className="hidden sm:inline">Hotel Services</span>
-              <span className="sm:hidden">Hotel</span>
+              <span>Hotel Services</span>
             </TabsTrigger>
             <TabsTrigger
               value="grooming"
               className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-red-100 dark:hover:bg-red-900/20"
             >
               <Scissors className="mr-2 h-5 w-5" />
-              <span className="hidden sm:inline">Grooming Services</span>
-              <span className="sm:hidden">Grooming</span>
+              <span>Grooming Services</span>
+            </TabsTrigger>
+            <TabsTrigger
+              value="home"
+              className="text-lg flex items-center justify-center p-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-green-100 dark:hover:bg-green-900/20"
+            >
+              <Home className="mr-2 h-5 w-5" />
+              <span>Home Services</span>
             </TabsTrigger>
           </TabsList>
 
@@ -445,6 +493,10 @@ export default function ServicesMenu() {
                               key={service}
                               className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
                             >
+                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
+                                {details.description}
+                              </p>
+
                               {/* Grid Layout for Large Screens */}
                               <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
@@ -460,6 +512,7 @@ export default function ServicesMenu() {
                                     .trim()
                                     .toUpperCase()}
                                 </div>
+
                                 {Object.values(details.prices).map(
                                   (price, index) => (
                                     <div
@@ -547,6 +600,9 @@ export default function ServicesMenu() {
                               key={service}
                               className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
                             >
+                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
+                                {details.description}
+                              </p>
                               {/* Grid Layout for Large Screens */}
                               <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
@@ -561,6 +617,7 @@ export default function ServicesMenu() {
                                     .trim()
                                     .toUpperCase()}
                                 </div>
+
                                 {Object.values(details.prices).map(
                                   (price, index) => (
                                     <div
@@ -630,6 +687,120 @@ export default function ServicesMenu() {
                               {service.replace(/([A-Z])/g, " $1").trim()}
                             </span>
                             <span className="font-semibold">₱{price}</span>
+                          </div>
+                        ),
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="home">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="grid gap-6"
+            >
+              <Card className="p-6">
+                <h3 className="text-xl font-semibold text-primary mb-6 flex items-center">
+                  <Home className="mr-2" /> Home Services
+                </h3>
+                <div className="space-y-6">
+                  <div className="bg-primary/5 p-4 rounded-lg">
+                    {/* Size Badges Row */}
+                    <div className="hidden sm:grid grid-cols-6 gap-4 mb-4">
+                      <div className="invisible">Service Type</div>
+                      {["small", "medium", "large", "extraLarge", "xxl"].map(
+                        (size) => (
+                          <div
+                            key={size}
+                            className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors] || "bg-gray-500 text-white"}`}
+                          >
+                            <div className="text-sm font-medium">
+                              {size
+                                .replace(/([A-Z])/g, " $1")
+                                .trim()
+                                .toUpperCase()}
+                            </div>
+                          </div>
+                        ),
+                      )}
+                    </div>
+
+                    {/* Responsive Services */}
+                    <div className="space-y-4">
+                      {Object.entries(homeServices).map(
+                        ([service, details]) => (
+                          <div
+                            key={service}
+                            className={`rounded-lg p-2 ${serviceBackgroundColors[service as keyof typeof serviceBackgroundColors]}`}
+                          >
+                            {/* Grid Layout for Large Screens */}
+                            <div className="hidden sm:grid grid-cols-6 gap-4 items-center">
+                              <div
+                                className={`text-sm font-medium px-3 py-1 rounded-full text-center ${
+                                  serviceColors[
+                                    service as keyof typeof serviceColors
+                                  ]
+                                }`}
+                              >
+                                {service
+                                  .replace(/And/g, " &")
+                                  .replace(/([A-Z])/g, " $1")
+                                  .trim()
+                                  .toUpperCase()}
+                              </div>
+                              {Object.entries(details.prices).map(
+                                ([size, price]) => (
+                                  <div
+                                    key={size}
+                                    className="text-center font-semibold"
+                                  >
+                                    {size === "xxl"
+                                      ? price
+                                        ? `₱${price}`
+                                        : "-"
+                                      : `₱${price}`}
+                                  </div>
+                                ),
+                              )}
+                            </div>
+
+                            {/* Stacked Layout for Mobile */}
+                            <div className="sm:hidden space-y-2">
+                              <div className="bg-white/80 dark:bg-slate-950 p-2 rounded-lg mb-2 w-full">
+                                <div
+                                  className={`text-sm font-medium px-3 py-1 rounded-full w-full text-center ${
+                                    serviceColors[
+                                      service as keyof typeof serviceColors
+                                    ]
+                                  }`}
+                                >
+                                  {service
+                                    .replace(/([A-Z])/g, " $1")
+                                    .trim()
+                                    .toUpperCase()}
+                                </div>
+                              </div>
+                              {Object.entries(details.prices).map(
+                                ([size, price]) => (
+                                  <div
+                                    key={size}
+                                    className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg"
+                                  >
+                                    <span className="text-sm font-medium">
+                                      {size.toUpperCase()}
+                                    </span>
+                                    <span className="font-semibold">
+                                      ₱{price}
+                                    </span>
+                                  </div>
+                                ),
+                              )}
+                            </div>
                           </div>
                         ),
                       )}

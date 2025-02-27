@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const galleryImages = [
   {
@@ -28,7 +28,7 @@ const galleryImages = [
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480491302_9250055781727301_8238070743716968783_n.jpg-pLl0C8uCTew8JSDlFsLwF1AKxHXzdP.jpeg",
     alt: "Skilled groomer providing personalized care",
   },
-]
+];
 
 export default function Gallery() {
   return (
@@ -41,7 +41,9 @@ export default function Gallery() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Facilities</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Our Facilities
+          </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Take a look at our professional pet care facilities and services
           </p>
@@ -64,13 +66,14 @@ export default function Gallery() {
                 className="object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-white text-center px-4 text-sm">{image.alt}</p>
+                <p className="text-white text-center px-4 text-sm">
+                  {image.alt}
+                </p>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
     </div>
-  )
+  );
 }
-

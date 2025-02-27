@@ -1,13 +1,16 @@
 "use client";
 
 import type React from "react";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
 import { Label } from "@/components/ui/label";
+
+// TODO: Replace with your Mailgun domain and API key
+const MAILGUN_DOMAIN = "your-domain.mailgun.org";
+const MAILGUN_API_KEY = "your-mailgun-api-key";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -17,18 +20,39 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      // TODO: Replace 'your-email@example.com' with your actual email address
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: "bombelatz@gmail.com",
+          subject: "New Contact Form Submission",
+          text: `
+            Name: ${data.name}
+            Email: ${data.email}
+            Phone: ${data.phone}
+            Pet Info: ${data["pet-info"]}
+            Message: ${data.message}
+          `,
+        }),
+      });
 
-    // Reset form
-    const form = e.target as HTMLFormElement;
-    form.reset();
-
-    // Reset success message after 3 seconds
-    setTimeout(() => setSubmitted(false), 3000);
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        console.error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error sending email:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -131,7 +155,7 @@ export default function ContactForm() {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center text-green-600 dark:text-green-400"
               >
-                Thank you for your message! We&apos;ll get back to you soon.
+                Thank you for your message! We'll get back to you soon.
               </motion.div>
             )}
           </form>

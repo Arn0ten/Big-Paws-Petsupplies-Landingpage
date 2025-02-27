@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react"
-import Image from "next/image"
+import Link from "next/link";
+import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -20,7 +20,9 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Services</h3>
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+              Services
+            </h3>
             <ul className="mt-4 space-y-4">
               <li>
                 <Link
@@ -49,11 +51,15 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Contact</h3>
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+              Contact
+            </h3>
             <ul className="mt-4 space-y-4">
               <li className="flex items-center">
                 <MapPin className="h-5 w-5 mr-2" />
-                <span className="text-sm text-muted-foreground">Bonifacio St., Tagum City, Philippines</span>
+                <span className="text-sm text-muted-foreground">
+                  Bonifacio St., Tagum City, Philippines
+                </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-2" />
@@ -76,13 +82,23 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">Follow Us</h3>
+            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+              Follow Us
+            </h3>
             <div className="mt-4 flex space-x-6">
-                <a href="https://www.facebook.com/share/15jqk6ZeSE/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+              <a
+                href="https://www.facebook.com/share/15jqk6ZeSE/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 <span className="sr-only">Facebook</span>
                 <Facebook className="h-6 w-6" />
-                </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+              </a>
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 <span className="sr-only">Instagram</span>
                 <Instagram className="h-6 w-6" />
               </a>
@@ -91,7 +107,8 @@ export default function Footer() {
         </div>
         <div className="mt-8 border-t border-border pt-8 md:flex md:items-center md:justify-between">
           <p className="text-base text-muted-foreground">
-            &copy; {new Date().getFullYear()} Big Paws Pet Hotel. All rights reserved.
+            &copy; {new Date().getFullYear()} Big Paws Pet Hotel. All rights
+            reserved.
           </p>
           <div className="mt-4 md:mt-0">
             <Link
@@ -104,6 +121,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
