@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import formData from "form-data";
 import Mailgun from "mailgun.js";
 
-const MAILGUN_DOMAIN = "big-paws-petsupplies.tech";
-const MAILGUN_API_KEY = "7cd3aff21d3a3ed5d60e63f37b80f243-3af52e3b-be9fa8d9";
+const MAILGUN_DOMAIN = process.env.MAILGUN_DOMAIN!;
+const MAILGUN_API_KEY = process.env.MAILGUN_API_KEY!;
+
+console.log("MAILGUN_DOMAIN:", MAILGUN_DOMAIN);
+console.log("MAILGUN_API_KEY:", MAILGUN_API_KEY);
 
 const mailgun = new Mailgun(formData);
 const client = mailgun.client({ username: "api", key: MAILGUN_API_KEY });
