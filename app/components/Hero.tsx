@@ -1,13 +1,46 @@
 "use client";
 
+import type React from "react";
+
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import AnimatedBackground from "./AnimatedBackground";
 import FlipCards from "./FlipCards";
+import { useState, useEffect } from "react";
+
+const services = ["Pet Hotel", "Pet Grooming", "Pet Supplies", "Home Service"];
 
 export default function Hero() {
+  const [currentService, setCurrentService] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentService((prev) => (prev + 1) % services.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToContact = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    tab: string,
+  ) => {
+    e.preventDefault();
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+      setTimeout(() => {
+        const tabTrigger = document.querySelector(
+          `[data-state="inactive"][value="${tab}"]`,
+        ) as HTMLButtonElement;
+        if (tabTrigger) {
+          tabTrigger.click();
+        }
+      }, 100);
+    }
+  };
+
   return (
     <div className="bg-background py-20 md:py-32 overflow-hidden relative">
       <AnimatedBackground />
@@ -26,7 +59,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                Premium Pet Hotel
+                Premium Pet Care
               </motion.span>
               <motion.span
                 className="text-foreground"
@@ -34,26 +67,50 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                Your Pet's Home Away From Home
+                Your One-Stop
               </motion.span>
+              <motion.div
+                className="text-3xl md:text-4xl lg:text-5xl text-primary mt-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+              >
+                <span className="mr-2">for</span>
+                <motion.span
+                  key={currentService}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-block"
+                >
+                  {services[currentService]}
+                </motion.span>
+              </motion.div>
             </h1>
             <motion.p
               className="mt-6 text-xl text-muted-foreground max-w-2xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
             >
-              Providing professional pet care services for daycare and long-stay
-              accommodations. Walk-in services available.
+              Experience top-notch pet care services including hotel stays,
+              professional grooming, quality supplies, and convenient home
+              services.
             </motion.p>
             <motion.div
               className="mt-10 flex flex-col sm:flex-row gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              transition={{ delay: 1, duration: 0.8 }}
             >
               <Button size="lg" className="w-full sm:w-auto" asChild>
-                <Link href="#contact">Contact Us</Link>
+                <Link
+                  href="#contact"
+                  onClick={(e) => scrollToContact(e, "contact")}
+                >
+                  Contact Us
+                </Link>
               </Button>
               <Button
                 variant="outline"
@@ -61,7 +118,12 @@ export default function Hero() {
                 className="w-full sm:w-auto"
                 asChild
               >
-                <Link href="#services">Learn More</Link>
+                <Link
+                  href="#contact"
+                  onClick={(e) => scrollToContact(e, "book-service")}
+                >
+                  Book Home Service
+                </Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -84,10 +146,12 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
           className="mt-24"
         >
-          <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Our Comprehensive Pet Care Services
+          </h2>
           <FlipCards />
         </motion.div>
       </div>

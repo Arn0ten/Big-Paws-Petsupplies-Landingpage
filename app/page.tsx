@@ -8,6 +8,7 @@ import Marketing from "./components/Marketing";
 import Gallery from "./components/Gallery";
 import Testimonials from "./components/Testimonials";
 import ServicesMenu from "./components/ServicesMenu";
+import ServiceInfo from "./components/ServiceInfo";
 import VideoSection from "./components/VideoSection";
 import Location from "./components/Location";
 import ContactForm from "./components/ContactForm";
@@ -25,6 +26,7 @@ export default function Home() {
         <AboutUs />
         <WhyUs />
         <ServicesMenu />
+        <ServiceInfo />
         <HomeService />
         <PetSupplies />
         <VideoSection />

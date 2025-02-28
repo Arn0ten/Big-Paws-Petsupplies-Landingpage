@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   Clock,
   Shield,
@@ -15,6 +15,7 @@ import {
   Bath,
   Brush,
 } from "lucide-react";
+import FloatingImageModal from "./FloatingImageModal";
 
 const services = [
   {
@@ -64,13 +65,26 @@ const benefits = [
 
 export default function HomeService() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [selectedImage, setSelectedImage] = useState<{
+    src: string;
+    alt: string;
+    description: string;
+  } | null>(null);
+
+  const handleImageClick = (image: {
+    src: string;
+    alt: string;
+    description: string;
+  }) => {
+    setSelectedImage(image);
+  };
 
   return (
     <section
-      className="py-16 bg-background relative overflow-hidden"
+      className="py-12 sm:py-16 bg-background relative overflow-hidden"
       id="home-service"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -78,8 +92,10 @@ export default function HomeService() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold mb-4">Professional Home Service</h2>
-          <p className="text-xl text-muted-foreground">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+            Professional Home Service
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Experience premium pet grooming in the comfort of your home
           </p>
         </motion.div>
@@ -91,8 +107,8 @@ export default function HomeService() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center mb-12"
         >
-          <div className="bg-muted rounded-lg p-6">
-            <p className="text-lg leading-relaxed text-muted-foreground">
+          <div className="bg-muted rounded-lg p-4 sm:p-6">
+            <p className="text-sm sm:text-lg leading-relaxed text-muted-foreground">
               Our professional home grooming service brings the complete salon
               experience directly to your doorstep. We understand that some pets
               feel anxious in unfamiliar environments, which is why we offer
@@ -105,7 +121,7 @@ export default function HomeService() {
         </motion.div>
 
         {/* Services */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -114,10 +130,12 @@ export default function HomeService() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="p-6 h-full flex flex-col">
-                <service.icon className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-muted-foreground flex-grow">
+              <Card className="p-4 sm:p-6 h-full flex flex-col">
+                <service.icon className="w-8 h-8 sm:w-12 sm:h-12 text-primary mb-4" />
+                <h3 className="text-lg sm:text-xl font-semibold mb-2">
+                  {service.title}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground flex-grow">
                   {service.description}
                 </p>
               </Card>
@@ -126,64 +144,46 @@ export default function HomeService() {
         </div>
 
         {/* Image Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="relative aspect-square rounded-lg overflow-hidden group"
-          >
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480369671_9302515229807832_3565174851267196364_n.jpg-dUdeXRCKeBtvmEeaHYPzvcTnstNErO.jpeg"
-              alt="Happy groomed Pomeranian"
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <p className="text-white text-center px-4">
-                Professional grooming at your doorstep
-              </p>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="relative aspect-square rounded-lg overflow-hidden group"
-          >
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480613347_1009147024599744_449517268461532420_n.jpg-KSIaVaU2mrH3uGGVoaKgkJbRr9P404.jpeg"
-              alt="Professional grooming service"
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <p className="text-white text-center px-4">
-                Expert groomers with years of experience
-              </p>
-            </div>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="relative aspect-square rounded-lg overflow-hidden group"
-          >
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480179834_591444434054760_4947462491439067277_n.jpg-nNVWae7YcB6CEEXe9MyxtQQBmKo0o5.jpeg"
-              alt="Grooming result"
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <p className="text-white text-center px-4">
-                Satisfaction guaranteed results
-              </p>
-            </div>
-          </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {[
+            {
+              src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480369671_9302515229807832_3565174851267196364_n.jpg-dUdeXRCKeBtvmEeaHYPzvcTnstNErO.jpeg",
+              alt: "Happy groomed Pomeranian",
+              description: "Professional grooming at your doorstep",
+            },
+            {
+              src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480613347_1009147024599744_449517268461532420_n.jpg-KSIaVaU2mrH3uGGVoaKgkJbRr9P404.jpeg",
+              alt: "Professional grooming service",
+              description: "Expert groomers with years of experience",
+            },
+            {
+              src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480179834_591444434054760_4947462491439067277_n.jpg-nNVWae7YcB6CEEXe9MyxtQQBmKo0o5.jpeg",
+              alt: "Grooming result",
+              description: "Satisfaction guaranteed results",
+            },
+          ].map((image, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="relative aspect-square rounded-lg overflow-hidden group cursor-pointer"
+              onClick={() => handleImageClick(image)}
+            >
+              <Image
+                src={image.src || "/placeholder.svg"}
+                alt={image.alt}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <p className="text-white text-center px-4 text-sm sm:text-base">
+                  {image.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
         {/* Video Section */}
@@ -195,10 +195,10 @@ export default function HomeService() {
           className="relative w-full max-w-5xl mx-auto mb-16"
         >
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground mb-4">
               Take a Tour of Our Store
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-4 text-sm sm:text-lg text-muted-foreground">
               Take a tour of our Pet Store and see why pets love staying with
               us.
             </p>
@@ -219,26 +219,30 @@ export default function HomeService() {
         </motion.div>
 
         {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          <Card className="p-6">
-            <h3 className="text-xl font-semibold mb-4">Convenience</h3>
-            <p className="text-muted-foreground">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <Card className="p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-semibold mb-4">
+              Convenience
+            </h3>
+            <p className="text-sm sm:text-base text-muted-foreground">
               Professional grooming services delivered right to your doorstep,
               saving you time and reducing pet travel stress.
             </p>
           </Card>
-          <Card className="p-6">
-            <h3 className="text-xl font-semibold mb-4">
+          <Card className="p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-semibold mb-4">
               Professional Equipment
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-sm sm:text-base text-muted-foreground">
               Our mobile grooming unit comes fully equipped with
               professional-grade tools and products.
             </p>
           </Card>
-          <Card className="p-6">
-            <h3 className="text-xl font-semibold mb-4">Experienced Groomers</h3>
-            <p className="text-muted-foreground">
+          <Card className="p-4 sm:p-6">
+            <h3 className="text-lg sm:text-xl font-semibold mb-4">
+              Experienced Groomers
+            </h3>
+            <p className="text-sm sm:text-base text-muted-foreground">
               Skilled professionals who provide personalized attention and care
               for your pet in familiar surroundings.
             </p>
@@ -252,11 +256,47 @@ export default function HomeService() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Button size="lg" asChild>
-            <Link href="#contact">Book Home Service</Link>
+          <Button size="lg" asChild className="text-sm sm:text-base">
+            <Link
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+                  setTimeout(() => {
+                    const bookServiceTab = document.querySelector(
+                      '[data-state="inactive"][value="book-service"]',
+                    ) as HTMLButtonElement;
+                    if (bookServiceTab) {
+                      bookServiceTab.click();
+                    }
+                  }, 100);
+                }
+              }}
+            >
+              Book Home Service
+            </Link>
           </Button>
         </motion.div>
+
+        {/* Note section */}
+        <div className="mt-12 bg-muted p-4 rounded-lg">
+          <p className="text-sm text-muted-foreground font-semibold">
+            Note: All pets must be fully vaccinated and have anti-rabies shots
+            before using our services.
+          </p>
+        </div>
       </div>
+
+      {/* Floating Image Modal */}
+      <FloatingImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageSrc={selectedImage?.src || ""}
+        alt={selectedImage?.alt || ""}
+        description={selectedImage?.description || ""}
+      />
     </section>
   );
 }

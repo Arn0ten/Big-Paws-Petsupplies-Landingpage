@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function CTA() {
   return (
-    <div className="bg-primary" id="contact">
+    <div className="bg-primary" id="cta">
       <div className="max-w-4xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
         <motion.h2
           className="text-3xl font-extrabold text-primary-foreground sm:text-4xl"
@@ -15,8 +15,8 @@ export default function CTA() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <span className="block">Want to learn more about our services?</span>
-          <span className="block mt-2">Get in touch with us today.</span>
+          <span className="block">Experience Premium Pet Care</span>
+          <span className="block mt-2">Book Our Services Today</span>
         </motion.h2>
         <motion.p
           className="mt-4 text-lg leading-6 text-primary-foreground/90"
@@ -25,8 +25,9 @@ export default function CTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          Visit our facility or contact us for inquiries about our daycare and
-          long-stay services.
+          From luxurious pet hotel stays to professional grooming, quality
+          supplies, and convenient home services - we've got all your pet care
+          needs covered.
         </motion.p>
         <motion.div
           className="mt-8 flex justify-center gap-4 flex-col sm:flex-row"
@@ -44,7 +45,7 @@ export default function CTA() {
             className="bg-transparent text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-primary"
             asChild
           >
-            <Link href="#services">Learn More</Link>
+            <Link href="#services">Explore Services</Link>
           </Button>
         </motion.div>
       </div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${subject}</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .content {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #2e3357;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      .footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogo-tgQYrArFSfOX9irwlrG1D93gEjB9yr.png"
+          alt="Big Paws Pet Hotel"
+          width="120"
+        />
+      </div>
+      <div class="content">
+        <h2>${subject}</h2>
+        <p>Dear ${name},</p>
+        <p>${text}</p>
+        <div style="text-align: center">
+          <a
+            href="https://big-paws-petsupplies-webapp.vercel.app/"
+            class="button"
+            target="_blank"
+            >Visit Our Online Store</a
+          >
+        </div>
+      </div>
+      <div class="footer">
+        &copy; ${new Date().getFullYear()} Big Paws Pet Hotel. All rights
+        reserved.
+      </div>
+    </div>
+  </body>
+</html>

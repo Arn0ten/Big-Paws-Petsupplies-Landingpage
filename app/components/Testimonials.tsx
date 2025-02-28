@@ -1,13 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import type React from "react";
+
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
 
-const testimonials = [
+const initialTestimonials = [
   {
+    id: 1,
     name: "Arneabell Bautista",
     pet: "Max the Golden Retriever",
     image:
@@ -17,6 +24,7 @@ const testimonials = [
     rating: 5,
   },
   {
+    id: 2,
     name: "Kenneth Tan",
     pet: "Luna the Persian Cat",
     image:
@@ -26,6 +34,7 @@ const testimonials = [
     rating: 5,
   },
   {
+    id: 3,
     name: "Jhon Andrie Canedo",
     pet: "Charlie the Spaniel",
     image:
@@ -37,7 +46,26 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState(initialTestimonials);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    pet: "",
+    quote: "",
+    rating: 5,
+    image: "/placeholder.svg",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+    }, 5000); // Auto-rotate every 5 seconds
+
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
 
   const next = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -48,6 +76,61 @@ export default function Testimonials() {
       (prevIndex) =>
         (prevIndex - 1 + testimonials.length) % testimonials.length,
     );
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const lastSubmission = localStorage.getItem("lastTestimonialSubmission");
+    const currentDate = new Date().toDateString();
+
+    if (lastSubmission === currentDate) {
+      toast({
+        title: "Submission Limit Reached",
+        description:
+          "You can only submit one testimonial per day. Please try again tomorrow.",
+        variant: "destructive",
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Simulating an API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      const newTestimonial = {
+        id: testimonials.length + 1,
+        ...formData,
+      };
+      setTestimonials([...testimonials, newTestimonial]);
+      setShowForm(false);
+      setFormData({
+        name: "",
+        pet: "",
+        quote: "",
+        rating: 5,
+        image: "/placeholder.svg",
+      });
+
+      localStorage.setItem("lastTestimonialSubmission", currentDate);
+
+      toast({
+        title: "Testimonial Submitted",
+        description: "Thank you for sharing your experience!",
+        variant: "default",
+      });
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description:
+          "There was an error submitting your testimonial. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -81,7 +164,82 @@ export default function Testimonials() {
           <p className="text-xl text-muted-foreground">
             Real experiences from our valued pet parents
           </p>
+          <Button onClick={() => setShowForm(!showForm)} className="mt-4">
+            {showForm ? "Close Form" : "Share Your Experience"}
+          </Button>
         </motion.div>
+
+        <AnimatePresence mode="wait">
+          {showForm && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="max-w-2xl mx-auto mb-12"
+            >
+              <form
+                onSubmit={handleSubmit}
+                className="bg-background rounded-xl p-6 space-y-4"
+              >
+                <div>
+                  <Label htmlFor="name">Your Name</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="pet">Pet's Name and Breed</Label>
+                  <Input
+                    id="pet"
+                    value={formData.pet}
+                    onChange={(e) =>
+                      setFormData({ ...formData, pet: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="quote">Your Experience</Label>
+                  <Textarea
+                    id="quote"
+                    value={formData.quote}
+                    onChange={(e) =>
+                      setFormData({ ...formData, quote: e.target.value })
+                    }
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="rating">Rating</Label>
+                  <div className="flex gap-2">
+                    {[1, 2, 3, 4, 5].map((rating) => (
+                      <button
+                        key={rating}
+                        type="button"
+                        onClick={() => setFormData({ ...formData, rating })}
+                        className={`p-1 ${formData.rating >= rating ? "text-yellow-400" : "text-gray-300"}`}
+                      >
+                        <Star className="w-6 h-6 fill-current" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "Submit Testimonial"}
+                </Button>
+              </form>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         <div className="relative max-w-4xl mx-auto">
           <AnimatePresence mode="wait">

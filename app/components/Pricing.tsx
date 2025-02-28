@@ -230,9 +230,6 @@ export default function Pricing() {
                           {rate.type}
                         </div>
                         <PriceCard price={rate.price} unit="guest" />
-                        <div className="text-xs text-muted-foreground mt-1">
-                          {rate.note}
-                        </div>
                       </div>
                     ))}
                   </div>
@@ -265,6 +262,9 @@ export default function Pricing() {
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             * Prices may vary during peak seasons and holidays.
+          </p>
+          <p className="text-sm text-muted-foreground mt-2">
+            * Additional guests are charged extra.
           </p>
         </motion.div>
       </div>

@@ -6,6 +6,39 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dog, Cat, Scissors, Hotel, Sun, PawPrint, Home } from "lucide-react";
 import Image from "next/image";
 
+const hotelServices = {
+  dayCare: {
+    hours: "8:00 AM to 7:00 PM",
+    rates: [
+      { size: "Small", price: "25", unit: "hr" },
+      { size: "Medium", price: "30", unit: "hr" },
+      { size: "Large", price: "40", unit: "hr" },
+      { size: "XLarge", price: "50", unit: "hr" },
+    ],
+    requirements: "Need Fully Vaccine & Anti-Rabies",
+  },
+  accommodation: {
+    title: "24Hrs Accommodation",
+    subtitle: "Flexible Booking",
+    rates: [
+      { size: "Small", price: "320.00" },
+      { size: "Medium", price: "400.00" },
+      { size: "Large", price: "480.00" },
+      { size: "XLarge", price: "550.00" },
+    ],
+  },
+  catHotel: {
+    standardRoom: [
+      { type: "Kitten", price: "300.00" },
+      { type: "Adult", price: "400.00" },
+    ],
+    extraGuest: [
+      { type: "Small to Medium", price: "200" },
+      { type: "Large Breed", price: "300" },
+    ],
+  },
+};
+
 const groomingServices = {
   forDogs: {
     basicWash: {
@@ -18,28 +51,27 @@ const groomingServices = {
       },
     },
     premiumWash: {
-      description:
-        "Bath, Brush, Shampoo, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
+      description: "Bath, Brush, BlowDry, Ear Clean, Nail Cut",
       prices: {
         small: "300.00",
         medium: "450.00",
         large: "550.00",
-        extraLarge: "850.00",
+        extraLarge: "650.00",
       },
     },
     premiumWashAndCut: {
       description:
-        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
+        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Trim around the Paws/Face/Genital Area",
       prices: {
         small: "450.00",
         medium: "600.00",
-        large: "850.00",
-        extraLarge: "880.00",
+        large: "650.00",
+        extraLarge: "750.00",
       },
     },
     fullGrooming: {
       description:
-        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Full Body Cleaning, Cut with Style & Cologne",
+        "Bath, Brush, BlowDry, Ear Clean, Nail Cut, Teeth Clean, Cut with Style & Cologne",
       prices: {
         small: "500.00",
         medium: "650.00",
@@ -53,19 +85,19 @@ const groomingServices = {
       description: "Bath & Blow Dry",
       prices: {
         small: "150.00",
-        medium: "200.00",
-        large: "250.00",
-        extraLarge: "280.00",
+        medium: "250.00",
+        large: "300.00",
+        extraLarge: "400.00",
       },
     },
     premiumWash: {
       description:
-        "Bath with Nail Cut, Ear Clean, Trim around the Face with Cologne",
+        "Bath, Brush, Nail Cut, Ear Clean, Trim around the paws/face with Cologne",
       prices: {
-        small: "200.00",
-        medium: "250.00",
-        large: "300.00",
-        extraLarge: "350.00",
+        small: "250.00",
+        medium: "350.00",
+        large: "400.00",
+        extraLarge: "500.00",
       },
     },
   },
@@ -77,26 +109,6 @@ const groomingServices = {
     nailCut: "100",
     analSacCleaning: "100",
     earCleaning: "80",
-  },
-};
-
-const hotelServices = {
-  dayCare: {
-    price: "250",
-    hours: "8:00 AM to 8:00 PM",
-    note: "50 per hour",
-    requirements: "Need Fully Vaccinated & anti-rabies",
-  },
-  dayHotel: {
-    standardRoom: "400.00",
-    extraGuest: {
-      smallToMedium: "200",
-      largeBread: "300",
-    },
-    features: ["Play with Dog", "Walking", "Treats"],
-  },
-  catHotel: {
-    standardRoom: "300.00",
   },
 };
 
@@ -329,119 +341,136 @@ export default function ServicesMenu() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Day Care */}
-                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col h-full">
                     <h3 className="text-xl font-semibold bg-blue-500 text-white p-3 rounded-t-lg flex items-center">
                       <Dog className="mr-2" /> Day Care
                     </h3>
-                    <div className="p-4 space-y-4 flex-grow">
-                      {/* Price */}
-                      <div className="flex justify-between items-center border-b pb-2">
-                        <span className="font-medium">Standard Rate:</span>
-                        <span className="text-2xl font-bold text-primary">
-                          ₱{hotelServices.dayCare.price}
-                        </span>
-                      </div>
-
+                    <div className="p-4 flex flex-col flex-grow">
                       {/* Hours */}
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Hours:</span>
                         <span>{hotelServices.dayCare.hours}</span>
                       </div>
-
-                      {/* Additional fee */}
-                      <div className="flex justify-between items-center border-t pt-2">
-                        <span className="font-medium">Additional:</span>
-                        <span>{hotelServices.dayCare.note}</span>
+                      <div className="mt-4">
+                        <p className="font-medium mb-2">Rates:</p>
+                        {hotelServices.dayCare.rates.map((rate, index) => (
+                          <div
+                            key={index}
+                            className="flex justify-between items-center border-b pb-2"
+                          >
+                            <span className="font-medium">{rate.size}:</span>
+                            <span className="flex items-baseline text-primary">
+                              <span className="text-lg">₱</span>
+                              <span className="text-3xl font-bold">
+                                {rate.price}
+                              </span>
+                              <span className="text-lg">/{rate.unit}</span>
+                            </span>
+                          </div>
+                        ))}
                       </div>
-                    </div>
 
-                    {/* Requirements note - now at bottom */}
-                    <div className="mt-auto p-4">
-                      <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
-                        <span className="font-bold">Note:</span>{" "}
-                        {hotelServices.dayCare.requirements}
+                      {/* Requirements note */}
+                      <div className="mt-auto pt-4">
+                        <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+                          <span className="font-bold">Note:</span>{" "}
+                          {hotelServices.dayCare.requirements}
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Day Hotel */}
-                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col h-full">
                     <h3 className="text-xl font-semibold bg-red-500 text-white p-3 rounded-t-lg flex items-center">
-                      <Sun className="mr-2" /> Day Hotel
+                      <Sun className="mr-2" /> 24Hrs Accommodation
                     </h3>
-                    <div className="p-4 space-y-4 flex-grow">
-                      {/* Main price */}
-                      <div className="flex justify-between items-center border-b pb-2">
-                        <span className="font-medium">Standard Room:</span>
-                        <span className="text-2xl font-bold text-primary">
-                          ₱{hotelServices.dayHotel.standardRoom}
-                        </span>
-                      </div>
-
-                      {/* Extra guests section */}
-                      <div className="border-b pb-2">
-                        <div>
-                          <p className="font-medium mb-2">Extra Guest Rates:</p>
-                          <div className="grid grid-cols-2 gap-2 pl-2">
-                            <span className="text-sm">Small to Medium:</span>
-                            <span className="text-sm font-semibold text-right">
-                              ₱{hotelServices.dayHotel.extraGuest.smallToMedium}
-                            </span>
-
-                            <span className="text-sm">Large Breed:</span>
-                            <span className="text-sm font-semibold text-right">
-                              ₱{hotelServices.dayHotel.extraGuest.largeBread}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Features */}
+                    <div className="p-4 flex flex-col flex-grow">
                       <div>
-                        <p className="font-medium mb-2">Includes:</p>
-                        <ul className="list-disc pl-5 text-sm space-y-1">
-                          {hotelServices.dayHotel.features.map(
-                            (feature, index) => (
-                              <li key={index}>{feature}</li>
-                            ),
-                          )}
-                        </ul>
+                        <p className="font-medium mb-2">Rates:</p>
+                        {hotelServices.accommodation.rates.map(
+                          (rate, index) => (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center border-b pb-2"
+                            >
+                              <span className="font-medium">{rate.size}:</span>
+                              <span className="flex items-baseline text-primary">
+                                <span className="text-lg">₱</span>
+                                <span className="text-3xl font-bold">
+                                  {rate.price}
+                                </span>
+                              </span>
+                            </div>
+                          ),
+                        )}
                       </div>
-                    </div>
 
-                    {/* Requirements note - now at bottom */}
-                    <div className="mt-auto p-4">
-                      <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
-                        <span className="font-bold">Note:</span>{" "}
-                        {hotelServices.dayCare.requirements}
+                      {/* Requirements note */}
+                      <div className="mt-auto pt-4">
+                        <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+                          <span className="font-bold">Note:</span>{" "}
+                          {hotelServices.dayCare.requirements}
+                        </div>
                       </div>
                     </div>
                   </div>
 
                   {/* Cat Hotel */}
-                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col h-full">
                     <h3 className="text-xl font-semibold bg-orange-500 text-white p-3 rounded-t-lg flex items-center">
                       <Cat className="mr-2" /> Cat Hotel
                     </h3>
-                    <div className="p-4 space-y-4 flex-grow">
-                      {/* Price */}
-                      <div className="flex justify-between items-center border-b pb-2">
-                        <span className="font-medium">Standard Room:</span>
-                        <span className="text-2xl font-bold text-primary">
-                          ₱{hotelServices.catHotel.standardRoom}
-                        </span>
+                    <div className="p-4 flex flex-col flex-grow">
+                      <div>
+                        <p className="font-medium mb-2">Standard Room:</p>
+                        {hotelServices.catHotel.standardRoom.map(
+                          (room, index) => (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center border-b pb-2"
+                            >
+                              <span className="font-medium">{room.type}:</span>
+                              <span className="flex items-baseline text-primary">
+                                <span className="text-lg">₱</span>
+                                <span className="text-3xl font-bold">
+                                  {room.price}
+                                </span>
+                              </span>
+                            </div>
+                          ),
+                        )}
+                      </div>
+                      <div className="mt-4">
+                        <p className="font-medium mb-2">Extra Guest:</p>
+                        {hotelServices.catHotel.extraGuest.map(
+                          (guest, index) => (
+                            <div
+                              key={index}
+                              className="flex justify-between items-center border-b pb-2"
+                            >
+                              <span className="font-medium">{guest.type}:</span>
+                              <span className="flex items-baseline text-primary">
+                                <span className="text-lg">₱</span>
+                                <span className="text-3xl font-bold">
+                                  {guest.price}
+                                </span>
+                              </span>
+                            </div>
+                          ),
+                        )}
                       </div>
 
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-sm text-muted-foreground mt-4">
                         Peaceful environment specifically designed for cats
                       </div>
-                    </div>
 
-                    {/* Requirements note - now at bottom */}
-                    <div className="mt-auto p-4">
-                      <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
-                        <span className="font-bold">Note:</span>{" "}
-                        {hotelServices.dayCare.requirements}
+                      {/* Requirements note */}
+                      <div className="mt-auto pt-4">
+                        <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+                          <span className="font-bold">Note:</span>{" "}
+                          {hotelServices.dayCare.requirements}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -466,15 +495,15 @@ export default function ServicesMenu() {
                   <div className="space-y-6">
                     <div className="bg-primary/5 p-4 rounded-lg">
                       {/* Size Badges Row */}
-                      <div className="hidden sm:grid grid-cols-5 gap-4 mb-4">
+                      <div className="hidden sm:grid grid-cols-5 gap-2 sm:gap-4 mb-4">
                         <div className="invisible">Service Type</div>
                         {["small", "medium", "large", "extraLarge"].map(
                           (size) => (
                             <div
                               key={size}
-                              className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
+                              className={`text-center p-1 sm:p-2 rounded-lg sm:rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
                             >
-                              <div className="text-sm font-medium">
+                              <div className="text-xs sm:text-sm font-medium">
                                 {size
                                   .replace(/([A-Z])/g, " $1")
                                   .trim()
@@ -496,7 +525,7 @@ export default function ServicesMenu() {
                               {/* Grid Layout for Large Screens */}
                               <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
-                                  className={`text-sm font-medium px-3 py-1 rounded-full text-center ${
+                                  className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-lg sm:rounded-full text-center ${
                                     serviceColors[
                                       service as keyof typeof serviceColors
                                     ]
@@ -513,9 +542,12 @@ export default function ServicesMenu() {
                                   (price, index) => (
                                     <div
                                       key={index}
-                                      className="text-center font-semibold"
+                                      className="text-center font-semibold flex items-baseline justify-center text-primary"
                                     >
-                                      ₱{price}
+                                      <span className="text-lg">₱</span>
+                                      <span className="text-3xl font-bold">
+                                        {price}
+                                      </span>
                                     </div>
                                   ),
                                 )}
@@ -544,13 +576,16 @@ export default function ServicesMenu() {
                                   ([size, price]) => (
                                     <div
                                       key={size}
-                                      className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg"
+                                      className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg items-center"
                                     >
                                       <span className="text-sm font-medium">
                                         {size.toUpperCase()}
                                       </span>
-                                      <span className="font-semibold">
-                                        ₱{price}
+                                      <span className="flex items-baseline text-primary">
+                                        <span className="text-lg">₱</span>
+                                        <span className="text-3xl font-bold">
+                                          {price}
+                                        </span>
                                       </span>
                                     </div>
                                   ),
@@ -572,15 +607,15 @@ export default function ServicesMenu() {
                   <div className="space-y-6">
                     <div className="bg-primary/5 p-4 rounded-lg">
                       {/* Size Badges Row */}
-                      <div className="hidden sm:grid grid-cols-5 gap-4 mb-4">
+                      <div className="hidden sm:grid grid-cols-5 gap-2 sm:gap-4 mb-4">
                         <div className="invisible">Service Type</div>
                         {["small", "medium", "large", "extraLarge"].map(
                           (size) => (
                             <div
                               key={size}
-                              className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
+                              className={`text-center p-1 sm:p-2 rounded-lg sm:rounded-full ${sizeColors[size as keyof typeof sizeColors]}`}
                             >
-                              <div className="text-sm font-medium">
+                              <div className="text-xs sm:text-sm font-medium">
                                 {size
                                   .replace(/([A-Z])/g, " $1")
                                   .trim()
@@ -602,7 +637,7 @@ export default function ServicesMenu() {
                               {/* Grid Layout for Large Screens */}
                               <div className="hidden sm:grid grid-cols-5 gap-4 items-center">
                                 <div
-                                  className={`text-sm font-medium px-3 py-1 rounded-full text-center w-full ${
+                                  className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-lg sm:rounded-full text-center w-full ${
                                     serviceColors[
                                       service as keyof typeof serviceColors
                                     ]
@@ -618,9 +653,12 @@ export default function ServicesMenu() {
                                   (price, index) => (
                                     <div
                                       key={index}
-                                      className="text-center font-semibold"
+                                      className="text-center font-semibold flex items-baseline justify-center text-primary"
                                     >
-                                      ₱{price}
+                                      <span className="text-lg">₱</span>
+                                      <span className="text-3xl font-bold">
+                                        {price}
+                                      </span>
                                     </div>
                                   ),
                                 )}
@@ -649,13 +687,16 @@ export default function ServicesMenu() {
                                   ([size, price]) => (
                                     <div
                                       key={size}
-                                      className="flex justify-between bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg"
+                                      className="flex justify-between bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg items-center"
                                     >
                                       <span className="text-sm font-medium">
                                         {size.toUpperCase()}
                                       </span>
-                                      <span className="font-semibold">
-                                        ₱{price}
+                                      <span className="flex items-baseline text-primary">
+                                        <span className="text-lg">₱</span>
+                                        <span className="text-3xl font-bold">
+                                          {price}
+                                        </span>
                                       </span>
                                     </div>
                                   ),
@@ -685,7 +726,12 @@ export default function ServicesMenu() {
                             <span className="text-sm font-medium uppercase">
                               {service.replace(/([A-Z])/g, " $1").trim()}
                             </span>
-                            <span className="font-semibold">₱{price}</span>
+                            <span className="flex items-baseline text-primary">
+                              <span className="text-lg">₱</span>
+                              <span className="text-3xl font-bold">
+                                {price}
+                              </span>
+                            </span>
                           </div>
                         ),
                       )}
@@ -710,15 +756,15 @@ export default function ServicesMenu() {
                 <div className="space-y-6">
                   <div className="bg-primary/5 p-4 rounded-lg">
                     {/* Size Badges Row */}
-                    <div className="hidden sm:grid grid-cols-6 gap-4 mb-4">
+                    <div className="hidden sm:grid grid-cols-6 gap-2 sm:gap-4 mb-4">
                       <div className="invisible">Service Type</div>
                       {["small", "medium", "large", "extraLarge", "xxl"].map(
                         (size) => (
                           <div
                             key={size}
-                            className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors] || "bg-blue-500 text-white"}`}
+                            className={`text-center p-1 sm:p-2 rounded-lg sm:rounded-full ${sizeColors[size as keyof typeof sizeColors] || "bg-blue-500 text-white"}`}
                           >
-                            <div className="text-sm font-medium">
+                            <div className="text-xs sm:text-sm font-medium">
                               {size
                                 .replace(/([A-Z])/g, " $1")
                                 .trim()
@@ -740,7 +786,7 @@ export default function ServicesMenu() {
                             {/* Grid Layout for Large Screens */}
                             <div className="hidden sm:grid grid-cols-6 gap-4 items-center">
                               <div
-                                className={`text-sm font-medium px-3 py-1 rounded-full text-center ${
+                                className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-lg sm:rounded-full text-center ${
                                   serviceColors[
                                     service as keyof typeof serviceColors
                                   ]
@@ -756,16 +802,33 @@ export default function ServicesMenu() {
                                 ([size, price]) => (
                                   <div
                                     key={size}
-                                    className="text-center font-semibold"
+                                    className="text-center font-semibold flex items-baseline justify-center text-primary"
                                   >
-                                    {size === "xxl"
-                                      ? price
-                                        ? `₱${price}`
-                                        : "-"
-                                      : `₱${price}`}
+                                    {size === "xxl" ? (
+                                      price ? (
+                                        <>
+                                          <span className="text-lg">₱</span>
+                                          <span className="text-3xl font-bold">
+                                            {price}
+                                          </span>
+                                        </>
+                                      ) : (
+                                        "-"
+                                      )
+                                    ) : (
+                                      <>
+                                        <span className="text-lg">₱</span>
+                                        <span className="text-3xl font-bold">
+                                          {price}
+                                        </span>
+                                      </>
+                                    )}
                                   </div>
                                 ),
                               )}
+                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
+                                {details.description}
+                              </p>
                             </div>
 
                             {/* Stacked Layout for Mobile */}
@@ -788,17 +851,23 @@ export default function ServicesMenu() {
                                 ([size, price]) => (
                                   <div
                                     key={size}
-                                    className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg"
+                                    className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg items-center"
                                   >
                                     <span className="text-sm font-medium">
                                       {size.toUpperCase()}
                                     </span>
-                                    <span className="font-semibold">
-                                      ₱{price}
+                                    <span className="flex items-baseline text-primary">
+                                      <span className="text-lg">₱</span>
+                                      <span className="text-3xl font-bold">
+                                        {price}
+                                      </span>
                                     </span>
                                   </div>
                                 ),
                               )}
+                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
+                                {details.description}
+                              </p>
                             </div>
                           </div>
                         ),

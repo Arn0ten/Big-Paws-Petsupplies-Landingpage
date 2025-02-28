@@ -1,6 +1,7 @@
 "use client";
 
 import type React from "react";
+
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -52,6 +53,26 @@ export default function Header() {
     [],
   );
 
+  const scrollToBookService = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        setTimeout(() => {
+          const bookServiceTab = document.querySelector(
+            '[data-state="inactive"][value="book-service"]',
+          ) as HTMLButtonElement;
+          if (bookServiceTab) {
+            bookServiceTab.click();
+          }
+        }, 100);
+      }
+      setIsSheetOpen(false);
+    },
+    [],
+  );
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -67,12 +88,12 @@ export default function Header() {
                 alt="Big Paws Pet Hotel"
                 width={200}
                 height={60}
-                className="h-12 w-auto"
+                className="h-8 w-auto sm:h-10 md:h-12"
               />
             </Link>
           </div>
 
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden lg:flex space-x-4 xl:space-x-8">
             {menuItems.map((item) => (
               <Link
                 key={item.href}
@@ -82,7 +103,7 @@ export default function Header() {
                     ? scrollToSection(e, item.href)
                     : undefined
                 }
-                className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-foreground after:transition-all hover:after:w-full"
+                className="text-sm md:text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-foreground after:transition-all hover:after:w-full"
               >
                 {item.label}
               </Link>
@@ -92,7 +113,7 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <ThemeToggle />
             <div className="hidden sm:flex space-x-4">
-              <Button variant="outline" asChild>
+              <Button variant="outline" asChild className="text-xs sm:text-sm">
                 <Link
                   href="https://big-paws-petsupplies-webapp.vercel.app/"
                   target="_blank"
@@ -100,12 +121,9 @@ export default function Header() {
                   Log in
                 </Link>
               </Button>
-              <Button asChild>
-                <Link
-                  href="#contact"
-                  onClick={(e) => scrollToSection(e, "#contact")}
-                >
-                  Contact Us
+              <Button asChild className="text-xs sm:text-sm">
+                <Link href="#contact" onClick={scrollToBookService}>
+                  Book Now
                 </Link>
               </Button>
             </div>
@@ -113,8 +131,8 @@ export default function Header() {
             {/* Mobile Menu */}
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" className="md:hidden">
-                  <Menu className="h-6 w-6" />
+                <Button variant="outline" size="icon" className="lg:hidden">
+                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
@@ -144,11 +162,8 @@ export default function Header() {
                       </Link>
                     </Button>
                     <Button asChild className="w-full">
-                      <Link
-                        href="#contact"
-                        onClick={(e) => scrollToSection(e, "#contact")}
-                      >
-                        Contact Us
+                      <Link href="#contact" onClick={scrollToBookService}>
+                        Book Now
                       </Link>
                     </Button>
                   </div>
