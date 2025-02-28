@@ -12,6 +12,7 @@ interface FloatingImageModalProps {
   alt: string;
   description: string;
   additionalInfo?: string;
+  price?: string;
 }
 
 export default function FloatingImageModal({
@@ -21,6 +22,7 @@ export default function FloatingImageModal({
   alt,
   description,
   additionalInfo,
+  price,
 }: FloatingImageModalProps) {
   const [isLongPress, setIsLongPress] = useState(false);
   const [longPressTimer, setLongPressTimer] = useState<NodeJS.Timeout | null>(
@@ -63,7 +65,7 @@ export default function FloatingImageModal({
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            className="relative bg-background rounded-lg shadow-xl max-w-3xl w-full overflow-hidden"
+            className="relative bg-background rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -72,7 +74,7 @@ export default function FloatingImageModal({
             >
               <X size={24} />
             </button>
-            <div className="relative aspect-video">
+            <div className="relative w-full h-64 sm:h-80 md:h-96">
               <Image
                 src={imageSrc || "/placeholder.svg"}
                 alt={alt}
@@ -85,24 +87,18 @@ export default function FloatingImageModal({
                 onMouseLeave={handleTouchEnd}
               />
             </div>
-            <AnimatePresence>
-              {(isLongPress || !("ontouchstart" in window)) && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  className="p-4 bg-background"
-                >
-                  <h3 className="text-lg font-semibold mb-2">{alt}</h3>
-                  <p className="text-muted-foreground mb-2">{description}</p>
-                  {additionalInfo && (
-                    <p className="text-sm text-muted-foreground">
-                      {additionalInfo}
-                    </p>
-                  )}
-                </motion.div>
+            <div className="p-4 overflow-y-auto flex-grow">
+              <h3 className="text-lg font-semibold mb-2">{alt}</h3>
+              <p className="text-muted-foreground mb-2">{description}</p>
+              {additionalInfo && (
+                <p className="text-sm text-muted-foreground mb-2">
+                  {additionalInfo}
+                </p>
               )}
-            </AnimatePresence>
+              {price && (
+                <p className="text-lg font-bold text-primary">{price}</p>
+              )}
+            </div>
           </motion.div>
         </motion.div>
       )}

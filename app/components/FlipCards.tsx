@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 interface CardData {
@@ -62,73 +62,48 @@ export default function FlipCards() {
           className="relative h-[400px] cursor-pointer"
           style={{
             perspective: "1000px",
-            transformStyle: "preserve-3d",
           }}
           onClick={() => setFlipped(flipped === card.id ? null : card.id)}
         >
-          <AnimatePresence initial={false} mode="wait">
-            {flipped !== card.id ? (
-              <motion.div
-                key="front"
-                className="absolute inset-0 w-full h-full"
-                initial={{ rotateY: 180 }}
-                animate={{ rotateY: 0 }}
-                exit={{ rotateY: 180 }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.23, 1, 0.32, 1],
-                }}
-                style={{
-                  transformStyle: "preserve-3d",
-                  backfaceVisibility: "hidden",
-                }}
-              >
-                <div className="relative h-full w-full rounded-xl overflow-hidden shadow-lg group">
-                  <Image
-                    src={card.frontImage || "/placeholder.svg"}
-                    alt={card.alt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <h3 className="text-white text-xl font-bold mb-2">
-                        {card.title}
-                      </h3>
-                      <p className="text-white/80 text-sm">
-                        Click to learn more
-                      </p>
-                    </div>
+          <motion.div
+            className="w-full h-full"
+            initial={false}
+            animate={{ rotateY: flipped === card.id ? 180 : 0 }}
+            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div
+              className="absolute inset-0 w-full h-full backface-hidden"
+              style={{ backfaceVisibility: "hidden" }}
+            >
+              <div className="relative h-full w-full rounded-xl overflow-hidden shadow-lg group">
+                <Image
+                  src={card.frontImage || "/placeholder.svg"}
+                  alt={card.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-white text-xl font-bold mb-2">
+                      {card.title}
+                    </h3>
+                    <p className="text-white/80 text-sm">Click to learn more</p>
                   </div>
                 </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="back"
-                className="absolute inset-0 w-full h-full bg-primary text-primary-foreground rounded-xl p-6 flex flex-col justify-center items-center text-center"
-                initial={{ rotateY: -180 }}
-                animate={{ rotateY: 0 }}
-                exit={{ rotateY: -180 }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.23, 1, 0.32, 1],
-                }}
-                style={{
-                  transformStyle: "preserve-3d",
-                  backfaceVisibility: "hidden",
-                }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.5 }}
-                >
-                  <h3 className="text-2xl font-bold mb-4">{card.title}</h3>
-                  <p className="text-lg leading-relaxed">{card.description}</p>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              </div>
+            </div>
+            <div
+              className="absolute inset-0 w-full h-full bg-primary text-primary-foreground rounded-xl p-6 flex flex-col justify-center items-center text-center backface-hidden"
+              style={{
+                backfaceVisibility: "hidden",
+                transform: "rotateY(180deg)",
+              }}
+            >
+              <h3 className="text-2xl font-bold mb-4">{card.title}</h3>
+              <p className="text-lg leading-relaxed">{card.description}</p>
+            </div>
+          </motion.div>
         </div>
       ))}
     </div>

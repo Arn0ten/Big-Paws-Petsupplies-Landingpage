@@ -198,7 +198,10 @@ export default function PetSupplies() {
                         <p className="text-lg font-bold text-primary mt-4">
                           {product.price}
                         </p>
-                        <Button className="mt-4 flex items-center justify-center gap-2">
+                        <Button
+                          className="mt-4 flex items-center justify-center gap-2"
+                          onClick={() => setSelectedProduct(product)}
+                        >
                           <ShoppingCart className="w-4 h-4" />
                           View Details
                         </Button>
@@ -230,7 +233,7 @@ export default function PetSupplies() {
         alt={selectedProduct?.name || ""}
         description={selectedProduct?.description || ""}
         additionalInfo={selectedProduct?.additionalInfo}
-        /*price={selectedProduct?.price}*/
+        price={selectedProduct?.price}
       />
     </section>
   );
