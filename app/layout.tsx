@@ -25,11 +25,6 @@ export const metadata: Metadata = {
     "professional pet grooming",
     "luxury pet accommodation",
     "pet daycare",
-    "Big Paws Pet Hotel",
-    "pet care services",
-    "pet sitting",
-    "dog walking",
-    "pet spa",
   ],
   authors: [{ name: "Big Paws Pet Hotel" }],
   creator: "Big Paws Pet Hotel",
@@ -90,7 +85,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   verification: {
-    google: "google-site-verification-code", // Replace with actual verification code
+    google: "google-site-verification-code",
   },
 };
 
@@ -112,6 +107,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "PetService",
               name: "Big Paws Pet Hotel",
+              alternateName: "Big Paws Petsupplies",
               image:
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png",
               "@id": "https://big-paws-petsupplies.tech",
@@ -144,7 +140,10 @@ export default function RootLayout({
                 opens: "08:00",
                 closes: "19:00",
               },
-              sameAs: ["https://www.facebook.com/share/15jqk6ZeSE/"],
+              sameAs: [
+                "https://www.facebook.com/share/15jqk6ZeSE/",
+                // Add other social media URLs
+              ],
               priceRange: "₱₱",
               description:
                 "Big Paws Pet Hotel provides luxury accommodation and professional grooming services for pets in Tagum City. We offer boarding, daycare, grooming, and home services.",
