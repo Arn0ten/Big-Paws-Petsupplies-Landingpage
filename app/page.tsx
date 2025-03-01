@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
@@ -18,6 +20,12 @@ import FacilityShowcase from "./components/FacilityShowcase";
 import MapSection from "./components/MapSection";
 
 export default function Home() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
