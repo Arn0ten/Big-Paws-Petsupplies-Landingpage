@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Heart, Shield, Users, Clock } from "lucide-react";
+import FloatingImageModal from "./FloatingImageModal";
 
 const facilities = [
   {
@@ -39,7 +40,15 @@ const facilities = [
 ];
 
 export default function FacilityShowcase() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedTitle, setSelectedTitle] = useState<string>("");
+  const [selectedDescription, setSelectedDescription] = useState<string>("");
+
+  const handleImageClick = (facility: (typeof facilities)[0]) => {
+    setSelectedImage(facility.image);
+    setSelectedTitle(facility.title);
+    setSelectedDescription(facility.description);
+  };
 
   return (
     <section className="py-20 bg-gradient-to-b from-background to-secondary/20">
@@ -67,18 +76,18 @@ export default function FacilityShowcase() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
             >
-              <Card className="overflow-hidden h-full">
+              <Card
+                className="overflow-hidden h-full cursor-pointer"
+                onClick={() => handleImageClick(facility)}
+              >
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={facility.image || "/placeholder.svg"}
                     alt={facility.title}
                     fill
-                    className="object-cover transition-transform duration-300 hover:scale-110"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                   <Badge
                     className="absolute top-4 right-4 bg-primary text-primary-foreground"
                     variant="secondary"
@@ -106,43 +115,56 @@ export default function FacilityShowcase() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-12 grid md:grid-cols-2 gap-8"
         >
-          <div className="relative h-[400px] rounded-xl overflow-hidden">
+          <div
+            className="relative h-[400px] rounded-xl overflow-hidden cursor-pointer"
+            onClick={() =>
+              handleImageClick({
+                image:
+                  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480899995_642061011656747_972779387843409689_n.jpg-qdPkAESKW0ppJDAeBKGbpCwthU8aVT.jpeg",
+                title: "Comfortable Accommodations",
+                description:
+                  "Spacious and cozy spaces designed for your pet's comfort",
+                icon: Heart,
+              })
+            }
+          >
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480899995_642061011656747_972779387843409689_n.jpg-qdPkAESKW0ppJDAeBKGbpCwthU8aVT.jpeg"
               alt="Comfortable Pet Accommodation"
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex items-end p-6">
-              <div className="text-white">
-                <h3 className="text-xl font-bold mb-2">
-                  Comfortable Accommodations
-                </h3>
-                <p className="text-sm opacity-90">
-                  Spacious and cozy spaces designed for your pet's comfort
-                </p>
-              </div>
-            </div>
           </div>
-          <div className="relative h-[400px] rounded-xl overflow-hidden">
+          <div
+            className="relative h-[400px] rounded-xl overflow-hidden cursor-pointer"
+            onClick={() =>
+              handleImageClick({
+                image:
+                  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480337857_1160308045475973_2711174277454434026_n.jpg-FwpY8D1sDEBabby5EQpjgrv7LqV9EW.jpeg",
+                title: "Social Environment",
+                description:
+                  "Safe and supervised socialization opportunities for compatible pets",
+                icon: Users,
+              })
+            }
+          >
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480337857_1160308045475973_2711174277454434026_n.jpg-FwpY8D1sDEBabby5EQpjgrv7LqV9EW.jpeg"
               alt="Social Environment"
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent flex items-end p-6">
-              <div className="text-white">
-                <h3 className="text-xl font-bold mb-2">Social Environment</h3>
-                <p className="text-sm opacity-90">
-                  Safe and supervised socialization opportunities for compatible
-                  pets
-                </p>
-              </div>
-            </div>
           </div>
         </motion.div>
       </div>
+
+      <FloatingImageModal
+        isOpen={!!selectedImage}
+        onClose={() => setSelectedImage(null)}
+        imageSrc={selectedImage || ""}
+        alt={selectedTitle}
+        description={selectedDescription}
+      />
     </section>
   );
 }

@@ -15,10 +15,10 @@ import { Shield, Heart, Clock, Award, Star } from "lucide-react";
 const services = ["Pet Hotel", "Pet Grooming", "Pet Supplies", "Home Service"];
 
 const stats = [
-  { icon: Shield, label: "Years Experience", value: "10+" },
-  { icon: Heart, label: "Happy Pets", value: "5000+" },
+  { icon: Shield, label: "Years Experience", value: "5+" },
+  { icon: Heart, label: "Happy Pets", value: "1000+" },
   { icon: Clock, label: "Hours Care", value: "24/7" },
-  { icon: Star, label: "Rating", value: "4.9" },
+  { icon: Star, label: "Rating", value: "4.8" },
 ];
 
 export default function Hero() {
@@ -69,7 +69,7 @@ export default function Hero() {
             <motion.div className="mb-4 inline-block">
               <Badge variant="outline" className="text-primary border-primary">
                 <Award className="w-4 h-4 mr-2" />
-                Trusted Pet Care Provider
+                Reliable Pet Care Provider
               </Badge>
             </motion.div>
 
@@ -80,7 +80,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                Premium Pet Care
+                Quality Pet Care
               </motion.span>
               <motion.span
                 className="text-foreground"
@@ -88,7 +88,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                Your One-Stop for
+                Your Local Choice for
               </motion.span>
               <motion.div
                 className="text-3xl md:text-4xl lg:text-5xl text-primary mt-2"
@@ -119,10 +119,10 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              Experience top-notch pet care services including hotel stays,
-              professional grooming, quality supplies, and convenient home
-              services. Our expert team ensures your pets receive the best care
-              possible.
+              We offer reliable pet care services including comfortable hotel
+              stays, professional grooming, quality supplies, and convenient
+              home services. Our dedicated team is committed to providing
+              attentive care for your pets.
             </motion.p>
 
             <motion.div
@@ -209,7 +209,7 @@ export default function Hero() {
           className="mt-24"
         >
           <h2 className="text-3xl font-bold text-center mb-12">
-            Our Comprehensive Pet Care Services
+            Our Pet Care Services
           </h2>
           <FlipCards />
         </motion.div>

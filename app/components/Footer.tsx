@@ -1,127 +1,215 @@
 import Link from "next/link";
-import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, Github, Mail, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="bg-background border-t border-border">
-      <div className="max-w-7xl mx-auto py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="col-span-1 sm:col-span-2 md:col-span-1">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8 xl:col-span-1">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogo-tgQYrArFSfOX9irwlrG1D93gEjB9yr.png"
               alt="Big Paws Pet Hotel"
               width={120}
               height={120}
-              className="mb-4 w-24 sm:w-28 md:w-32"
+              className="w-auto h-12"
             />
-            <p className="text-sm text-muted-foreground">
-              Providing luxury pet care services with love and dedication.
+            <p className="text-base text-muted-foreground">
+              Providing luxury pet care services with love and dedication since
+              2020.
             </p>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase mb-4">
-              Services
-            </h3>
-            <ul className="space-y-2 sm:space-y-3">
-              <li>
-                <Link
-                  href="#services"
-                  className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Pet Hotel
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#services"
-                  className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Grooming
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#services"
-                  className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Day Care
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase mb-4">
-              Contact
-            </h3>
-            <ul className="space-y-2 sm:space-y-3">
-              <li className="flex items-center">
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                <span className="text-xs sm:text-sm text-muted-foreground">
-                  Bonifacio St., Tagum City, Philippines
-                </span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                <a
-                  href="tel:+639501890933"
-                  className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  +63 950 189 0933
-                </a>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                <a
-                  href="mailto:galojanlloyn18@gmail.com"
-                  className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  galojanlloyn18@gmail.com
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase mb-4">
-              Follow Us
-            </h3>
-            <div className="flex space-x-4 sm:space-x-6">
+            <div className="flex space-x-6">
               <a
                 href="https://www.facebook.com/share/15jqk6ZeSE/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground"
               >
                 <span className="sr-only">Facebook</span>
-                <Facebook className="h-5 w-5 sm:h-6 sm:w-6" />
+                <Facebook className="h-6 w-6" />
               </a>
               <a
                 href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-muted-foreground hover:text-foreground"
               >
                 <span className="sr-only">Instagram</span>
-                <Instagram className="h-5 w-5 sm:h-6 sm:w-6" />
+                <Instagram className="h-6 w-6" />
+              </a>
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <span className="sr-only">GitHub</span>
+                <Github className="h-6 w-6" />
+              </a>
+              <a
+                href="mailto:galojanlloyn18@gmail.com"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <span className="sr-only">Email</span>
+                <Mail className="h-6 w-6" />
+              </a>
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <span className="sr-only">Messenger</span>
+                <MessageCircle className="h-6 w-6" />
               </a>
             </div>
           </div>
-        </div>
-        <div className="mt-8 border-t border-border pt-8 md:flex md:items-center md:justify-between">
-          <p className="text-xs sm:text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Big Paws Pet Hotel. All rights
-            reserved.
-          </p>
-          <div className="mt-4 md:mt-0">
-            <Link
-              href="/terms-privacy"
-              className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Terms & Privacy
-            </Link>
+          <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+                  Services
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="#services"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Pet Hotel
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#services"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Grooming
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#services"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Day Care
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#services"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Home Services
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+                  Support
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Pricing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Documentation
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Guides
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      API Status
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+                  Company
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Jobs
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Press
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-foreground tracking-wider uppercase">
+                  Legal
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  <li>
+                    <Link
+                      href="#"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Privacy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/terms-privacy"
+                      className="text-base text-muted-foreground hover:text-foreground"
+                    >
+                      Terms
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="mt-4 text-center">
-          <p className="text-xs sm:text-sm text-muted-foreground">
-            Developed by Arneabell Bautista, John Andrie Candeo, Kenneth Tan
+        <div className="mt-12 border-t border-border pt-8">
+          <p className="text-base text-muted-foreground xl:text-center">
+            &copy; {new Date().getFullYear()} Big Paws Pet Hotel. All rights
+            reserved.
           </p>
         </div>
       </div>

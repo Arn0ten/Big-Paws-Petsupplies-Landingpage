@@ -1,4 +1,3 @@
-"use client";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
@@ -16,6 +15,7 @@ import Footer from "./components/Footer";
 import HomeService from "./components/HomeService";
 import PetSupplies from "./components/PetSupplies";
 import FacilityShowcase from "./components/FacilityShowcase";
+import MapSection from "./components/MapSection";
 
 export default function Home() {
   return (
@@ -36,6 +36,7 @@ export default function Home() {
         <Gallery />
         <Testimonials />
         <Location />
+        <MapSection />
         <ContactForm />
       </main>
       <Footer />

@@ -66,6 +66,13 @@ const categories = [
         additionalInfo:
           "Airline-approved carrier with expandable sides. Suitable for medium-sized pets up to 18 lbs.",
       },
+      {
+        image:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480196086_9948273031852895_5920632034308718463_n.jpg-nNmqZFgek6wfZDz1OjhAY3caVkoEaq.jpeg",
+        name: "Premium Cat Condo",
+        description: "Spacious multi-level cat cage with platforms",
+        price: "₱2,999",
+      },
     ],
   },
   {
@@ -92,6 +99,13 @@ const categories = [
         additionalInfo:
           "Large, multi-level cage with removable bottom tray for easy cleaning. Includes perches, food bowls, and toys.",
       },
+      {
+        image:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/480568649_1310436750234027_8130811062849302975_n.jpg-kAfRsvjnHn8rMkmPO0kpgzHkWcUeif.jpeg",
+        name: "Luxury Pet Beds",
+        description: "Comfortable and stylish beds for your pets",
+        price: "Starting from ₱500",
+      },
     ],
   },
   {
@@ -117,6 +131,13 @@ const categories = [
           "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/481365869_23872383532349702_5443414320908630679_n.jpg-zVB9mRIFVqp3z5w24m31eq91crCRFp.jpeg",
         additionalInfo:
           "Set of 2 stainless steel bowls with non-slip silicone base. Dishwasher safe and suitable for both food and water.",
+      },
+      {
+        image:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/481378020_929658752706947_1466774855061503721_n.jpg-lEIkFz1kwvgg3sR7pD3NcoXVQrHRsm.jpeg",
+        name: "Premium Pet Food Selection",
+        description: "Wide variety of high-quality dog and cat food brands",
+        price: "Starting from ₱100",
       },
     ],
   },
