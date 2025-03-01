@@ -30,22 +30,26 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main>
-        <Hero />
-        <Features />
-        <FacilityShowcase />
-        <AboutUs />
-        <WhyUs />
-        <ServicesMenu />
-        <ServiceInfo />
-        <HomeService />
-        <PetSupplies />
-        <VideoSection />
-        <Marketing />
-        <Gallery />
-        <Testimonials />
-        <Location />
-        <MapSection />
-        <ContactForm />
+        {isClient && (
+          <>
+            <Hero />
+            <Features />
+            <FacilityShowcase />
+            <AboutUs />
+            <WhyUs />
+            <ServicesMenu />
+            <ServiceInfo />
+            <HomeService />
+            <PetSupplies />
+            <VideoSection />
+            <Marketing />
+            <Gallery />
+            <Testimonials />
+            <Location />
+            <MapSection />
+            <ContactForm />
+          </>
+        )}
       </main>
       <Footer />
     </div>
