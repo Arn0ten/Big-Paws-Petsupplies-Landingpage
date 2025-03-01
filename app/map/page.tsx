@@ -58,7 +58,7 @@ function LocationMarker({
 }: {
   setUserLocation: (location: [number, number]) => void;
 }) {
-  const map = useMapEvents({
+  useMapEvents({
     click(e) {
       setUserLocation([e.latlng.lat, e.latlng.lng]);
     },
