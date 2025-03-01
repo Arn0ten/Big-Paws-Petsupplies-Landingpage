@@ -85,7 +85,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   verification: {
-    google: "google-site-verification-code", // Replace with actual verification code
+    google: "google-site-verification-code",
   },
 };
 
@@ -98,10 +98,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" type="image/x-icon" />
-        <link
-          rel="canonical"
-          href="https://big-paws-petsupplies.tech" // Replace with actual domain
-        />
+        <link rel="canonical" href="https://big-paws-petsupplies.tech" />
         {/* Schema.org markup for Google */}
         <script
           type="application/ld+json"
@@ -110,6 +107,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "PetService",
               name: "Big Paws Pet Hotel",
+              alternateName: "Big Paws Petsupplies",
               image:
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogoBig-QEuBX7LEMcYoQTMrjMOPnGFkVuwmrA.png",
               "@id": "https://big-paws-petsupplies.tech",

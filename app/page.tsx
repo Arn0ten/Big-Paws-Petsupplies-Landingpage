@@ -15,6 +15,7 @@ import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import HomeService from "./components/HomeService";
 import PetSupplies from "./components/PetSupplies";
+import FacilityShowcase from "./components/FacilityShowcase";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
+        <FacilityShowcase />
         <AboutUs />
         <WhyUs />
         <ServicesMenu />

@@ -1,23 +1,37 @@
 "use client";
 
-import type React from "react";
+import { Badge } from "@/components/ui/badge";
 
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import type React from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import AnimatedBackground from "./AnimatedBackground";
 import FlipCards from "./FlipCards";
-import { useState, useEffect } from "react";
+import { Shield, Heart, Clock, Award, Star } from "lucide-react";
 
 const services = ["Pet Hotel", "Pet Grooming", "Pet Supplies", "Home Service"];
 
+const stats = [
+  { icon: Shield, label: "Years Experience", value: "10+" },
+  { icon: Heart, label: "Happy Pets", value: "5000+" },
+  { icon: Clock, label: "Hours Care", value: "24/7" },
+  { icon: Star, label: "Rating", value: "4.9" },
+];
+
 export default function Hero() {
   const [currentService, setCurrentService] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentService((prev) => (prev + 1) % services.length);
+      setIsVisible(false);
+      setTimeout(() => {
+        setCurrentService((prev) => (prev + 1) % services.length);
+        setIsVisible(true);
+      }, 500);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -52,6 +66,13 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="text-left"
           >
+            <motion.div className="mb-4 inline-block">
+              <Badge variant="outline" className="text-primary border-primary">
+                <Award className="w-4 h-4 mr-2" />
+                Trusted Pet Care Provider
+              </Badge>
+            </motion.div>
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
               <motion.span
                 className="text-primary block mb-2"
@@ -67,7 +88,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
               >
-                Your One-Stop
+                Your One-Stop for
               </motion.span>
               <motion.div
                 className="text-3xl md:text-4xl lg:text-5xl text-primary mt-2"
@@ -75,19 +96,23 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
               >
-                <span className="mr-2">for</span>
-                <motion.span
-                  key={currentService}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="inline-block"
-                >
-                  {services[currentService]}
-                </motion.span>
+                <AnimatePresence mode="wait">
+                  {isVisible && (
+                    <motion.span
+                      key={currentService}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="inline-block"
+                    >
+                      {services[currentService]}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </motion.div>
             </h1>
+
             <motion.p
               className="mt-6 text-xl text-muted-foreground max-w-2xl"
               initial={{ opacity: 0 }}
@@ -96,13 +121,40 @@ export default function Hero() {
             >
               Experience top-notch pet care services including hotel stays,
               professional grooming, quality supplies, and convenient home
-              services.
+              services. Our expert team ensures your pets receive the best care
+              possible.
             </motion.p>
+
+            <motion.div
+              className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.8 }}
+            >
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
+                  className="text-center p-4 rounded-lg bg-primary/5"
+                >
+                  <stat.icon className="w-6 h-6 mx-auto mb-2 text-primary" />
+                  <div className="text-2xl font-bold text-primary">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    {stat.label}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
             <motion.div
               className="mt-10 flex flex-col sm:flex-row gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.8 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
             >
               <Button size="lg" className="w-full sm:w-auto" asChild>
                 <Link
@@ -127,6 +179,7 @@ export default function Hero() {
               </Button>
             </motion.div>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -140,13 +193,19 @@ export default function Hero() {
               className="object-contain rounded-2xl p-12"
               priority
             />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            />
           </motion.div>
         </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
           className="mt-24"
         >
           <h2 className="text-3xl font-bold text-center mb-12">

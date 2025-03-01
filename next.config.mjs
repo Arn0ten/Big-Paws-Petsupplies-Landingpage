@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 
-dotenv.config({ path: "./.env.local" });
+dotenv.config({ path: ".env.local" });
 
 let userConfig = undefined;
 try {
@@ -28,6 +28,7 @@ const nextConfig = {
   env: {
     MAILGUN_API_KEY: process.env.MAILGUN_API_KEY,
     MAILGUN_DOMAIN: process.env.MAILGUN_DOMAIN,
+    POSTMARK_API_KEY: process.env.POSTMARK_API_KEY,
   },
 };
 
