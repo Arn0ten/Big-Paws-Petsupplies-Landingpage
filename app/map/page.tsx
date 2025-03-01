@@ -68,7 +68,6 @@ function LocationMarker({
 }
 
 export default function MapPage() {
-  // Fix for default marker icon
   useEffect(() => {
     if (typeof window !== "undefined") {
       delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -133,9 +132,7 @@ export default function MapPage() {
         },
       );
     } else {
-      setError(
-        "Geolocation is not supported by your browser. Please enter an address or click on the map.",
-      );
+      setError("Geolocation is not supported by your browser.");
     }
   }, []);
 
