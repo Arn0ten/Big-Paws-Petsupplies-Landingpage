@@ -18,18 +18,6 @@ import { Input } from "@/components/ui/input";
 import { Navigation, ArrowLeft, Crosshair, Search } from "lucide-react";
 import Link from "next/link";
 
-// Fix for default marker icon
-useEffect(() => {
-  if (typeof window !== "undefined") {
-    delete (L.Icon.Default.prototype as any)._getIconUrl;
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: "/images/marker-icon-2x.png",
-      iconUrl: "/images/marker-icon.png",
-      shadowUrl: "/images/marker-shadow.png",
-    });
-  }
-}, []);
-
 const petHotelLocation: [number, number] = [7.4460297, 125.8037527]; // Big Paws Pet Hotel coordinates
 
 // Create a custom icon for the pet hotel and user location
@@ -80,6 +68,18 @@ function LocationMarker({
 }
 
 export default function MapPage() {
+  // Fix for default marker icon
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      delete (L.Icon.Default.prototype as any)._getIconUrl;
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: "/images/marker-icon-2x.png",
+        iconUrl: "/images/marker-icon.png",
+        shadowUrl: "/images/marker-shadow.png",
+      });
+    }
+  }, []);
+
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
     null,
   );
