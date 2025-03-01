@@ -27,7 +27,7 @@ export default function FloatingElements() {
   const [windowHeight, setWindowHeight] = useState(0);
 
   const createElements = useCallback(() => {
-    if (typeof window === "undefined") return; // Prevent SSR errors
+    if (typeof window === "undefined") return; // ✅ Prevents SSR errors
 
     const newElements: FloatingElement[] = [];
     const count = Math.floor(window.innerWidth / 200);
@@ -43,17 +43,20 @@ export default function FloatingElements() {
         color: colors[Math.floor(Math.random() * colors.length)],
       });
     }
+
     setElements(newElements);
-    setWindowHeight(window.innerHeight); // Store window height
+    setWindowHeight(window.innerHeight);
   }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       createElements();
+
       const handleResize = () => {
         createElements();
-        setWindowHeight(window.innerHeight); // Update window height on resize
+        setWindowHeight(window.innerHeight);
       };
+
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }

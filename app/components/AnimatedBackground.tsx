@@ -20,20 +20,19 @@ export default function AnimatedBackground() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+    if (typeof window === "undefined") return; // ✅ Prevents SSR errors
 
-    const handleResize = () => {
+    const updateDimensions = () => {
       setDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
       });
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    updateDimensions(); // ✅ Set initial dimensions on mount
+    window.addEventListener("resize", updateDimensions);
+
+    return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   return (

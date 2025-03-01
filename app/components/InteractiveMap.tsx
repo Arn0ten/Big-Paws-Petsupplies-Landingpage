@@ -11,7 +11,7 @@ import Link from "next/link";
 
 // Fix for default marker icon
 useEffect(() => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== "undefined" && typeof L !== "undefined") {
     delete (L.Icon.Default.prototype as any)._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconRetinaUrl: "/images/marker-icon-2x.png",
@@ -41,19 +41,31 @@ export default function InteractiveMap() {
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
     null,
   );
+  const [geoPermission, setGeoPermission] = useState<
+    "granted" | "denied" | "prompt"
+  >("prompt");
 
   useEffect(() => {
-    // Step 1: Get user's location
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && navigator?.permissions) {
+      navigator.permissions.query({ name: "geolocation" }).then((result) => {
+        setGeoPermission(result.state);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && navigator?.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setUserLocation([
             position.coords.latitude,
             position.coords.longitude,
           ]);
+          setGeoPermission("granted");
         },
         (error) => {
           console.error("Error getting user location:", error);
+          setGeoPermission("denied");
         },
       );
     }

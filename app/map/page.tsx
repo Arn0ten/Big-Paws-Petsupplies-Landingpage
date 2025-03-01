@@ -20,13 +20,16 @@ import Link from "next/link";
 
 // Fix for default marker icon
 useEffect(() => {
-  if (typeof window !== "undefined") {
-    delete (L.Icon.Default.prototype as any)._getIconUrl;
-    L.Icon.Default.mergeOptions({
-      iconRetinaUrl: "/images/marker-icon-2x.png",
-      iconUrl: "/images/marker-icon.png",
-      shadowUrl: "/images/marker-shadow.png",
-    });
+  if (typeof window !== "undefined" && typeof L !== "undefined") {
+    try {
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: "/images/marker-icon-2x.png",
+        iconUrl: "/images/marker-icon.png",
+        shadowUrl: "/images/marker-shadow.png",
+      });
+    } catch (error) {
+      console.error("Error updating Leaflet marker icons:", error);
+    }
   }
 }, []);
 
@@ -115,29 +118,47 @@ export default function MapPage() {
     }
   }, [userLocation, calculateRoute]);
 
+  const [geoPermission, setGeoPermission] = useState<
+    "granted" | "denied" | "prompt"
+  >("prompt");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && navigator?.permissions) {
+      navigator.permissions.query({ name: "geolocation" }).then((result) => {
+        setGeoPermission(result.state);
+      });
+    }
+  }, []);
+
   const handleLocate = useCallback(() => {
-    if (typeof window !== "undefined" && "geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setUserLocation([
-            position.coords.latitude,
-            position.coords.longitude,
-          ]);
-          setError(null);
-        },
-        (error) => {
-          console.error("Error getting user location:", error);
-          setError(
-            "Unable to get your location. Please enter an address or click on the map.",
-          );
-        },
-      );
-    } else {
+    if (typeof window === "undefined" || !("geolocation" in navigator)) {
       setError(
         "Geolocation is not supported by your browser. Please enter an address or click on the map.",
       );
+      return;
     }
-  }, []);
+
+    if (geoPermission === "denied") {
+      setError(
+        "Location access is blocked. Please allow access in your browser settings.",
+      );
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setUserLocation([position.coords.latitude, position.coords.longitude]);
+        setError(null);
+        setGeoPermission("granted");
+      },
+      (error) => {
+        console.error("Error getting user location:", error);
+        setError(
+          "Unable to get your location. Please enter an address or click on the map.",
+        );
+      },
+    );
+  }, [geoPermission]);
 
   const handleAddressSearch = useCallback(async () => {
     try {
