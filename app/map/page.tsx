@@ -19,7 +19,9 @@ import { Navigation, ArrowLeft, Crosshair, Search } from "lucide-react";
 import Link from "next/link";
 
 // Fix for default marker icon
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+if (typeof window !== "undefined") {
+  delete (L.Icon.Default.prototype as any)._getIconUrl;
+}
 
 const petHotelLocation: [number, number] = [7.4460297, 125.8037527]; // Big Paws Pet Hotel coordinates
 
