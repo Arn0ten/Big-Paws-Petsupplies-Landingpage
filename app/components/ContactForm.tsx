@@ -190,14 +190,7 @@ export default function ContactForm() {
                     disabled={isSubmitting}
                     className="w-full sm:w-auto min-w-[200px]"
                   >
-                    {isSubmitting ? (
-                      <>
-                        Sending...
-                        <span className="ml-2 inline-block w-4 h-4 border-2 border-current border-r-transparent rounded-full animate-spin" />
-                      </>
-                    ) : (
-                      "Send Message"
-                    )}
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </div>
               </form>
@@ -342,14 +335,7 @@ export default function ContactForm() {
                     disabled={isSubmitting}
                     className="w-full sm:w-auto min-w-[200px]"
                   >
-                    {isSubmitting ? (
-                      <>
-                        Booking...
-                        <span className="ml-2 inline-block w-4 h-4 border-2 border-current border-r-transparent rounded-full animate-spin" />
-                      </>
-                    ) : (
-                      "Book Home Service"
-                    )}
+                    {isSubmitting ? "Booking..." : "Book Home Service"}
                   </Button>
                 </div>
               </form>
