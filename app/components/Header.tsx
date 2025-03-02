@@ -151,7 +151,7 @@ export default function Header() {
                   ))}
                   <div className="flex flex-col gap-4 mt-4 px-2">
                     <Button variant="outline" asChild className="w-full">
-                      <Link href="/login.html" target="_blank">
+                      <Link href="/index.html" target="_blank">
                         Log in
                       </Link>
                     </Button>
