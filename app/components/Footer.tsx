@@ -11,8 +11,8 @@ export default function Footer() {
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogo-tgQYrArFSfOX9irwlrG1D93gEjB9yr.png"
               alt="Big Paws Pet Hotel"
-              width={120}
-              height={120}
+              width={150}
+              height={150}
               className="w-auto h-12"
             />
             <p className="text-base text-muted-foreground">
@@ -21,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-6">
               <a
-                href="https://www.facebook.com/bigpawspethotel"
+                href="https://www.facebook.com/share/15jqk6ZeSE/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
@@ -39,7 +39,7 @@ export default function Footer() {
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="https://github.com/bigpawspethotel"
+                href="https://github.com/Arn0ten"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
