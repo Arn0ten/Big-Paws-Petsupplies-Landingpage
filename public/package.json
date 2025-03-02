@@ -1,0 +1,47 @@
+{
+  "name": "pawsandclawshotel",
+  "version": "1.0.0",
+  "description": "\u0000#\u0000 \u0000P\u0000a\u0000w\u0000s\u0000A\u0000n\u0000d\u0000C\u0000l\u0000a\u0000w\u0000s\u0000H\u0000o\u0000t\u0000e\u0000l\u0000\r\u0000 \u0000",
+  "main": "config.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.10.0",
+    "typescript": "^5.7.3",
+    "@emotion/is-prop-valid": "latest",
+    "@hookform/resolvers": "^3.9.1",
+    "autoprefixer": "^10.4.20",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "1.0.4",
+    "date-fns": "4.1.0",
+    "framer-motion": "latest",
+    "input-otp": "1.4.1",
+    "recharts": "2.15.0",
+    "sonner": "^1.7.1",
+    "tailwind-merge": "^2.5.5",
+    "tailwindcss-animate": "^1.0.7",
+    "vaul": "^0.9.6",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9",
+    "parcel": "^2.13.3",
+    "@types/node": "^22",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}

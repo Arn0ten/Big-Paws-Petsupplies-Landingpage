@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Big Paws Petsupplies</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/BigPawsLogo.png" type="image/png" />
+    <link rel="stylesheet" href="/auth/css/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <div class="form-container">
+            <form id="loginForm">
+              <div class="form-header">
+                <img
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogo-2z99OARh1zaQoN1dDH9tcYHEwUpnvg.png"
+                  alt="Big Paws Logo"
+                  class="logo"
+                />
+                <h1>Login</h1>
+                <p>Access your Big Paws dashboard</p>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="pet-owner@bigpaws.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-input">
+                  <input type="password" id="password" required />
+                  <i
+                    class="fas fa-eye-slash toggle-password"
+                    id="togglePassword"
+                  ></i>
+                </div>
+                <div class="forgot-password">
+                  <a href="forgot-password.html">Forgot your password?</a>
+                </div>
+                <div class="change-password">
+                  <button
+                    type="button"
+                    class="button button-secondary"
+                    onclick="window.location.href='change-password.html'"
+                  >
+                    Change Password
+                  </button>
+                </div>
+              </div>
+
+              <div class="toggle-container" style="padding: 20px 0">
+                <input type="checkbox" id="termsCheckbox" required />
+                <label for="termsCheckbox">
+                  I agree to the Big Paws'
+                  <a
+                    href="/auth/terms-of-service.html"
+                    style="color: #4a90e2; text-decoration: underline"
+                    >Terms of Service</a
+                  >
+                  and
+                  <a
+                    href="/auth/privacy-policy.html"
+                    style="color: #4a90e2; text-decoration: underline"
+                    >Privacy Policy</a
+                  >.
+                </label>
+              </div>
+
+              <button type="submit" class="button">Login</button>
+            </form>
+          </div>
+
+          <div class="image-container">
+            <img src="/assets/img/login.jpg" alt="Pet Grooming" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/auth/js/login.js"></script>
+    <script src="/auth/js/navigation.js"></script>
+  </body>
+</html>

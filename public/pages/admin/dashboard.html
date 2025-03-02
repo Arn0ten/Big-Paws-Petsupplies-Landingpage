@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Admin | Dashboard</title>
+    <meta
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+      name="viewport"
+    />
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/img/BigPawsLogo.png" type="image/png" />
+
+    <!-- Fonts and icons -->
+    <script src="/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["/assets/css/fonts.min.css"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/plugins.min.css" />
+    <link rel="stylesheet" href="/assets/css/kaiadmin.min.css" />
+
+    <!-- Them color controller  -->
+    <link rel="stylesheet" href="/assets/css/demo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <div class="sidebar" data-background-color="dark">
+        <div class="sidebar-logo">
+          <!-- Logo Header -->
+          <div class="logo-header" data-background-color="dark">
+            <a href="index.html" class="logo">
+              <img
+                src="/assets/img/main-logo-dark.png"
+                alt="navbar brand"
+                class="navbar-brand"
+                height="60"
+              />
+            </a>
+            <div class="nav-toggle">
+              <button class="btn btn-toggle toggle-sidebar">
+                <i class="gg-menu-right"></i>
+              </button>
+              <button class="btn btn-toggle sidenav-toggler">
+                <i class="gg-menu-left"></i>
+              </button>
+            </div>
+            <button class="topbar-toggler more">
+              <i class="gg-more-vertical-alt"></i>
+            </button>
+          </div>
+          <!-- End Logo Header -->
+        </div>
+        <div class="sidebar-wrapper scrollbar scrollbar-inner">
+            <div class="sidebar-content">
+            <ul class="nav nav-secondary">
+              <li class="nav-item active">
+              <a href="/pages/admin/dashboard.html">
+                <i class="fas fa-home"></i>
+                <p>Dashboard</p>
+              </a>
+              </li>
+              <li class="nav-section">
+              <span class="sidebar-mini-icon">
+                <i class="fa fa-ellipsis-h"></i>
+              </span>
+              <h4 class="text-section">Management</h4>
+              </li>
+              <li class="nav-item">
+              <a href="/pages/admin/pet-management.html">
+                <i class="fas fa-paw"></i>
+                <p>Pet Management</p>
+              </a>
+              </li>
+              <li class="nav-item">
+              <a href="/pages/admin/pet-owner-management.html">
+                <i class="fas fa-users"></i>
+                <p>Pet Owner Management</p>
+              </a>
+              </li>
+              <li class="nav-item">
+              <a href="/pages/admin/pet-owner-registration.html">
+                <i class="fas fa-user-plus"></i>
+                <p>Pet Owner Registration</p>
+              </a>
+              </li>
+              <li class="nav-item">
+              <a href="/pages/admin/requests-management.html">
+                <i class="fas fa-tasks"></i>
+                <p>Requests Management</p>
+              </a>
+              </li>
+              <li class="nav-section">
+              <span class="sidebar-mini-icon">
+                <i class="fa fa-ellipsis-h"></i>
+              </span>
+              <h4 class="text-section">Reports</h4>
+              </li>
+              <li class="nav-item">
+              <a href="/pages/admin/reports-and-logs.html">
+                <i class="fas fa-file-alt"></i>
+                <p>Reports & Logs</p>
+              </a>
+              </li>
+              <li class="nav-section">
+              <span class="sidebar-mini-icon">
+                <i class="fa fa-ellipsis-h"></i>
+              </span>
+              <h4 class="text-section">Notifications</h4>
+              </li>
+              <li class="nav-item">
+              <a href="/pages/admin/notifications.html">
+                <i class="fas fa-bell"></i>
+                <p>Notifications</p>
+              </a>
+              </li>
+              <li class="nav-section">
+              <span class="sidebar-mini-icon">
+                <i class="fa fa-ellipsis-h"></i>
+              </span>
+              <h4 class="text-section">Settings</h4>
+              </li>
+              <li class="nav-item">
+              <a href="/pages/admin/system-settings.html">
+                <i class="fas fa-cog"></i>
+                <p>System Settings</p>
+              </a>
+              </li>
+            </ul>
+            </div>
+        </div>
+      </div>
+      <!-- End Sidebar -->
+
+      <div class="main-panel">
+        <div class="main-header">
+          <div class="main-header-logo">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="dark">
+              <a href="index.html" class="logo">
+                <img
+                  src="assets/img/kaiadmin/logo_light.svg"
+                  alt="navbar brand"
+                  class="navbar-brand"
+                  height="20"
+                />
+              </a>
+              <div class="nav-toggle">
+                <button class="btn btn-toggle toggle-sidebar">
+                  <i class="gg-menu-right"></i>
+                </button>
+                <button class="btn btn-toggle sidenav-toggler">
+                  <i class="gg-menu-left"></i>
+                </button>
+              </div>
+              <button class="topbar-toggler more">
+                <i class="gg-more-vertical-alt"></i>
+              </button>
+            </div>
+            <!-- End Logo Header -->
+          </div>
+          <!-- Navbar Header -->
+          <nav
+            class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom"
+          >
+            <div class="container-fluid">
+              <nav
+                class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex"
+              >
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <button type="submit" class="btn btn-search pe-1">
+                      <i class="fa fa-search search-icon"></i>
+                    </button>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="Search ..."
+                    class="form-control"
+                  />
+                </div>
+              </nav>
+
+              <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
+                <li
+                  class="nav-item topbar-icon dropdown hidden-caret d-flex d-lg-none"
+                >
+                  <a
+                    class="nav-link dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    role="button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    <i class="fa fa-search"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-search animated fadeIn">
+                    <form class="navbar-left navbar-form nav-search">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          placeholder="Search ..."
+                          class="form-control"
+                        />
+                      </div>
+                    </form>
+                  </ul>
+                </li>
+                <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="messageDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-envelope"></i>
+                  </a>
+                  <ul
+                    class="dropdown-menu messages-notif-box animated fadeIn"
+                    aria-labelledby="messageDropdown"
+                  >
+                    <li>
+                      <div
+                        class="dropdown-title d-flex justify-content-between align-items-center"
+                      >
+                        Messages
+                        <a href="#" class="small">Mark all as read</a>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="message-notif-scroll scrollbar-outer">
+                        <div class="notif-center">
+                          <a href="#">
+                            <div class="notif-img">
+                              <img
+                                src="assets/img/jm_denis.jpg"
+                                alt="Img Profile"
+                              />
+                            </div>
+                            <div class="notif-content">
+                              <span class="subject">Jimmy Denis</span>
+                              <span class="block"> How are you ? </span>
+                              <span class="time">5 minutes ago</span>
+                            </div>
+                          </a>
+                          <a href="#">
+                            <div class="notif-img">
+                              <img
+                                src="assets/img/chadengle.jpg"
+                                alt="Img Profile"
+                              />
+                            </div>
+                            <div class="notif-content">
+                              <span class="subject">Chad</span>
+                              <span class="block"> Ok, Thanks ! </span>
+                              <span class="time">12 minutes ago</span>
+                            </div>
+                          </a>
+                          <a href="#">
+                            <div class="notif-img">
+                              <img
+                                src="assets/img/mlane.jpg"
+                                alt="Img Profile"
+                              />
+                            </div>
+                            <div class="notif-content">
+                              <span class="subject">Jhon Doe</span>
+                              <span class="block">
+                                Ready for the meeting today...
+                              </span>
+                              <span class="time">12 minutes ago</span>
+                            </div>
+                          </a>
+                          <a href="#">
+                            <div class="notif-img">
+                              <img
+                                src="/assets/img/saddog.jpg"
+                                alt="Img Profile"
+                              />
+                            </div>
+                            <div class="notif-content">
+                              <span class="subject">Talha</span>
+                              <span class="block"> Hi, Apa Kabar ? </span>
+                              <span class="time">17 minutes ago</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <a class="see-all" href="javascript:void(0);"
+                        >See all messages<i class="fa fa-angle-right"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="notifDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    <i class="fa fa-bell"></i>
+                    <span class="notification">4</span>
+                  </a>
+                  <ul
+                    class="dropdown-menu notif-box animated fadeIn"
+                    aria-labelledby="notifDropdown"
+                  >
+                    <li>
+                      <div class="dropdown-title">
+                        You have 4 new notification
+                      </div>
+                    </li>
+                    <li>
+                      <div class="notif-scroll scrollbar-outer">
+                        <div class="notif-center">
+                          <a href="#">
+                            <div class="notif-icon notif-primary">
+                              <i class="fa fa-user-plus"></i>
+                            </div>
+                            <div class="notif-content">
+                              <span class="block"> New user registered </span>
+                              <span class="time">5 minutes ago</span>
+                            </div>
+                          </a>
+                          <a href="#">
+                            <div class="notif-icon notif-success">
+                              <i class="fa fa-comment"></i>
+                            </div>
+                            <div class="notif-content">
+                              <span class="block">
+                                Rahmad commented on Admin
+                              </span>
+                              <span class="time">12 minutes ago</span>
+                            </div>
+                          </a>
+                          <a href="#">
+                            <div class="notif-img">
+                              <img
+                                src="assets/img/profile2.jpg"
+                                alt="Img Profile"
+                              />
+                            </div>
+                            <div class="notif-content">
+                              <span class="block">
+                                Reza send messages to you
+                              </span>
+                              <span class="time">12 minutes ago</span>
+                            </div>
+                          </a>
+                          <a href="#">
+                            <div class="notif-icon notif-danger">
+                              <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="notif-content">
+                              <span class="block"> Farrah liked Admin </span>
+                              <span class="time">17 minutes ago</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <a class="see-all" href="javascript:void(0);"
+                        >See all notifications<i class="fa fa-angle-right"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item topbar-icon dropdown hidden-caret">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    aria-expanded="false"
+                  >
+                    <i class="fas fa-layer-group"></i>
+                  </a>
+                  <div class="dropdown-menu quick-actions animated fadeIn">
+                    <div class="quick-actions-header">
+                      <span class="title mb-1">Quick Actions</span>
+                      <span class="subtitle op-7">Shortcuts</span>
+                    </div>
+                    <div class="quick-actions-scroll scrollbar-outer">
+                      <div class="quick-actions-items">
+                        <div class="row m-0">
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div class="avatar-item bg-danger rounded-circle">
+                                <i class="far fa-calendar-alt"></i>
+                              </div>
+                              <span class="text">Calendar</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-warning rounded-circle"
+                              >
+                                <i class="fas fa-map"></i>
+                              </div>
+                              <span class="text">Maps</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div class="avatar-item bg-info rounded-circle">
+                                <i class="fas fa-file-excel"></i>
+                              </div>
+                              <span class="text">Reports</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-success rounded-circle"
+                              >
+                                <i class="fas fa-envelope"></i>
+                              </div>
+                              <span class="text">Emails</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-primary rounded-circle"
+                              >
+                                <i class="fas fa-file-invoice-dollar"></i>
+                              </div>
+                              <span class="text">Invoice</span>
+                            </div>
+                          </a>
+                          <a class="col-6 col-md-4 p-0" href="#">
+                            <div class="quick-actions-item">
+                              <div
+                                class="avatar-item bg-secondary rounded-circle"
+                              >
+                                <i class="fas fa-credit-card"></i>
+                              </div>
+                              <span class="text">Payments</span>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="nav-item topbar-user dropdown hidden-caret">
+                  <a
+                    class="dropdown-toggle profile-pic"
+                    data-bs-toggle="dropdown"
+                    href="#"
+                    aria-expanded="false"
+                  >
+                    <div class="avatar-sm">
+                      <img
+                        src="/assets/img/profile.jpg"
+                        alt="..."
+                        class="avatar-img rounded-circle"
+                      />
+                    </div>
+                    <span class="profile-username">
+                      <span class="op-7">Hi,</span>
+                      <span class="fw-bold">Admin Jenie</span>
+                    </span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="dropdown-user-scroll scrollbar-outer">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg">
+                            <img
+                              src="/assets/img/profile.jpg"
+                              alt="image profile"
+                              class="avatar-img rounded"
+                            />
+                          </div>
+                          <div class="u-text">
+                            <h4>Admin Jenie</h4>
+                            <p class="text-muted">adminjenie123@gmail.com</p>
+                            <a
+                              href="profile.html"
+                              class="btn btn-xs btn-secondary btn-sm"
+                              >View Profile</a
+                            >
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Inbox</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Account Setting</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/auth/login.html">Logout</a>
+                      </li>
+                    </div>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+          <div class="page-inner">
+            <div
+              class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
+            >
+              <div>
+                <h3 class="fw-bold mb-3">Dashboard</h3>
+                <h6 class="op-7 mb-2">Summary Cards</h6>
+            </div>
+              <div class="ms-md-auto py-2 py-md-0">
+                <a href="/pages/admin/pet-owner-management.html" class="btn btn-label-info btn-round me-2">Manage Pet Owner</a>
+                <a href="/pages/admin/pet-owner-registration.html" class="btn btn-primary btn-round"><i class="fa fa-plus"></i> Add Pet Owner</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-primary bubble-shadow-small"
+                        >
+                          <i class="fas fa-home"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Pets Currently Boarding</p>
+                          <h4 class="card-title">0</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-info bubble-shadow-small"
+                        >
+                          <i class="fas fa-bed"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Current Room Vacancy</p>
+                          <h4 class="card-title">0</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-success bubble-shadow-small"
+                        >
+                          <i class="fas fa-check-circle"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Monthly Pet Checkouts</p>
+                          <h4 class="card-title">0</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-secondary bubble-shadow-small"
+                        >
+                          <i class="fas fa-bell"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Pending Requests</p>
+                          <h4 class="card-title">0</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-warning bubble-shadow-small"
+                        >
+                          <i class="fas fa-user"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Registered Pet Owners</p>
+                          <h4 class="card-title">0</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <div class="card card-stats card-round">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col-icon">
+                        <div
+                          class="icon-big text-center icon-danger bubble-shadow-small"
+                        >
+                          <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                      </div>
+                      <div class="col col-stats ms-3 ms-sm-0">
+                        <div class="numbers">
+                          <p class="card-category">Revenue This Month</p>
+                          <h4 class="card-title">₱0</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Analytics nani banda-->
+
+            <!---->
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card card-round">
+                  <div class="card-header">
+                    <div class="card-head-row">
+                      <div class="card-title">Requests Trend</div>
+                      <div class="card-tools">
+                        <a
+                          href="#"
+                          class="btn btn-label-success btn-round btn-sm me-2"
+                        >
+                          <span class="btn-label">
+                            <i class="fa fa-pencil"></i>
+                          </span>
+                          Export
+                        </a>
+                        <a href="#" class="btn btn-label-info btn-round btn-sm">
+                          <span class="btn-label">
+                            <i class="fa fa-print"></i>
+                          </span>
+                          Print
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart-container" style="min-height: 375px">
+                      <canvas id="requestsTrendChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card card-primary card-round">
+                  <div class="card-header">
+                    <div class="card-head-row">
+                      <div class="card-title">Daily Sales</div>
+                      <div class="card-tools">
+                        <div class="dropdown">
+                          <button
+                            class="btn btn-sm btn-label-light dropdown-toggle"
+                            type="button"
+                            id="weeklySalesDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            Export
+                          </button>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="weeklySalesDropdown"
+                          >
+                            <a class="dropdown-item" href="#">CSV</a>
+                            <a class="dropdown-item" href="#">Excel</a>
+                            <a class="dropdown-item" href="#">PDF</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--I edit rani-->
+                    <div class="card-category">March 25 - April 02</div>
+                  </div>
+                  <div class="card-body pb-0">
+                    <div class="mb-4 mt-2">
+                      <h1>₱4,578.58</h1>
+                    </div>
+                    <div class="pull-in">
+                      <canvas id="dailySalesChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!---->
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card card-round">
+                  <div class="card-header">
+                    <div class="card-head-row">
+                      <div class="card-title" id="analyticsCardTitle">
+                        Monthly Analytics
+                      </div>
+                      <div class="card-tools">
+                        <select class="form-select" id="analyticsFilter">
+                          <option value="checkinsCheckouts">
+                            Pet Check-Ins vs. Checkouts
+                          </option>
+                          <option value="boardingByType">
+                            Pet Boarding by Type
+                          </option>
+                          <option value="requestedServices">
+                            Most Most Requested
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div
+                      class="chart-container"
+                      id="checkinsCheckoutsChartContainer"
+                      style="min-height: 375px"
+                    >
+                      <canvas id="checkInsVsCheckoutsChart"></canvas>
+                    </div>
+                    <div
+                      class="chart-container"
+                      id="boardingByTypeChartContainer"
+                      style="min-height: 375px; display: none"
+                    >
+                      <canvas id="boardingByTypeChart"></canvas>
+                    </div>
+                    <div
+                      class="chart-container"
+                      id="mostRequestedChartContainer"
+                      style="min-height: 375px; display: none"
+                    >
+                      <canvas id="mostRequestedChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--End Statistics nani banda-->
+
+            <div class="row">
+              <!-- New Pet Owners Card -->
+              <div class="col-md-4">
+                  <div class="card card-round">
+                      <div class="card-body">
+                          <div class="card-head-row card-tools-still-right">
+                              <div class="card-title">New Pet Owners</div>
+                          </div>
+                          <div class="card-list py-4">
+                              <!-- New Pet Owner Example -->
+                              <div class="item-list">
+                                  <div class="avatar">
+                                      <img src="assets/img/pet_owner1.jpg" alt="..." class="avatar-img rounded-circle" />
+                                  </div>
+                                  <div class="info-user ms-3">
+                                      <div class="username">Jessica Brown</div>
+                                      <div class="status">Pet Owner</div>
+                                  </div>
+                                  <button class="btn btn-icon btn-link op-8 me-1">
+                                      <i class="far fa-envelope"></i>
+                                  </button>
+                                  <button class="btn btn-icon btn-link btn-danger op-8">
+                                      <i class="fas fa-ban"></i>
+                                  </button>
+                              </div>
+                              <!-- Add more pet owners similarly -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          
+              <!-- Payments Card -->
+              <div class="col-md-4">
+                  <div class="card card-round">
+                      <div class="card-body">
+                          <div class="card-head-row card-tools-still-right">
+                              <div class="card-title">Recent Payments</div>
+                          </div>
+                          <div class="card-list py-4">
+                              <!-- Payment Example -->
+                              <div class="item-list">
+                                  <div class="avatar">
+                                      <span class="avatar-title rounded-circle border border-white bg-success">P</span>
+                                  </div>
+                                  <div class="info-user ms-3">
+                                      <div class="username">Payment from John Doe</div>
+                                      <div class="status">Amount: ₱150</div>
+                                  </div>
+                                  <button class="btn btn-icon btn-link op-8 me-1">
+                                      <i class="far fa-envelope"></i>
+                                  </button>
+                                  <button class="btn btn-icon btn-link btn-danger op-8">
+                                      <i class="fas fa-ban"></i>
+                                  </button>
+                              </div>
+
+                              <div class="item-list">
+                                <div class="avatar">
+                                    <span class="avatar-title rounded-circle border border-white bg-success">P</span>
+                                </div>
+                                <div class="info-user ms-3">
+                                    <div class="username">Payment from John Doe</div>
+                                    <div class="status">Amount: ₱150</div>
+                                </div>
+                                <button class="btn btn-icon btn-link op-8 me-1">
+                                    <i class="far fa-envelope"></i>
+                                </button>
+                                <button class="btn btn-icon btn-link btn-danger op-8">
+                                    <i class="fas fa-ban"></i>
+                                </button>
+                            </div>
+
+                            <div class="item-list">
+                              <div class="avatar">
+                                  <span class="avatar-title rounded-circle border border-white bg-success">P</span>
+                              </div>
+                              <div class="info-user ms-3">
+                                  <div class="username">Payment from John Doe</div>
+                                  <div class="status">Amount: ₱150</div>
+                              </div>
+                              <button class="btn btn-icon btn-link op-8 me-1">
+                                  <i class="far fa-envelope"></i>
+                              </button>
+                              <button class="btn btn-icon btn-link btn-danger op-8">
+                                  <i class="fas fa-ban"></i>
+                              </button>
+                          </div>
+                              <!-- Add more payments similarly -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          
+              <!-- Pending Owner Requests - Highlighted -->
+              <div class="col-md-4">
+                  <div class="card card-round border border-warning">
+                      <div class="card-body">
+                          <div class="card-head-row card-tools-still-right">
+                              <div class="card-title text-warning">Pending Owner Requests</div>
+                          </div>
+                          <div class="card-list py-4">
+                              <!-- Example -->
+                              <div class="item-list">
+                                  <div class="info-user ms-3">
+                                      <div class="username">John Doe</div>
+                                      <div class="status">Request for photo/video of Max</div>
+                                  </div>
+                              </div>
+                              <!-- Add more requests similarly -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <!-- Transactions History Table -->
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card card-round">
+                      <div class="card-header">
+                          <div class="card-head-row card-tools-still-right">
+                              <div class="card-title">Pet Hotel Transaction History</div>
+                          </div>
+                      </div>
+                      <div class="card-body p-0">
+                          <div class="table-responsive">
+                              <table class="table align-items-center mb-0">
+                                  <thead class="thead-light">
+                                      <tr>
+                                          <th scope="col">Transaction ID</th>
+                                          <th scope="col">Pet Owner</th>
+                                          <th scope="col">Pet Name</th>
+                                          <th scope="col">Booking Date</th>
+                                          <th scope="col">Check-in Date</th>
+                                          <th scope="col">Check-out Date</th>
+                                          <th scope="col">Amount (₱)</th>
+                                          <th scope="col">Status</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <th scope="row">
+                                              <button class="btn btn-icon btn-round btn-success btn-sm me-2">
+                                                  <i class="fa fa-check"></i>
+                                              </button>
+                                              Payment for Bella
+                                          </th>
+                                          <td>Jessica Brown</td>
+                                          <td>Bella - Golden Retriever</td>
+                                          <td>Mar 19, 2025</td>
+                                          <td>Mar 19, 2025</td>
+                                          <td>Mar 22, 2025</td>
+                                          <td>₱150.00</td>
+                                          <td>
+                                              <span class="badge badge-success">Completed</span>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <th scope="row">
+                                              <button class="btn btn-icon btn-round btn-danger btn-sm me-2">
+                                                  <i class="fa fa-times"></i>
+                                              </button>
+                                              Payment for Max
+                                          </th>
+                                          <td>John Doe</td>
+                                          <td>Max - Bulldog</td>
+                                          <td>Mar 18, 2025</td>
+                                          <td>Mar 18, 2025</td>
+                                          <td>Mar 20, 2025</td>
+                                          <td>₱120.00</td>
+                                          <td>
+                                              <span class="badge badge-danger">Failed</span>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <th scope="row">
+                                              <button class="btn btn-icon btn-round btn-warning btn-sm me-2">
+                                                  <i class="fa fa-exclamation"></i>
+                                              </button>
+                                              Payment for Luna
+                                          </th>
+                                          <td>Jessica Williams</td>
+                                          <td>Luna - Siberian Husky</td>
+                                          <td>Mar 20, 2025</td>
+                                          <td>Mar 20, 2025</td>
+                                          <td>Mar 22, 2025</td>
+                                          <td>₱180.00</td>
+                                          <td>
+                                              <span class="badge badge-warning">Pending</span>
+                                          </td>
+                                      </tr>
+                                      <!-- Add more transaction history similarly -->
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>          
+        </div>
+
+        <footer class="footer">
+          <div class="container-fluid d-flex justify-content-between">
+            <nav class="pull-left">
+              <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Big Paws Petsupplies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Licenses</a>
+          </li>
+              </ul>
+            </nav>
+            <div class="copyright">
+              2025, made with <i class="fa fa-heart heart text-danger"></i> by
+              Arneabell, Canedo and Tan
+            </div>
+            <div>
+              Distributed by
+              <a target="_blank" href="#">Big Paws Petsupplies</a>.
+            </div>
+          </div>
+        </footer>
+      </div>
+
+
+      
+      <!-- Custom template | don't include it in your project! -->
+      <div class="custom-template">
+        <div class="title">Settings</div>
+        <div class="custom-content">
+          <div class="switcher">
+            <div class="switch-block">
+              <h4>Logo Header</h4>
+              <div class="btnSwitch">
+                <button
+                  type="button"
+                  class="selected changeLogoHeaderColor"
+                  data-color="dark"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="purple"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="light-blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="green"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="orange"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="red"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="white"
+                ></button>
+                <br />
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="dark2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="purple2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="light-blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="green2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="orange2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeLogoHeaderColor"
+                  data-color="red2"
+                ></button>
+              </div>
+            </div>
+            <div class="switch-block">
+              <h4>Navbar Header</h4>
+              <div class="btnSwitch">
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="dark"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="purple"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="light-blue"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="green"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="orange"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="red"
+                ></button>
+                <button
+                  type="button"
+                  class="selected changeTopBarColor"
+                  data-color="white"
+                ></button>
+                <br />
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="dark2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="purple2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="light-blue2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="green2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="orange2"
+                ></button>
+                <button
+                  type="button"
+                  class="changeTopBarColor"
+                  data-color="red2"
+                ></button>
+              </div>
+            </div>
+            <div class="switch-block">
+              <h4>Sidebar</h4>
+              <div class="btnSwitch">
+                <button
+                  type="button"
+                  class="changeSideBarColor"
+                  data-color="white"
+                ></button>
+                <button
+                  type="button"
+                  class="selected changeSideBarColor"
+                  data-color="dark"
+                ></button>
+                <button
+                  type="button"
+                  class="changeSideBarColor"
+                  data-color="dark2"
+                ></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="custom-toggle">
+          <i class="icon-settings"></i>
+        </div>
+      </div>
+      <!-- End Custom template -->
+    </div>
+    <!--   Core JS Files   -->
+    <script src="/assets/js/core/jquery-3.7.1.min.js"></script>
+    <script src="/assets/js/core/popper.min.js"></script>
+    <script src="/assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Moment JS -->
+    <script src="/assets/js/plugin/moment/moment.min.js"></script>
+
+    <!-- Chart JS -->
+    <script src="/assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="/assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="/assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+    <script src="/assets/js/plugin/jsvectormap/world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Kaiadmin JS -->
+    <script src="/assets/js/kaiadmin.min.js"></script>
+
+    <!-- side,top bar theme controller -->
+    <script src="/assets/js/setting-demo2.js"></script>
+    <script src="/assets/js/demo.js"></script>
+
+    <!-- Sample data to populate -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/pages/js/sampledata.js"></script>
+  </body>
+</html>

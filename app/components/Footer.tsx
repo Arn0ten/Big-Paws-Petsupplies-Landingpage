@@ -21,7 +21,7 @@ export default function Footer() {
             </p>
             <div className="flex space-x-6">
               <a
-                href="https://www.facebook.com/share/15jqk6ZeSE/"
+                href="https://www.facebook.com/bigpawspethotel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
@@ -30,28 +30,34 @@ export default function Footer() {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/bigpawspethotel"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <span className="sr-only">Instagram</span>
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://github.com/bigpawspethotel"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <span className="sr-only">GitHub</span>
                 <Github className="h-6 w-6" />
               </a>
               <a
-                href="mailto:galojanlloyn18@gmail.com"
+                href="mailto:contact@bigpawspethotel.com"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <span className="sr-only">Email</span>
                 <Mail className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://m.me/bigpawspethotel"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
                 <span className="sr-only">Messenger</span>
@@ -68,7 +74,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="#services"
+                      href="/#pet-hotel"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Pet Hotel
@@ -76,7 +82,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#services"
+                      href="/#grooming"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Grooming
@@ -84,7 +90,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#services"
+                      href="/#day-care"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Day Care
@@ -92,7 +98,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#services"
+                      href="/#home-services"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Home Services
@@ -107,7 +113,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="#"
+                      href="/support"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Pricing
@@ -115,7 +121,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/support"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Documentation
@@ -123,7 +129,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/support"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Guides
@@ -131,7 +137,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/support"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       API Status
@@ -148,7 +154,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="#"
+                      href="/company"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       About
@@ -156,7 +162,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/company"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Blog
@@ -164,7 +170,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/company"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Jobs
@@ -172,7 +178,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="#"
+                      href="/company"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Press
@@ -187,7 +193,7 @@ export default function Footer() {
                 <ul className="mt-4 space-y-4">
                   <li>
                     <Link
-                      href="#"
+                      href="/legal"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Privacy
@@ -195,7 +201,7 @@ export default function Footer() {
                   </li>
                   <li>
                     <Link
-                      href="/terms-privacy"
+                      href="/legal"
                       className="text-base text-muted-foreground hover:text-foreground"
                     >
                       Terms

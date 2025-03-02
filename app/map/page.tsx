@@ -1,18 +1,72 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import dynamic from "next/dynamic";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Navigation, ArrowLeft, Crosshair, Search } from "lucide-react";
 import Link from "next/link";
 
-const MapWithNoSSR = dynamic(() => import("../components/MapComponent"), {
-  ssr: false,
-});
+// Fix for default marker icon
+delete (L.Icon.Default.prototype as any)._getIconUrl;
 
 const petHotelLocation: [number, number] = [7.4460297, 125.8037527]; // Big Paws Pet Hotel coordinates
+
+// Create a custom icon for the pet hotel and user location
+const createCustomIcon = (iconUrl: string, text?: string) => {
+  return L.divIcon({
+    className: "custom-icon",
+    html: `
+      <div style="position: relative; width: 60px; height: 60px;">
+        <img src="${iconUrl}" style="width: 100%; height: 100%; object-fit: contain;" />
+        ${text ? `<span style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: white; padding: 2px 4px; border-radius: 4px; font-weight: bold;">${text}</span>` : ""}
+      </div>
+    `,
+    iconSize: [50, 50],
+    iconAnchor: [20, 60],
+    popupAnchor: [0, -40],
+  });
+};
+
+const petHotelIcon = createCustomIcon("BigPawsLogo.png");
+const userLocationIcon = createCustomIcon("you-are-here.png", "You");
+
+function ChangeView({
+  center,
+  zoom,
+}: {
+  center: [number, number];
+  zoom: number;
+}) {
+  const map = useMap();
+  map.setView(center, zoom);
+  return null;
+}
+
+function LocationMarker({
+  setUserLocation,
+}: {
+  setUserLocation: (location: [number, number]) => void;
+}) {
+  const map = useMapEvents({
+    click(e) {
+      setUserLocation([e.latlng.lat, e.latlng.lng]);
+    },
+  });
+
+  return null;
+}
 
 export default function MapPage() {
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
@@ -68,7 +122,9 @@ export default function MapPage() {
         },
       );
     } else {
-      setError("Geolocation is not supported by your browser.");
+      setError(
+        "Geolocation is not supported by your browser. Please enter an address or click on the map.",
+      );
     }
   }, []);
 
@@ -79,7 +135,10 @@ export default function MapPage() {
       );
       const data = await response.json();
       if (data && data.length > 0) {
-        setUserLocation([Number(data[0].lat), Number(data[0].lon)]);
+        setUserLocation([
+          Number.parseFloat(data[0].lat),
+          Number.parseFloat(data[0].lon),
+        ]);
         setError(null);
       } else {
         setError("Address not found. Please try a different address.");
@@ -120,12 +179,29 @@ export default function MapPage() {
             {error && <p className="text-red-500 mb-2">{error}</p>}
           </div>
           <div className="flex-grow relative">
-            <MapWithNoSSR
-              userLocation={userLocation}
-              petHotelLocation={petHotelLocation}
-              route={route}
-              setUserLocation={setUserLocation}
-            />
+            <MapContainer
+              center={petHotelLocation}
+              zoom={13}
+              style={{ height: "100%", width: "100%" }}
+            >
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              {userLocation && (
+                <>
+                  <Marker position={userLocation} icon={userLocationIcon}>
+                    <Popup>Your Location</Popup>
+                  </Marker>
+                  <ChangeView center={userLocation} zoom={13} />
+                </>
+              )}
+              <Marker position={petHotelLocation} icon={petHotelIcon}>
+                <Popup>Big Paws Pet Hotel</Popup>
+              </Marker>
+              {route.length > 0 && <Polyline positions={route} color="blue" />}
+              <LocationMarker setUserLocation={setUserLocation} />
+            </MapContainer>
           </div>
           <div className="p-4 bg-background flex flex-col sm:flex-row justify-between items-center gap-2">
             <Link href="/" className="w-full sm:w-auto">

@@ -114,10 +114,7 @@ export default function Header() {
             <ThemeToggle />
             <div className="hidden sm:flex space-x-4">
               <Button variant="outline" asChild className="text-xs sm:text-sm">
-                <Link
-                  href="https://big-paws-petsupplies-webapp.vercel.app/"
-                  target="_blank"
-                >
+                <Link href="/index.html" target="_blank">
                   Log in
                 </Link>
               </Button>
@@ -154,10 +151,7 @@ export default function Header() {
                   ))}
                   <div className="flex flex-col gap-4 mt-4 px-2">
                     <Button variant="outline" asChild className="w-full">
-                      <Link
-                        href="https://big-paws-petsupplies-webapp.vercel.app/"
-                        target="_blank"
-                      >
+                      <Link href="/login.html" target="_blank">
                         Log in
                       </Link>
                     </Button>

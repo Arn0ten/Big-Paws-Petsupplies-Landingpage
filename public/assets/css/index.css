@@ -1,0 +1,355 @@
+:root {
+  --primary: #2a2f5b;
+  --secondary: #4a90e2;
+  --accent: #f0b67f;
+  --background: #ffffff;
+  --text-light: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, var(--primary) 0%, #1a1f3b 100%);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.content-wrapper {
+  text-align: center;
+  max-width: 1200px;
+  width: 100%;
+  z-index: 2;
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+}
+
+.logo {
+  width: 180px;
+  height: 180px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1s ease-out forwards;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(74, 144, 226, 0.2) 0%,
+    rgba(74, 144, 226, 0) 70%
+  );
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1s ease-out 0.5s forwards;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1s ease-out 1s forwards;
+  color: var(--accent);
+}
+
+.welcome-message {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1s ease-out 1.2s forwards;
+  line-height: 1.6;
+  font-size: 1.1rem;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1s ease-out 1.5s forwards;
+}
+
+.feature {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--secondary);
+  color: var(--text-light);
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 1s ease-out 2s forwards;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn:hover {
+  background: transparent;
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+.testimonials {
+  margin-top: 3rem;
+  opacity: 0;
+  animation: fadeInDown 1s ease-out 2.5s forwards;
+}
+
+.testimonial {
+  max-width: 600px;
+  margin: 0 auto;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.testimonial p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.testimonial span {
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.background-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50%;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  left: -150px;
+  animation: moveShape1 20s ease-in-out infinite alternate;
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  right: -100px;
+  animation: moveShape2 15s ease-in-out infinite alternate;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  top: 20%;
+  right: 10%;
+  animation: moveShape3 25s ease-in-out infinite alternate;
+}
+
+.shape-4 {
+  width: 100px;
+  height: 100px;
+  bottom: 30%;
+  left: 10%;
+  animation: moveShape4 18s ease-in-out infinite alternate;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 30px 30px;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes moveShape1 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+@keyframes moveShape2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-80px, -80px);
+  }
+}
+
+@keyframes moveShape3 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50px, 50px) rotate(180deg);
+  }
+}
+
+@keyframes moveShape4 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(60px, -30px) rotate(-180deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .logo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .glow {
+    width: 160px;
+    height: 160px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .feature {
+    padding: 1rem;
+  }
+
+  .welcome-message {
+    padding: 0 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  h1,
+  .tagline,
+  .welcome-message,
+  .features,
+  .btn,
+  .testimonials,
+  .shape-1,
+  .shape-2,
+  .shape-3,
+  .shape-4 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

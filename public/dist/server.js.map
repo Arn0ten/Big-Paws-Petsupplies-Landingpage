@@ -1,0 +1,1 @@
+{"version":3,"sources":["server.js"],"names":["console","log"],"mappings":";AAAAA,QAAQC,IAAI","file":"server.js","sourceRoot":"..","sourcesContent":["console.log(\"Server running\");\r\n"]}

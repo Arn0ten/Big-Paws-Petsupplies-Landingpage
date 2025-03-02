@@ -1,0 +1,460 @@
+          /* Green highlight for selected pets */
+          .pet-item {
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            width: 150px;
+            margin: 0 auto; /* Center the pet item */
+          }
+
+          /* Styling for pet image */
+          .pet-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+          }
+
+          /* Hover effect for the image */
+          .pet-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          }
+
+          /* Pet name below image */
+          .pet-item label span {
+            margin-top: 8px;
+            display: block;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+          }
+
+          /* Selected Pet Styling */
+          .pet-item input:checked + label {
+            background-color: #aaeece !important;
+            color: white;
+            border: 2px solid #8ce5bc;
+          }
+
+          /* Label (for the pet image) */
+          .pet-item label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+          }
+
+          /* Hover effect for label */
+          .pet-item label:hover {
+            background-color: #e2e6ea;
+            transform: translateY(-5px);
+          }
+
+          /* When pet item is selected */
+          .pet-item input:checked + label {
+            background-color: #00dd30 !important;
+            color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+          }
+
+          /* Remove gaps between pet images */
+          td .d-flex {
+            gap: 10px;
+          }
+
+          /* Styling for the box layout */
+          .btn-box {
+            display: block;
+            background-color: #f9f9f9;
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto; /* Center the box */
+          }
+
+          .btn-box:hover {
+            background-color: #eef;
+            border-color: #0056b3;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+          }
+
+          * {
+            box-sizing: border-box;
+          }
+
+          .btn-check:checked + .btn-box {
+            background-color: #007bff;
+            border-color: #0056b3;
+            padding: 5.5rem;
+            transition: all 0.3s ease;
+            max-width: 100%;
+            max-height: 100%;
+          }
+
+          .btn-check:checked + .btn-box .box-title,
+          .btn-check:checked + .btn-box .box-description {
+            color: white;
+          }
+
+          .btn-check + .btn-box {
+            padding: 1rem;
+            transition: all 0.3s ease;
+          }
+
+          .btn-check + .btn-box .box-title,
+          .btn-check + .btn-box .box-description {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          @media (max-width: 576px) {
+            .btn-check:checked + .btn-box {
+            padding: 3.2rem;
+            }
+
+            .btn-check + .btn-box {
+            padding: 4.5rem;
+            transform: none;
+            }
+
+            .btn-check:checked + .btn-box .box-title {
+            font-size: 1.5rem;
+            }
+
+            .btn-check:checked + .btn-box .box-description {
+            font-size: 1rem;
+            }
+          }
+
+/* Optional: Add hover effect for buttons */
+.btn-check:not(:checked) + .btn-box:hover {
+  background-color: #f8f9fa;
+  border-color: #ddd;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Prevent scrollbar from appearing */
+body, html {
+  overflow-x: hidden; 
+  margin: 0; 
+}
+
+          /* Box content style */
+          .box-content {
+            padding: 1rem;
+          }
+
+          .box-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+          }
+
+          .box-description {
+            font-size: 1rem;
+            color: #555;
+          }
+
+          /* Make the boxes responsive */
+          @media (max-width: 767px) {
+            .col-12 {
+              margin-bottom: 15px;
+            }
+            .pet-item, .btn-box {
+              width: 100%; 
+            }
+          }
+
+          /* Styling for the Add Pet box */
+          .add-pet-box .btn-box {
+            display: block;
+            background-color: #f9f9f9;
+            border: 2px dashed #007bff; 
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+          }
+
+          .add-pet-box .btn-box:hover {
+            background-color: #eef;
+            border-color: #0056b3;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+          }
+
+          .add-pet-box .btn-box .box-title {
+            font-size: 2rem;
+            color: #007bff;
+          }
+
+          .add-pet-box .btn-box .box-description {
+            font-size: 1rem;
+            color: #555;
+          }
+
+          .add-pet-box {
+            height: 100%;
+          }
+
+          /* Ensure the Add Pet box has the same size as the pet boxes */
+          .col-12.col-md-6.col-lg-4 {
+            width: 100%;
+            height: 100%;
+          }
+
+          @media (max-width: 767px) {
+            .col-12 {
+              margin-bottom: 15px;
+            }
+          }
+
+
+/* Table*/
+          #ownerTable {
+            border-radius: 8px;
+            overflow: hidden;
+          }
+
+          #ownerTable th {
+            text-align: left;
+          }
+
+          #ownerTable tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+          }
+
+          #nextPage {
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+          }
+
+          /* Truncate long text in table columns */
+          .address-column {
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+          }
+
+          .modal-body {
+            max-height: 80vh;
+            overflow-y: auto;
+          }
+
+          .owner-column {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+            cursor: pointer;
+          }
+
+          .contact-column {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+            cursor: pointer;
+          }
+
+          /* Centering the table header and making sure it stays on one line */
+          #ownerTable thead th {
+            text-align: center;  
+            white-space: nowrap; 
+            overflow: hidden;   
+            text-overflow: ellipsis; 
+          }
+
+
+/* Boarding Modal */
+            .step-indicators {
+              padding: 0 10px;
+            }
+
+            .step-item {
+              text-align: center;
+              position: relative;
+              flex: 1;
+            }
+
+            .step-circle {
+              width: 30px;
+              height: 30px;
+              background: #ddd;
+              border-radius: 50%;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 3px;
+              transition: all 0.3s ease;
+            }
+
+            .step-circle.active {
+              color: white;
+              transform: scale(1.05);
+            }
+
+            .step-title {
+              font-size: 10px;
+              display: block;
+              color: #666;
+            }
+
+            /* Progress bar colors */
+            .progress-bar.step1 {
+              background: #ff6b6b;
+            }
+            .progress-bar.step2 {
+              background: #4ecdc4;
+            }
+            .progress-bar.step3 {
+              background: #45b7d1;
+            }
+            .progress-bar.step4 {
+              background: #05c93f;
+            }
+
+
+            
+/* Responsive modal styling */
+.modal-dialog {
+  position: fixed;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: 100%;
+  max-height: 90vh;
+  margin: auto;
+  width: 900px;
+  height: 700px;
+  margin: auto;
+  overflow-y: auto;
+}
+
+/* Small screens (phones) */
+@media (max-width: 576px) {
+  .modal-dialog {
+    padding: 10px;
+  }
+  
+  .modal-content {
+    max-width: 95%;
+  }
+  
+  .step-circle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .step-title {
+    font-size: 8px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 577px) and (max-width: 991px) {
+  .modal-content {
+    max-width: 90%;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 992px) {
+  .modal-content {
+    max-width: 65%;
+  }
+}
+
+
+/* Skeleton Loader */
+ 
+
+.skeleton-box {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 3.0s infinite ease-in-out;
+    border-radius: 4px;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .skeleton-box {
+    background: linear-gradient(90deg, #e0e0e0 25%, #f5f5f5 50%, #e0e0e0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: 4px;
+}
+
+.skeleton-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.skeleton-120 {
+    width: 120px;
+    height: 20px;
+}
+
+.skeleton-100 {
+    width: 100px;
+    height: 20px;
+}
+
+.skeleton-150 {
+    width: 150px;
+    height: 20px;
+}
+
+.skeleton-200 {
+    width: 200px;
+    height: 20px;
+}
+
+.skeleton-80 {
+    width: 80px;
+    height: 20px;
+}
+
+.skeleton-50 {
+    width: 50px;
+    height: 20px;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
