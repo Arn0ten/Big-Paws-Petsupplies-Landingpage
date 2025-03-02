@@ -1,4 +1,4 @@
-# Big Paws Petsupplies Landing Page  
+# Big Paws Petsupplies Landing & Webapp 
 
 ![Big Paws Logo](https://github.com/user-attachments/assets/ba6ae16f-8fb9-42d9-be80-71b02d2a98f4)  
 
