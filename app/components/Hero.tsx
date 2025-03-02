@@ -192,6 +192,7 @@ export default function Hero() {
               fill
               className="object-contain rounded-2xl p-12"
               priority
+              quality={100}
             />
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"

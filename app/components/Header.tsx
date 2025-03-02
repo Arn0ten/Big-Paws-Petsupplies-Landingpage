@@ -115,7 +115,7 @@ export default function Header() {
             <div className="hidden sm:flex space-x-4">
               <Button variant="outline" asChild className="text-xs sm:text-sm">
                 <Link href="/index.html" target="_blank">
-                  Log in
+                  Pet Hotel
                 </Link>
               </Button>
               <Button asChild className="text-xs sm:text-sm">
@@ -152,7 +152,7 @@ export default function Header() {
                   <div className="flex flex-col gap-4 mt-4 px-2">
                     <Button variant="outline" asChild className="w-full">
                       <Link href="/index.html" target="_blank">
-                        Log in
+                        Pet Hotel
                       </Link>
                     </Button>
                     <Button asChild className="w-full">

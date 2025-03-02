@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X } from "lucide-react";
@@ -23,6 +24,17 @@ export default function FloatingImageModal({
   additionalInfo,
   price,
 }: FloatingImageModalProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -37,41 +49,41 @@ export default function FloatingImageModal({
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.95, opacity: 0 }}
-            className="relative bg-background rounded-lg shadow-xl max-w-[95vw] max-h-[95vh] overflow-hidden"
+            className="relative bg-background rounded-lg shadow-xl w-full max-w-5xl max-h-[90vh] overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={onClose}
-              className="absolute top-2 right-2 z-10 p-2 bg-black bg-opacity-50 rounded-full text-white hover:bg-opacity-75 transition-colors"
+              className="absolute top-4 right-4 z-10 p-2 bg-black bg-opacity-50 rounded-full text-white hover:bg-opacity-75 transition-colors"
               aria-label="Close modal"
             >
               <X className="h-6 w-6" />
             </button>
-            <div className="relative w-full max-h-[80vh] overflow-auto">
-              <div className="relative w-full" style={{ minHeight: "300px" }}>
+            <div className="flex flex-col md:flex-row h-full">
+              <div className="relative w-full h-[50vh] md:h-[80vh] md:w-2/3 my-4 md:my-0">
                 <Image
                   src={imageSrc || "/placeholder.svg"}
                   alt={alt}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 70vw"
+                  layout="fill"
+                  objectFit="contain"
+                  className="rounded-lg"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
+                  quality={100}
                 />
               </div>
-              {(description || additionalInfo || price) && (
-                <div className="p-4 bg-background">
-                  {description && (
-                    <p className="text-base mb-2">{description}</p>
-                  )}
-                  {additionalInfo && (
-                    <p className="text-sm text-muted-foreground mb-2">
-                      {additionalInfo}
-                    </p>
-                  )}
-                  {price && (
-                    <p className="text-lg font-bold text-primary">{price}</p>
-                  )}
-                </div>
-              )}
+              <div className="p-6 md:w-1/3 overflow-y-auto">
+                {description && (
+                  <p className="text-lg font-semibold mb-4">{description}</p>
+                )}
+                {additionalInfo && (
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {additionalInfo}
+                  </p>
+                )}
+                {price && (
+                  <p className="text-xl font-bold text-primary">{price}</p>
+                )}
+              </div>
             </div>
           </motion.div>
         </motion.div>

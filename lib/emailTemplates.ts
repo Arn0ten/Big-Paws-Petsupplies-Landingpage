@@ -305,6 +305,8 @@
 //     `;
 // }
 
+//Postmark Email Template 1
+
 export function getEmailTemplate(formType: string, formData: any) {
   if (formType === "contact") {
     return getContactEmailTemplate(formData);
@@ -609,3 +611,276 @@ function getBookServiceEmailTemplate(formData: any) {
     </html>
   `;
 }
+
+//Postmark Email Template 2
+// export function getEmailTemplate(formType: string, formData: any) {
+//   if (formType === "contact") {
+//     return getContactEmailTemplate(formData)
+//   } else if (formType === "book-service") {
+//     return getBookServiceEmailTemplate(formData)
+//   }
+//   throw new Error("Invalid form type")
+// }
+
+// function getContactEmailTemplate(formData: any) {
+//   return `
+//     <!DOCTYPE html>
+//     <html lang="en">
+//       <head>
+//         <meta charset="UTF-8">
+//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//         <title>New Customer Inquiry</title>
+//         <style>
+//           @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+//           body {
+//             font-family: 'Roboto', Arial, sans-serif;
+//             line-height: 1.6;
+//             color: #333333;
+//             margin: 0;
+//             padding: 0;
+//             -webkit-font-smoothing: antialiased;
+//             -moz-osx-font-smoothing: grayscale;
+//           }
+//           .container {
+//             max-width: 600px;
+//             margin: 0 auto;
+//             padding: 20px;
+//             background-color: #ffffff;
+//           }
+//           .header {
+//             background-color: #2e3357;
+//             color: #ffffff;
+//             padding: 20px;
+//             text-align: center;
+//           }
+//           .logo {
+//             max-width: 150px;
+//             height: auto;
+//           }
+//           .content {
+//             padding: 20px;
+//           }
+//           .info-block {
+//             margin-bottom: 20px;
+//           }
+//           .info-label {
+//             font-weight: bold;
+//             margin-bottom: 5px;
+//           }
+//           .info-value {
+//             background-color: #f4f4f4;
+//             padding: 10px;
+//             border-radius: 4px;
+//           }
+//           .message-box {
+//             background-color: #f4f4f4;
+//             padding: 15px;
+//             border-radius: 4px;
+//             margin-top: 20px;
+//           }
+//           .footer {
+//             text-align: center;
+//             padding: 20px;
+//             font-size: 12px;
+//             color: #666666;
+//           }
+//           @media only screen and (max-width: 600px) {
+//             .container {
+//               width: 100% !important;
+//             }
+//             .content {
+//               padding: 10px !important;
+//             }
+//           }
+//         </style>
+//       </head>
+//       <body>
+//         <div class="container">
+//           <div class="header">
+//             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogo-tgQYrArFSfOX9irwlrG1D93gEjB9yr.png" alt="Big Paws Pet Hotel" class="logo">
+//             <h1>New Customer Inquiry</h1>
+//           </div>
+//           <div class="content">
+//             <div class="info-block">
+//               <p class="info-label">Name:</p>
+//               <p class="info-value">${formData.name}</p>
+//             </div>
+//             <div class="info-block">
+//               <p class="info-label">Email:</p>
+//               <p class="info-value">${formData.email}</p>
+//             </div>
+//             <div class="info-block">
+//               <p class="info-label">Phone:</p>
+//               <p class="info-value">${formData.phone}</p>
+//             </div>
+//             <div class="info-block">
+//               <p class="info-label">Message:</p>
+//               <div class="message-box">
+//                 ${formData.message || "No message provided."}
+//               </div>
+//             </div>
+//           </div>
+//           <div class="footer">
+//             &copy; ${new Date().getFullYear()} Big Paws Pet Hotel. All rights reserved.
+//           </div>
+//         </div>
+//       </body>
+//     </html>
+//   `
+// }
+
+// function getBookServiceEmailTemplate(formData: any) {
+//   return `
+//     <!DOCTYPE html>
+//     <html lang="en">
+//       <head>
+//         <meta charset="UTF-8">
+//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//         <title>Home Service Booking</title>
+//         <style>
+//           @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+//           body {
+//             font-family: 'Roboto', Arial, sans-serif;
+//             line-height: 1.6;
+//             color: #333333;
+//             margin: 0;
+//             padding: 0;
+//             -webkit-font-smoothing: antialiased;
+//             -moz-osx-font-smoothing: grayscale;
+//           }
+//           .container {
+//             max-width: 600px;
+//             margin: 0 auto;
+//             padding: 20px;
+//             background-color: #ffffff;
+//           }
+//           .header {
+//             background-color: #2e3357;
+//             color: #ffffff;
+//             padding: 20px;
+//             text-align: center;
+//           }
+//           .logo {
+//             max-width: 150px;
+//             height: auto;
+//           }
+//           .content {
+//             padding: 20px;
+//           }
+//           .section {
+//             margin-bottom: 30px;
+//           }
+//           .section-title {
+//             font-size: 18px;
+//             font-weight: bold;
+//             margin-bottom: 10px;
+//             color: #2e3357;
+//           }
+//           .info-block {
+//             margin-bottom: 15px;
+//           }
+//           .info-label {
+//             font-weight: bold;
+//             margin-bottom: 5px;
+//           }
+//           .info-value {
+//             background-color: #f4f4f4;
+//             padding: 10px;
+//             border-radius: 4px;
+//           }
+//           .message-box {
+//             background-color: #f4f4f4;
+//             padding: 15px;
+//             border-radius: 4px;
+//           }
+//           .footer {
+//             text-align: center;
+//             padding: 20px;
+//             font-size: 12px;
+//             color: #666666;
+//           }
+//           @media only screen and (max-width: 600px) {
+//             .container {
+//               width: 100% !important;
+//             }
+//             .content {
+//               padding: 10px !important;
+//             }
+//           }
+//         </style>
+//       </head>
+//       <body>
+//         <div class="container">
+//           <div class="header">
+//             <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BigPawsLogo-tgQYrArFSfOX9irwlrG1D93gEjB9yr.png" alt="Big Paws Pet Hotel" class="logo">
+//             <h1>Home Service Booking</h1>
+//           </div>
+//           <div class="content">
+//             <div class="section">
+//               <h2 class="section-title">Customer Information</h2>
+//               <div class="info-block">
+//                 <p class="info-label">Name:</p>
+//                 <p class="info-value">${formData.name}</p>
+//               </div>
+//               <div class="info-block">
+//                 <p class="info-label">Email:</p>
+//                 <p class="info-value">${formData.email}</p>
+//               </div>
+//               <div class="info-block">
+//                 <p class="info-label">Phone:</p>
+//                 <p class="info-value">${formData.phone}</p>
+//               </div>
+//               <div class="info-block">
+//                 <p class="info-label">Address:</p>
+//                 <p class="info-value">${formData.address}</p>
+//               </div>
+//             </div>
+
+//             <div class="section">
+//               <h2 class="section-title">Pet Information</h2>
+//               <div class="message-box">
+//                 ${formData.petInfo}
+//               </div>
+//             </div>
+
+//             <div class="section">
+//               <h2 class="section-title">Service Details</h2>
+//               <div class="info-block">
+//                 <p class="info-label">Service Type:</p>
+//                 <p class="info-value">${formData.serviceType}</p>
+//               </div>
+//               <div class="info-block">
+//                 <p class="info-label">Preferred Date:</p>
+//                 <p class="info-value">${formData.preferredDate}</p>
+//               </div>
+//               <div class="info-block">
+//                 <p class="info-label">Preferred Time:</p>
+//                 <p class="info-value">
+//                   ${(() => {
+//                     const time = formData.preferredTime
+//                     const [hours, minutes] = time.split(":")
+//                     const ampm = hours >= 12 ? "PM" : "AM"
+//                     const hours12 = hours % 12 || 12
+//                     return `${hours12}:${minutes} ${ampm}`
+//                   })()}
+//                 </p>
+//               </div>
+//             </div>
+
+//             <div class="section">
+//               <h2 class="section-title">Additional Notes</h2>
+//               <div class="message-box">
+//                 ${formData.additionalNotes || "No additional notes provided."}
+//               </div>
+//             </div>
+//           </div>
+//           <div class="footer">
+//             &copy; ${new Date().getFullYear()} Big Paws Pet Hotel. All rights reserved.
+//           </div>
+//         </div>
+//       </body>
+//     </html>
+//   `
+// }

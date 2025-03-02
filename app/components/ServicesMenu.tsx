@@ -3,8 +3,19 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dog, Cat, Scissors, Hotel, Sun, PawPrint, Home } from "lucide-react";
+import {
+  Dog,
+  Cat,
+  Scissors,
+  Hotel,
+  Sun,
+  PawPrint,
+  Home,
+  Phone,
+  Mail,
+} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const hotelServices = {
   dayCare: {
@@ -51,27 +62,28 @@ const groomingServices = {
       },
     },
     premiumWash: {
-      description: "Bath, Brush, BlowDry, Ear Clean, Nail Cut",
+      description:
+        "Bath, Brush, Shampoo, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
       prices: {
         small: "300.00",
         medium: "450.00",
         large: "550.00",
-        extraLarge: "650.00",
+        extraLarge: "850.00",
       },
     },
     premiumWashAndCut: {
       description:
-        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Trim around the Paws/Face/Genital Area",
+        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Trim around the Face/Facial Area",
       prices: {
         small: "450.00",
         medium: "600.00",
-        large: "650.00",
-        extraLarge: "750.00",
+        large: "850.00",
+        extraLarge: "880.00",
       },
     },
     fullGrooming: {
       description:
-        "Bath, Brush, BlowDry, Ear Clean, Nail Cut, Teeth Clean, Cut with Style & Cologne",
+        "Bath, Brush, BlowDry, Ear Clean, Nail Cut & Full Body Cleaning, Cut with Style & Cologne",
       prices: {
         small: "500.00",
         medium: "650.00",
@@ -85,19 +97,19 @@ const groomingServices = {
       description: "Bath & Blow Dry",
       prices: {
         small: "150.00",
-        medium: "250.00",
-        large: "300.00",
-        extraLarge: "400.00",
+        medium: "200.00",
+        large: "250.00",
+        extraLarge: "280.00",
       },
     },
     premiumWash: {
       description:
-        "Bath, Brush, Nail Cut, Ear Clean, Trim around the paws/face with Cologne",
+        "Bath with Nail Cut, Ear Clean, Trim around the Face with Cologne",
       prices: {
-        small: "250.00",
-        medium: "350.00",
-        large: "400.00",
-        extraLarge: "500.00",
+        small: "200.00",
+        medium: "250.00",
+        large: "300.00",
+        extraLarge: "350.00",
       },
     },
   },
@@ -208,10 +220,10 @@ export default function ServicesMenu() {
                 </div>
 
                 {/* Main Heading */}
-                <h2 className="text-3xl md:text-4xl font-bold text-[#5C3D2E] relative">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#5C3D2E] relative pr-20 sm:pr-0">
                   WE LOVE YOUR PETS
                   {/* Discount Badge - Responsive positioning */}
-                  <div className="absolute top-0 right-0 sm:-right-4 sm:-top-4 w-14 h-14 sm:w-16 sm:h-16 bg-[#D2691E] rounded-full flex items-center justify-center text-white font-bold transform rotate-12">
+                  <div className="absolute top-0 right-0 sm:relative sm:inline-block sm:ml-4 w-14 h-14 sm:w-16 sm:h-16 bg-[#D2691E] rounded-full flex items-center justify-center text-white font-bold transform rotate-12">
                     <div className="text-center">
                       <div className="text-lg sm:text-xl">10%</div>
                       <div className="text-xs">Discount</div>
@@ -248,12 +260,22 @@ export default function ServicesMenu() {
                   ))}
                 </div>
 
-                {/* Contact Button - Full width on mobile */}
-                <div className="w-full sm:w-auto">
-                  <div className="bg-[#5C3D2E] text-white px-4 py-2 md:px-6 md:py-3 rounded-full inline-flex items-center gap-2 text-sm md:text-base">
-                    <span>Contact Us:</span>
+                {/* Contact Information - Improved and clickable */}
+                <div className="space-y-2">
+                  <Link
+                    href="tel:+639501890933"
+                    className="flex items-center gap-2 text-[#5C3D2E] hover:text-[#D2691E] transition-colors"
+                  >
+                    <Phone className="w-5 h-5" />
                     <span className="font-bold">09501890933</span>
-                  </div>
+                  </Link>
+                  <Link
+                    href="mailto:contact@bigpawspetsupplies.com"
+                    className="flex items-center gap-2 text-[#5C3D2E] hover:text-[#D2691E] transition-colors"
+                  >
+                    <Mail className="w-5 h-5" />
+                    <span>contact@bigpawspetsupplies.com</span>
+                  </Link>
                 </div>
               </div>
 
@@ -341,17 +363,18 @@ export default function ServicesMenu() {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Day Care */}
-                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col h-full">
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
                     <h3 className="text-xl font-semibold bg-blue-500 text-white p-3 rounded-t-lg flex items-center">
                       <Dog className="mr-2" /> Day Care
                     </h3>
-                    <div className="p-4 flex flex-col flex-grow">
+                    <div className="p-4 space-y-4 flex-grow">
+                      {/* Price */}
                       {/* Hours */}
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Hours:</span>
                         <span>{hotelServices.dayCare.hours}</span>
                       </div>
-                      <div className="mt-4">
+                      <div>
                         <p className="font-medium mb-2">Rates:</p>
                         {hotelServices.dayCare.rates.map((rate, index) => (
                           <div
@@ -359,19 +382,15 @@ export default function ServicesMenu() {
                             className="flex justify-between items-center border-b pb-2"
                           >
                             <span className="font-medium">{rate.size}:</span>
-                            <span className="flex items-baseline text-primary">
-                              <span className="text-lg">₱</span>
-                              <span className="text-3xl font-bold">
-                                {rate.price}
-                              </span>
-                              <span className="text-lg">/{rate.unit}</span>
+                            <span className="text-2xl font-bold text-primary">
+                              ₱{rate.price}/{rate.unit}
                             </span>
                           </div>
                         ))}
                       </div>
 
-                      {/* Requirements note */}
-                      <div className="mt-auto pt-4">
+                      {/* Requirements note - now at bottom */}
+                      <div className="mt-auto p-4">
                         <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
                           <span className="font-bold">Note:</span>{" "}
                           {hotelServices.dayCare.requirements}
@@ -381,11 +400,12 @@ export default function ServicesMenu() {
                   </div>
 
                   {/* Day Hotel */}
-                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col h-full">
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
                     <h3 className="text-xl font-semibold bg-red-500 text-white p-3 rounded-t-lg flex items-center">
                       <Sun className="mr-2" /> 24Hrs Accommodation
                     </h3>
-                    <div className="p-4 flex flex-col flex-grow">
+                    <div className="p-4 space-y-4 flex-grow">
+                      {/* Main price */}
                       <div>
                         <p className="font-medium mb-2">Rates:</p>
                         {hotelServices.accommodation.rates.map(
@@ -395,19 +415,15 @@ export default function ServicesMenu() {
                               className="flex justify-between items-center border-b pb-2"
                             >
                               <span className="font-medium">{rate.size}:</span>
-                              <span className="flex items-baseline text-primary">
-                                <span className="text-lg">₱</span>
-                                <span className="text-3xl font-bold">
-                                  {rate.price}
-                                </span>
+                              <span className="text-2xl font-bold text-primary">
+                                ₱{rate.price}
                               </span>
                             </div>
                           ),
                         )}
                       </div>
-
-                      {/* Requirements note */}
-                      <div className="mt-auto pt-4">
+                      {/* Requirements note - now at bottom */}
+                      <div className="mt-auto p-4">
                         <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
                           <span className="font-bold">Note:</span>{" "}
                           {hotelServices.dayCare.requirements}
@@ -417,11 +433,12 @@ export default function ServicesMenu() {
                   </div>
 
                   {/* Cat Hotel */}
-                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col h-full">
+                  <div className="bg-white dark:bg-slate-900 rounded-lg shadow-sm border flex flex-col">
                     <h3 className="text-xl font-semibold bg-orange-500 text-white p-3 rounded-t-lg flex items-center">
                       <Cat className="mr-2" /> Cat Hotel
                     </h3>
-                    <div className="p-4 flex flex-col flex-grow">
+                    <div className="p-4 space-y-4 flex-grow">
+                      {/* Price */}
                       <div>
                         <p className="font-medium mb-2">Standard Room:</p>
                         {hotelServices.catHotel.standardRoom.map(
@@ -431,17 +448,14 @@ export default function ServicesMenu() {
                               className="flex justify-between items-center border-b pb-2"
                             >
                               <span className="font-medium">{room.type}:</span>
-                              <span className="flex items-baseline text-primary">
-                                <span className="text-lg">₱</span>
-                                <span className="text-3xl font-bold">
-                                  {room.price}
-                                </span>
+                              <span className="text-2xl font-bold text-primary">
+                                ₱{room.price}
                               </span>
                             </div>
                           ),
                         )}
                       </div>
-                      <div className="mt-4">
+                      <div>
                         <p className="font-medium mb-2">Extra Guest:</p>
                         {hotelServices.catHotel.extraGuest.map(
                           (guest, index) => (
@@ -450,27 +464,24 @@ export default function ServicesMenu() {
                               className="flex justify-between items-center border-b pb-2"
                             >
                               <span className="font-medium">{guest.type}:</span>
-                              <span className="flex items-baseline text-primary">
-                                <span className="text-lg">₱</span>
-                                <span className="text-3xl font-bold">
-                                  {guest.price}
-                                </span>
+                              <span className="text-2xl font-bold text-primary">
+                                ₱{guest.price}
                               </span>
                             </div>
                           ),
                         )}
                       </div>
 
-                      <div className="text-sm text-muted-foreground mt-4">
+                      <div className="text-sm text-muted-foreground">
                         Peaceful environment specifically designed for cats
                       </div>
+                    </div>
 
-                      {/* Requirements note */}
-                      <div className="mt-auto pt-4">
-                        <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
-                          <span className="font-bold">Note:</span>{" "}
-                          {hotelServices.dayCare.requirements}
-                        </div>
+                    {/* Requirements note - now at bottom */}
+                    <div className="mt-auto p-4">
+                      <div className="bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 p-3 rounded text-sm">
+                        <span className="font-bold">Note:</span>{" "}
+                        {hotelServices.dayCare.requirements}
                       </div>
                     </div>
                   </div>
@@ -542,12 +553,9 @@ export default function ServicesMenu() {
                                   (price, index) => (
                                     <div
                                       key={index}
-                                      className="text-center font-semibold flex items-baseline justify-center text-primary"
+                                      className="text-center font-semibold"
                                     >
-                                      <span className="text-lg">₱</span>
-                                      <span className="text-3xl font-bold">
-                                        {price}
-                                      </span>
+                                      ₱{price}
                                     </div>
                                   ),
                                 )}
@@ -576,16 +584,13 @@ export default function ServicesMenu() {
                                   ([size, price]) => (
                                     <div
                                       key={size}
-                                      className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg items-center"
+                                      className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg"
                                     >
                                       <span className="text-sm font-medium">
                                         {size.toUpperCase()}
                                       </span>
-                                      <span className="flex items-baseline text-primary">
-                                        <span className="text-lg">₱</span>
-                                        <span className="text-3xl font-bold">
-                                          {price}
-                                        </span>
+                                      <span className="font-semibold">
+                                        ₱{price}
                                       </span>
                                     </div>
                                   ),
@@ -653,12 +658,9 @@ export default function ServicesMenu() {
                                   (price, index) => (
                                     <div
                                       key={index}
-                                      className="text-center font-semibold flex items-baseline justify-center text-primary"
+                                      className="text-center font-semibold"
                                     >
-                                      <span className="text-lg">₱</span>
-                                      <span className="text-3xl font-bold">
-                                        {price}
-                                      </span>
+                                      ₱{price}
                                     </div>
                                   ),
                                 )}
@@ -687,16 +689,13 @@ export default function ServicesMenu() {
                                   ([size, price]) => (
                                     <div
                                       key={size}
-                                      className="flex justify-between bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg items-center"
+                                      className="flex justify-between bg-white/50 dark:bg-slate-900/50 p-2 rounded-lg"
                                     >
                                       <span className="text-sm font-medium">
                                         {size.toUpperCase()}
                                       </span>
-                                      <span className="flex items-baseline text-primary">
-                                        <span className="text-lg">₱</span>
-                                        <span className="text-3xl font-bold">
-                                          {price}
-                                        </span>
+                                      <span className="font-semibold">
+                                        ₱{price}
                                       </span>
                                     </div>
                                   ),
@@ -726,12 +725,7 @@ export default function ServicesMenu() {
                             <span className="text-sm font-medium uppercase">
                               {service.replace(/([A-Z])/g, " $1").trim()}
                             </span>
-                            <span className="flex items-baseline text-primary">
-                              <span className="text-lg">₱</span>
-                              <span className="text-3xl font-bold">
-                                {price}
-                              </span>
-                            </span>
+                            <span className="font-semibold">₱{price}</span>
                           </div>
                         ),
                       )}
@@ -756,15 +750,15 @@ export default function ServicesMenu() {
                 <div className="space-y-6">
                   <div className="bg-primary/5 p-4 rounded-lg">
                     {/* Size Badges Row */}
-                    <div className="hidden sm:grid grid-cols-6 gap-2 sm:gap-4 mb-4">
+                    <div className="hidden sm:grid grid-cols-6 gap-4 mb-4">
                       <div className="invisible">Service Type</div>
                       {["small", "medium", "large", "extraLarge", "xxl"].map(
                         (size) => (
                           <div
                             key={size}
-                            className={`text-center p-1 sm:p-2 rounded-lg sm:rounded-full ${sizeColors[size as keyof typeof sizeColors] || "bg-blue-500 text-white"}`}
+                            className={`text-center p-2 rounded-full ${sizeColors[size as keyof typeof sizeColors] || "bg-blue-500 text-white"}`}
                           >
-                            <div className="text-xs sm:text-sm font-medium">
+                            <div className="text-sm font-medium">
                               {size
                                 .replace(/([A-Z])/g, " $1")
                                 .trim()
@@ -786,7 +780,7 @@ export default function ServicesMenu() {
                             {/* Grid Layout for Large Screens */}
                             <div className="hidden sm:grid grid-cols-6 gap-4 items-center">
                               <div
-                                className={`text-xs sm:text-sm font-medium px-2 sm:px-3 py-1 rounded-lg sm:rounded-full text-center ${
+                                className={`text-sm font-medium px-3 py-1 rounded-full text-center ${
                                   serviceColors[
                                     service as keyof typeof serviceColors
                                   ]
@@ -802,33 +796,16 @@ export default function ServicesMenu() {
                                 ([size, price]) => (
                                   <div
                                     key={size}
-                                    className="text-center font-semibold flex items-baseline justify-center text-primary"
+                                    className="text-center font-semibold"
                                   >
-                                    {size === "xxl" ? (
-                                      price ? (
-                                        <>
-                                          <span className="text-lg">₱</span>
-                                          <span className="text-3xl font-bold">
-                                            {price}
-                                          </span>
-                                        </>
-                                      ) : (
-                                        "-"
-                                      )
-                                    ) : (
-                                      <>
-                                        <span className="text-lg">₱</span>
-                                        <span className="text-3xl font-bold">
-                                          {price}
-                                        </span>
-                                      </>
-                                    )}
+                                    {size === "xxl"
+                                      ? price
+                                        ? `₱${price}`
+                                        : "-"
+                                      : `₱${price}`}
                                   </div>
                                 ),
                               )}
-                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
-                                {details.description}
-                              </p>
                             </div>
 
                             {/* Stacked Layout for Mobile */}
@@ -851,23 +828,17 @@ export default function ServicesMenu() {
                                 ([size, price]) => (
                                   <div
                                     key={size}
-                                    className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg items-center"
+                                    className="flex justify-between bg-white/80 dark:bg-slate-950 p-2 rounded-lg"
                                   >
                                     <span className="text-sm font-medium">
                                       {size.toUpperCase()}
                                     </span>
-                                    <span className="flex items-baseline text-primary">
-                                      <span className="text-lg">₱</span>
-                                      <span className="text-3xl font-bold">
-                                        {price}
-                                      </span>
+                                    <span className="font-semibold">
+                                      ₱{price}
                                     </span>
                                   </div>
                                 ),
                               )}
-                              <p className="text-sm text-muted-foreground mt-2 col-span-4">
-                                {details.description}
-                              </p>
                             </div>
                           </div>
                         ),
